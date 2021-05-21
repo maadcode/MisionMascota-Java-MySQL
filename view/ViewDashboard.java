@@ -1,6 +1,8 @@
 
 package view;
 
+import javax.swing.ImageIcon;
+
 public class ViewDashboard extends javax.swing.JFrame {
 
     /**
@@ -12,8 +14,28 @@ public class ViewDashboard extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("Sistema de adopción");
         this.setLocationRelativeTo(null);
+        execute();
     }
+    
+    private void execute() {
+        /*ImageIcon iconAdoptantes = new ImageIcon(getClass().getResource("/assets/arrow.png"));
+        ImageIcon iconMascotas = new ImageIcon(getClass().getResource("/assets/arrow.png"));
+        ImageIcon iconAdopciones = new ImageIcon(getClass().getResource("/assets/arrow.png"));
+        */
+        MenuItem menuAdoptantes = new MenuItem(null, "Adoptantes");
+        MenuItem menuMascotas = new MenuItem(null, "Mascotas");
+        MenuItem menuAdopciones = new MenuItem(null, "Adopciones");
+        
+        addMenu(menuAdoptantes, menuMascotas, menuAdopciones);
 
+    }
+    
+    private void addMenu(MenuItem... menu) {
+        for(int i = 0; i < menu.length; i++) {
+            sideMenu.add(menu[i]);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -23,18 +45,68 @@ public class ViewDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        sideMenu = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        sideMenu.setBackground(new java.awt.Color(84, 56, 220));
+
+        jScrollPane1.setBorder(null);
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout sideMenuLayout = new javax.swing.GroupLayout(sideMenu);
+        sideMenu.setLayout(sideMenuLayout);
+        sideMenuLayout.setHorizontalGroup(
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        sideMenuLayout.setVerticalGroup(
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
         );
+
+        getContentPane().add(sideMenu);
+        sideMenu.setBounds(0, 180, 250, 420);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(250, 0, 650, 600);
+
+        jPanel4.setBackground(new java.awt.Color(84, 56, 220));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 0, 250, 180);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,5 +147,10 @@ public class ViewDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel sideMenu;
     // End of variables declaration//GEN-END:variables
 }
