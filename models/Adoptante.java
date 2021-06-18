@@ -1,5 +1,5 @@
 
-package model;
+package models;
 
 public class Adoptante {
     private String id_adoptante;

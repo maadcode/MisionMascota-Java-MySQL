@@ -1,5 +1,5 @@
 
-package model;
+package models;
 
 public class Mascota {
     private String id_mascota;
