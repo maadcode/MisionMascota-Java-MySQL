@@ -1,22 +1,23 @@
 
 package views;
 
+import controllers.MenuController;
 import controllers.UsuariosController;
-import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Login extends javax.swing.JFrame {
 
-    public UsuariosController usuarioController;
+    private UsuariosController usuarioController;
+    private MenuController menuController;
     
     /**
      * Creates new form FrmLogin
      */
     public Login() {
         initComponents();
-        this.setSize(900, 600);
+        //this.setSize(900, 600);
         this.setResizable(false);
         this.setTitle("Sistema de adopción");
         this.setLocationRelativeTo(null);
@@ -26,12 +27,13 @@ public class Login extends javax.swing.JFrame {
         jLabel_wallpaper.setIcon(icono);
         this.repaint();
         
-        iniLabels();
         this.usuarioController = new UsuariosController();
+        this.menuController = new MenuController();
+        
+        iniLabels();
     }
     
     public void iniLabels() {
-        this.lblErrorPassword.setForeground(Color.red);
         this.lblErrorUsername.setText(null);
         this.lblErrorPassword.setText(null);
     }
@@ -193,8 +195,8 @@ public class Login extends javax.swing.JFrame {
         }
         if(!user.equals("") && !password.equals("")) {
             if(usuarioController.checkLogin(user, password)) {
-                this.lblErrorPassword.setForeground(Color.GREEN);
-                this.lblErrorPassword.setText("Autenticación correcta.");
+                this.dispose();
+                this.menuController.index();
             } else {
                 this.lblErrorPassword.setText("Usuario o contraseña incorrecto.");
             }

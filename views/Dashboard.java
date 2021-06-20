@@ -4,7 +4,7 @@ package views;
 public class Dashboard extends javax.swing.JPanel {
 
     /**
-     * Creates new form Dashboard
+     * Creates new form ViewAdoptantes
      */
     public Dashboard() {
         initComponents();
@@ -19,12 +19,10 @@ public class Dashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -36,8 +34,9 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(750, 520));
+        setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -69,8 +68,8 @@ public class Dashboard extends javax.swing.JPanel {
         jTable1.setIntercellSpacing(new java.awt.Dimension(5, 5));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 230, 600, 150);
+        add(jScrollPane1);
+        jScrollPane1.setBounds(70, 160, 600, 120);
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -87,7 +86,7 @@ public class Dashboard extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "CÓDIGO", "ADOPTANTE", "MASCOTA", "FECHA"
+                "CÓDIGO", "NOMBRE", "FECHA DE INGRESO", "ESTADO"
             }
         ) {
             Class[] types = new Class [] {
@@ -102,26 +101,20 @@ public class Dashboard extends javax.swing.JPanel {
         jTable2.setIntercellSpacing(new java.awt.Dimension(5, 5));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 440, 600, 150);
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 86, 201));
-        jLabel10.setText("Dashboard");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(30, 20, 240, 32);
+        add(jScrollPane2);
+        jScrollPane2.setBounds(70, 350, 600, 150);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(84, 56, 220));
         jLabel5.setText("Mascotas recientes");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 400, 170, 20);
+        add(jLabel5);
+        jLabel5.setBounds(80, 320, 170, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(84, 56, 220));
         jLabel6.setText("Adopciones recientes");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 190, 170, 20);
+        add(jLabel6);
+        jLabel6.setBounds(80, 130, 170, 20);
 
         jPanel2.setBackground(new java.awt.Color(84, 56, 220));
 
@@ -164,8 +157,8 @@ public class Dashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(30, 70, 260, 100);
+        add(jPanel2);
+        jPanel2.setBounds(70, 10, 260, 100);
 
         jPanel4.setBackground(new java.awt.Color(84, 56, 220));
 
@@ -201,41 +194,19 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(370, 70, 0, 0);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jPanel4);
+        jPanel4.setBounds(410, 10, 260, 100);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -244,7 +215,6 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

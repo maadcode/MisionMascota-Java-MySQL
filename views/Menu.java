@@ -12,6 +12,14 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
+        Dashboard nuevoPanel = new Dashboard();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Dashboard");
     }
 
     /**
@@ -28,23 +36,27 @@ public class Menu extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         btnDashboard = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnIncentives = new javax.swing.JPanel();
+        btnAdoptantes = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnComing = new javax.swing.JPanel();
+        btnMascotas = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        btnAdministration = new javax.swing.JPanel();
+        btnAdopciones = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JPanel();
+        btnCatalogo = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        btnSalir = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -71,6 +83,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pet.png"))); // NOI18N
         sidePanel.add(jLabel18);
         jLabel18.setBounds(220, 40, 20, 30);
+        sidePanel.add(jSeparator1);
+        jSeparator1.setBounds(20, 90, 270, 20);
 
         btnDashboard.setBackground(new java.awt.Color(255, 86, 201));
         btnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,13 +123,13 @@ public class Menu extends javax.swing.JFrame {
         sidePanel.add(btnDashboard);
         btnDashboard.setBounds(0, 130, 320, 50);
 
-        btnIncentives.setBackground(new java.awt.Color(84, 56, 220));
-        btnIncentives.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdoptantes.setBackground(new java.awt.Color(84, 56, 220));
+        btnAdoptantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIncentivesMouseClicked(evt);
+                btnAdoptantesMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnIncentivesMousePressed(evt);
+                btnAdoptantesMousePressed(evt);
             }
         });
 
@@ -126,33 +140,33 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Adoptantes");
 
-        javax.swing.GroupLayout btnIncentivesLayout = new javax.swing.GroupLayout(btnIncentives);
-        btnIncentives.setLayout(btnIncentivesLayout);
-        btnIncentivesLayout.setHorizontalGroup(
-            btnIncentivesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnIncentivesLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnAdoptantesLayout = new javax.swing.GroupLayout(btnAdoptantes);
+        btnAdoptantes.setLayout(btnAdoptantesLayout);
+        btnAdoptantesLayout.setHorizontalGroup(
+            btnAdoptantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAdoptantesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        btnIncentivesLayout.setVerticalGroup(
-            btnIncentivesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnAdoptantesLayout.setVerticalGroup(
+            btnAdoptantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnIncentivesLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAdoptantesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        sidePanel.add(btnIncentives);
-        btnIncentives.setBounds(0, 180, 320, 50);
+        sidePanel.add(btnAdoptantes);
+        btnAdoptantes.setBounds(0, 180, 320, 50);
 
-        btnComing.setBackground(new java.awt.Color(84, 56, 220));
-        btnComing.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMascotas.setBackground(new java.awt.Color(84, 56, 220));
+        btnMascotas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnComingMousePressed(evt);
+                btnMascotasMousePressed(evt);
             }
         });
 
@@ -163,33 +177,33 @@ public class Menu extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Mascotas");
 
-        javax.swing.GroupLayout btnComingLayout = new javax.swing.GroupLayout(btnComing);
-        btnComing.setLayout(btnComingLayout);
-        btnComingLayout.setHorizontalGroup(
-            btnComingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnComingLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnMascotasLayout = new javax.swing.GroupLayout(btnMascotas);
+        btnMascotas.setLayout(btnMascotasLayout);
+        btnMascotasLayout.setHorizontalGroup(
+            btnMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMascotasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        btnComingLayout.setVerticalGroup(
-            btnComingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnMascotasLayout.setVerticalGroup(
+            btnMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnComingLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnMascotasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        sidePanel.add(btnComing);
-        btnComing.setBounds(0, 230, 320, 50);
+        sidePanel.add(btnMascotas);
+        btnMascotas.setBounds(0, 230, 320, 50);
 
-        btnAdministration.setBackground(new java.awt.Color(84, 56, 220));
-        btnAdministration.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdopciones.setBackground(new java.awt.Color(84, 56, 220));
+        btnAdopciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAdministrationMousePressed(evt);
+                btnAdopcionesMousePressed(evt);
             }
         });
 
@@ -200,92 +214,138 @@ public class Menu extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Adopciones");
 
-        javax.swing.GroupLayout btnAdministrationLayout = new javax.swing.GroupLayout(btnAdministration);
-        btnAdministration.setLayout(btnAdministrationLayout);
-        btnAdministrationLayout.setHorizontalGroup(
-            btnAdministrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAdministrationLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnAdopcionesLayout = new javax.swing.GroupLayout(btnAdopciones);
+        btnAdopciones.setLayout(btnAdopcionesLayout);
+        btnAdopcionesLayout.setHorizontalGroup(
+            btnAdopcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAdopcionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        btnAdministrationLayout.setVerticalGroup(
-            btnAdministrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnAdopcionesLayout.setVerticalGroup(
+            btnAdopcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAdministrationLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAdopcionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        sidePanel.add(btnAdministration);
-        btnAdministration.setBounds(0, 280, 320, 50);
+        sidePanel.add(btnAdopciones);
+        btnAdopciones.setBounds(0, 280, 320, 50);
 
-        btnExit.setBackground(new java.awt.Color(84, 56, 220));
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCatalogo.setBackground(new java.awt.Color(84, 56, 220));
+        btnCatalogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnExitMousePressed(evt);
+                btnCatalogoMousePressed(evt);
             }
         });
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/off.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/catalogo.png"))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Salir");
+        jLabel17.setText("Catálogo");
 
-        javax.swing.GroupLayout btnExitLayout = new javax.swing.GroupLayout(btnExit);
-        btnExit.setLayout(btnExitLayout);
-        btnExitLayout.setHorizontalGroup(
-            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnExitLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnCatalogoLayout = new javax.swing.GroupLayout(btnCatalogo);
+        btnCatalogo.setLayout(btnCatalogoLayout);
+        btnCatalogoLayout.setHorizontalGroup(
+            btnCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCatalogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        btnExitLayout.setVerticalGroup(
-            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnCatalogoLayout.setVerticalGroup(
+            btnCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnExitLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCatalogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        sidePanel.add(btnExit);
-        btnExit.setBounds(0, 330, 320, 50);
-        sidePanel.add(jSeparator1);
-        jSeparator1.setBounds(20, 90, 270, 20);
+        sidePanel.add(btnCatalogo);
+        btnCatalogo.setBounds(0, 330, 320, 50);
 
-        topPanel.setBackground(new java.awt.Color(0, 153, 0));
+        btnSalir.setBackground(new java.awt.Color(84, 56, 220));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalirMousePressed(evt);
+            }
+        });
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/off.png"))); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Salir");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        sidePanel.add(btnSalir);
+        btnSalir.setBounds(0, 380, 320, 50);
+
+        topPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 86, 201));
+        lblTitle.setText("Titulo de UI");
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(329, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lblTitle)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        contentPanel.setBackground(new java.awt.Color(255, 51, 102));
+        contentPanel.setBackground(new java.awt.Color(0, 153, 0));
+        contentPanel.setPreferredSize(new java.awt.Dimension(750, 520));
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bgPanelLayout = new javax.swing.GroupLayout(bgPanel);
@@ -294,17 +354,17 @@ public class Menu extends javax.swing.JFrame {
             bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanelLayout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         bgPanelLayout.setVerticalGroup(
             bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(bgPanelLayout.createSequentialGroup()
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,57 +381,100 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIncentivesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIncentivesMouseClicked
+    private void btnAdoptantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdoptantesMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnIncentivesMouseClicked
+    }//GEN-LAST:event_btnAdoptantesMouseClicked
 
-    private void btnIncentivesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIncentivesMousePressed
+    private void btnAdoptantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdoptantesMousePressed
         // TODO add your handling code here:
-        resetColor(btnComing);
+        resetColor(btnMascotas);
         resetColor(btnDashboard);
-        setColor(btnIncentives);
-        resetColor(btnAdministration);
-        resetColor(btnExit);
-    }//GEN-LAST:event_btnIncentivesMousePressed
+        setColor(btnAdoptantes);
+        resetColor(btnAdopciones);
+        resetColor(btnCatalogo);
+        
+        ViewAdoptantes nuevoPanel = new ViewAdoptantes();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Adoptantes");
+    }//GEN-LAST:event_btnAdoptantesMousePressed
 
     private void btnDashboardMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMousePressed
         // TODO add your handling code here:
-        resetColor(btnComing);
+        resetColor(btnMascotas);
         setColor(btnDashboard);
-        resetColor(btnIncentives);
-        resetColor(btnAdministration);
-        resetColor(btnExit);
+        resetColor(btnAdoptantes);
+        resetColor(btnAdopciones);
+        resetColor(btnCatalogo);
+        
+        Dashboard nuevoPanel = new Dashboard();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Dashboard");
     }//GEN-LAST:event_btnDashboardMousePressed
 
-    private void btnComingMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComingMousePressed
+    private void btnMascotasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMousePressed
         // TODO add your handling code here:
-        setColor(btnComing);
+        setColor(btnMascotas);
         resetColor(btnDashboard);
-        resetColor(btnIncentives);
-        resetColor(btnAdministration);
-        resetColor(btnExit);
-    }//GEN-LAST:event_btnComingMousePressed
+        resetColor(btnAdoptantes);
+        resetColor(btnAdopciones);
+        resetColor(btnCatalogo);
+        
+        ViewMascotas nuevoPanel = new ViewMascotas();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Mascotas");
+    }//GEN-LAST:event_btnMascotasMousePressed
 
-    private void btnExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMousePressed
+    private void btnCatalogoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCatalogoMousePressed
         // TODO add your handling code here:
-        resetColor(btnComing);
+        resetColor(btnMascotas);
         resetColor(btnDashboard);
-        resetColor(btnIncentives);
-        resetColor(btnAdministration);
-        setColor(btnExit);
+        resetColor(btnAdoptantes);
+        resetColor(btnAdopciones);
+        setColor(btnCatalogo);
+        
+        Catalogo nuevoPanel = new Catalogo();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Catálogo de mascotas");
+    }//GEN-LAST:event_btnCatalogoMousePressed
+
+    private void btnAdopcionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdopcionesMousePressed
+        // TODO add your handling code here:
+        resetColor(btnMascotas);
+        resetColor(btnDashboard);
+        resetColor(btnAdoptantes);
+        setColor(btnAdopciones);
+        resetColor(btnCatalogo);
+        
+        ViewAdopciones nuevoPanel = new ViewAdopciones();
+        nuevoPanel.setSize(750, 520);
+        contentPanel.removeAll();
+        contentPanel.add(nuevoPanel);
+        contentPanel.repaint();
+        
+        this.lblTitle.setText("Adopciones");
+    }//GEN-LAST:event_btnAdopcionesMousePressed
+
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_btnExitMousePressed
+    }//GEN-LAST:event_btnSalirMousePressed
 
-    private void btnAdministrationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministrationMousePressed
-        // TODO add your handling code here:
-        resetColor(btnComing);
-        resetColor(btnDashboard);
-        resetColor(btnIncentives);
-        setColor(btnAdministration);
-        resetColor(btnExit);
-    }//GEN-LAST:event_btnAdministrationMousePressed
-
-    
     void setColor(JPanel panel) {
         panel.setBackground(new Color(255,86,201));
     }
@@ -418,11 +521,12 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgPanel;
-    private javax.swing.JPanel btnAdministration;
-    private javax.swing.JPanel btnComing;
+    private javax.swing.JPanel btnAdopciones;
+    private javax.swing.JPanel btnAdoptantes;
+    private javax.swing.JPanel btnCatalogo;
     private javax.swing.JPanel btnDashboard;
-    private javax.swing.JPanel btnExit;
-    private javax.swing.JPanel btnIncentives;
+    private javax.swing.JPanel btnMascotas;
+    private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -432,13 +536,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

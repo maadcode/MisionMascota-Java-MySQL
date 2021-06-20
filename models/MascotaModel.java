@@ -1,7 +1,7 @@
 
 package models;
 
-public class Mascota {
+public class MascotaModel {
     private String id_mascota;
     private String nombre;
     private String peso;
@@ -9,10 +9,10 @@ public class Mascota {
     private String fecha_nacimiento;
     private String fecha_ingreso;
 
-    public Mascota() {
+    public MascotaModel() {
     }
 
-    public Mascota(String id_mascota, String nombre, String peso, String raza, String fecha_nacimiento, String fecha_ingreso) {
+    public MascotaModel(String id_mascota, String nombre, String peso, String raza, String fecha_nacimiento, String fecha_ingreso) {
         this.id_mascota = id_mascota;
         this.nombre = nombre;
         this.peso = peso;
