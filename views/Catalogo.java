@@ -42,7 +42,7 @@ public class Catalogo extends javax.swing.JPanel {
         btnSelect = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -78,7 +78,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 210, 210));
+        add(jPanel2);
+        jPanel2.setBounds(520, 230, 210, 210);
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
         jPanel4.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -113,7 +114,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, -1));
+        add(jPanel4);
+        jPanel4.setBounds(20, 10, 210, 210);
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
         jPanel5.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -148,7 +150,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 210, -1));
+        add(jPanel5);
+        jPanel5.setBounds(20, 230, 210, 210);
 
         jPanel6.setBackground(new java.awt.Color(153, 153, 255));
         jPanel6.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -183,7 +186,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 210, -1));
+        add(jPanel6);
+        jPanel6.setBounds(270, 10, 210, 210);
 
         jPanel7.setBackground(new java.awt.Color(153, 153, 255));
         jPanel7.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -218,7 +222,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 210, -1));
+        add(jPanel7);
+        jPanel7.setBounds(520, 10, 210, 210);
 
         jPanel8.setBackground(new java.awt.Color(153, 153, 255));
         jPanel8.setMinimumSize(new java.awt.Dimension(250, 220));
@@ -253,7 +258,8 @@ public class Catalogo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 210, -1));
+        add(jPanel8);
+        jPanel8.setBounds(270, 230, 210, 210);
 
         btnBack.setBackground(new java.awt.Color(84, 56, 220));
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -264,7 +270,8 @@ public class Catalogo extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 120, -1));
+        add(btnBack);
+        btnBack.setBounds(30, 470, 120, 31);
 
         btnNext.setBackground(new java.awt.Color(84, 56, 220));
         btnNext.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -275,7 +282,8 @@ public class Catalogo extends javax.swing.JPanel {
                 btnNextActionPerformed(evt);
             }
         });
-        add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 120, -1));
+        add(btnNext);
+        btnNext.setBounds(160, 470, 120, 31);
 
         btnSelect.setBackground(new java.awt.Color(84, 56, 220));
         btnSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -286,7 +294,8 @@ public class Catalogo extends javax.swing.JPanel {
                 btnSelectActionPerformed(evt);
             }
         });
-        add(btnSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, -1, -1));
+        add(btnSelect);
+        btnSelect.setBounds(610, 470, 119, 31);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

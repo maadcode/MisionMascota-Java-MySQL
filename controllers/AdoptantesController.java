@@ -1,35 +1,64 @@
 
 package controllers;
 
-import java.sql.ResultSet;
+import dao.AdoptanteDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.UsuarioModel;
-import views.Login;
+import javax.swing.table.DefaultTableModel;
+import models.AdoptanteModel;
+import views.Menu;
+import views.ViewAdoptantes;
 
-public class AdoptantesController {
-    private UsuarioModel userModel;
+public class AdoptantesController implements ActionListener {
+    private AdoptanteDAO adoptanteDAO;
+    private ViewAdoptantes adoptanteView;
+    private Menu menu;
 
-    public AdoptantesController() {
-    
+    public AdoptantesController(AdoptanteDAO adoptanteDAO, ViewAdoptantes adoptanteView, Menu menu) {
+        this.adoptanteDAO = adoptanteDAO;
+        this.adoptanteView = adoptanteView;
+        this.menu = menu;
+        
+        this.adoptanteView.setSize(750, 520);
+        this.menu.contentPanel.removeAll();
+        this.menu.contentPanel.add(this.adoptanteView);
+        this.menu.contentPanel.repaint();
+        this.menu.lblTitle.setText("Adoptantes");
+        this.adoptanteView.btnBuscarAdoptante.addActionListener(this);
+        System.out.println("asd");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(adoptanteView.btnBuscarAdoptante)) {
+            listarAdoptantes();
+            System.out.println("hola");
+        }
     }
     
-    public void index() {
-        new Login().setVisible(true);
-    }
-    
-    public boolean checkLogin(String user, String password) {
+    public void listarAdoptantes() {
+        ArrayList<AdoptanteModel> list;
         try {
-            ResultSet rs = this.userModel.getUsuario(user);
-            if(rs.next()) {
-                if(rs.getString("password").equals(password)) {
-                    return true;
-                }
+            list = this.adoptanteDAO.getListaAdoptantes();
+            
+            DefaultTableModel table = (DefaultTableModel) adoptanteView.tblAdoptantes.getModel();
+            // Clean table
+            table.setRowCount(0);
+            
+            Object[] row = new Object[3];
+            for(int i = 0; i < list.size(); i++) {
+                row[0] = list.get(i).getNombre();
+                row[1] = list.get(i).getApellido();
+                row[2] = list.get(i).getDNI();
+
+                table.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdoptantesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
     }
 }

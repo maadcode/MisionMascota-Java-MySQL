@@ -392,7 +392,7 @@ public class Menu extends javax.swing.JFrame {
         setColor(btnAdoptantes);
         resetColor(btnAdopciones);
         resetColor(btnCatalogo);
-        
+        /*
         ViewAdoptantes nuevoPanel = new ViewAdoptantes();
         nuevoPanel.setSize(750, 520);
         contentPanel.removeAll();
@@ -400,6 +400,7 @@ public class Menu extends javax.swing.JFrame {
         contentPanel.repaint();
         
         this.lblTitle.setText("Adoptantes");
+        */
     }//GEN-LAST:event_btnAdoptantesMousePressed
 
     private void btnDashboardMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMousePressed
@@ -521,13 +522,13 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgPanel;
-    private javax.swing.JPanel btnAdopciones;
-    private javax.swing.JPanel btnAdoptantes;
-    private javax.swing.JPanel btnCatalogo;
-    private javax.swing.JPanel btnDashboard;
-    private javax.swing.JPanel btnMascotas;
-    private javax.swing.JPanel btnSalir;
-    private javax.swing.JPanel contentPanel;
+    public javax.swing.JPanel btnAdopciones;
+    public javax.swing.JPanel btnAdoptantes;
+    public javax.swing.JPanel btnCatalogo;
+    public javax.swing.JPanel btnDashboard;
+    public javax.swing.JPanel btnMascotas;
+    public javax.swing.JPanel btnSalir;
+    public javax.swing.JPanel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -541,10 +542,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblTitle;
+    public javax.swing.JLabel lblTitle;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

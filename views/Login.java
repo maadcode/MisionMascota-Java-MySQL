@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 public class Login extends javax.swing.JFrame {
 
     private UsuariosController usuarioController;
-    private MenuController menuController;
     
     /**
      * Creates new form FrmLogin
@@ -28,7 +27,6 @@ public class Login extends javax.swing.JFrame {
         this.repaint();
         
         this.usuarioController = new UsuariosController();
-        this.menuController = new MenuController();
         
         iniLabels();
     }
@@ -195,8 +193,9 @@ public class Login extends javax.swing.JFrame {
         }
         if(!user.equals("") && !password.equals("")) {
             if(usuarioController.checkLogin(user, password)) {
+                
                 this.dispose();
-                this.menuController.index();
+                MenuController menuController = new MenuController();
             } else {
                 this.lblErrorPassword.setText("Usuario o contraseña incorrecto.");
             }

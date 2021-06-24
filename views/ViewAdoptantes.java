@@ -21,7 +21,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
 
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAdoptantes = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -37,10 +37,10 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        btnNext = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
-        btnNext2 = new javax.swing.JButton();
-        btnNext3 = new javax.swing.JButton();
+        btnEliminarAdoptante = new javax.swing.JButton();
+        btnAgregarAdoptante = new javax.swing.JButton();
+        btnEditarAdoptante = new javax.swing.JButton();
+        btnBuscarAdoptante = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -57,30 +57,30 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAdoptantes.setAutoCreateRowSorter(true);
+        tblAdoptantes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblAdoptantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CÓDIGO", "NOMBRE", "APELLIDO", "DNI"
+                "NOMBRE", "APELLIDO", "DNI"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        jScrollPane1.setViewportView(jTable1);
+        tblAdoptantes.setGridColor(new java.awt.Color(255, 255, 255));
+        tblAdoptantes.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        jScrollPane1.setViewportView(tblAdoptantes);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(20, 200, 710, 250);
@@ -210,53 +210,53 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         add(jComboBox2);
         jComboBox2.setBounds(240, 140, 120, 30);
 
-        btnNext.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Eliminar");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
+        btnEliminarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEliminarAdoptante.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarAdoptante.setText("Eliminar");
+        btnEliminarAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
+                btnEliminarAdoptanteActionPerformed(evt);
             }
         });
-        add(btnNext);
-        btnNext.setBounds(560, 470, 170, 31);
+        add(btnEliminarAdoptante);
+        btnEliminarAdoptante.setBounds(560, 470, 170, 31);
 
-        btnNext1.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext1.setText("Agregar");
-        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
+        btnAgregarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAgregarAdoptante.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarAdoptante.setText("Agregar");
+        btnAgregarAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext1ActionPerformed(evt);
+                btnAgregarAdoptanteActionPerformed(evt);
             }
         });
-        add(btnNext1);
-        btnNext1.setBounds(20, 470, 170, 31);
+        add(btnAgregarAdoptante);
+        btnAgregarAdoptante.setBounds(20, 470, 170, 31);
 
-        btnNext2.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext2.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext2.setText("Editar");
-        btnNext2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
+        btnEditarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditarAdoptante.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarAdoptante.setText("Editar");
+        btnEditarAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext2ActionPerformed(evt);
+                btnEditarAdoptanteActionPerformed(evt);
             }
         });
-        add(btnNext2);
-        btnNext2.setBounds(200, 470, 170, 31);
+        add(btnEditarAdoptante);
+        btnEditarAdoptante.setBounds(200, 470, 170, 31);
 
-        btnNext3.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext3.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext3.setText("Buscar");
-        btnNext3.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
+        btnBuscarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBuscarAdoptante.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarAdoptante.setText("Buscar");
+        btnBuscarAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext3ActionPerformed(evt);
+                btnBuscarAdoptanteActionPerformed(evt);
             }
         });
-        add(btnNext3);
-        btnNext3.setBounds(380, 470, 170, 31);
+        add(btnBuscarAdoptante);
+        btnBuscarAdoptante.setBounds(380, 470, 170, 31);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -283,30 +283,30 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnEliminarAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNextActionPerformed
+    }//GEN-LAST:event_btnEliminarAdoptanteActionPerformed
 
-    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+    private void btnAgregarAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext1ActionPerformed
+    }//GEN-LAST:event_btnAgregarAdoptanteActionPerformed
 
-    private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
+    private void btnEditarAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext2ActionPerformed
+    }//GEN-LAST:event_btnEditarAdoptanteActionPerformed
 
-    private void btnNext3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext3ActionPerformed
+    private void btnBuscarAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext3ActionPerformed
+    }//GEN-LAST:event_btnBuscarAdoptanteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnNext2;
-    private javax.swing.JButton btnNext3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JButton btnAgregarAdoptante;
+    public javax.swing.JButton btnBuscarAdoptante;
+    public javax.swing.JButton btnEditarAdoptante;
+    public javax.swing.JButton btnEliminarAdoptante;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -316,12 +316,12 @@ public class ViewAdoptantes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JTable tblAdoptantes;
     // End of variables declaration//GEN-END:variables
 }

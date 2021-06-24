@@ -2,31 +2,31 @@
 package models;
 
 public class MascotaModel {
-    private String id_mascota;
+    private String idMascota;
     private String nombre;
     private String peso;
     private String raza;
-    private String fecha_nacimiento;
-    private String fecha_ingreso;
+    private String fechaNacimiento;
+    private String fechaIngreso;
 
     public MascotaModel() {
     }
-
-    public MascotaModel(String id_mascota, String nombre, String peso, String raza, String fecha_nacimiento, String fecha_ingreso) {
-        this.id_mascota = id_mascota;
+    
+    public MascotaModel(String idMascota, String nombre, String peso, String raza, String fechaNacimiento, String fechaIngreso) {
+        this.idMascota = idMascota;
         this.nombre = nombre;
         this.peso = peso;
         this.raza = raza;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.fecha_ingreso = fecha_ingreso;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechaIngreso = fechaIngreso;
     }
 
-    public String getId_mascota() {
-        return id_mascota;
+    public String getIdMascota() {
+        return idMascota;
     }
 
-    public void setId_mascota(String id_mascota) {
-        this.id_mascota = id_mascota;
+    public void setIdMascota(String idMascota) {
+        this.idMascota = idMascota;
     }
 
     public String getNombre() {
@@ -53,30 +53,19 @@ public class MascotaModel {
         this.raza = raza;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getFecha_ingreso() {
-        return fecha_ingreso;
+    public String getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setFecha_ingreso(String fecha_ingreso) {
-        this.fecha_ingreso = fecha_ingreso;
+    public void setFechaIngreso(String fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
-    
-    public void registrarMascota() {}
-    
-    public String buscarMascota() {
-        return "";
-    }
-    
-    public void actualizarMascota() {}
-
-    public void eliminarMascota() {}
-
 } 
