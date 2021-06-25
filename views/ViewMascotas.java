@@ -45,12 +45,12 @@ public class ViewMascotas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnNext = new javax.swing.JButton();
-        btnNext3 = new javax.swing.JButton();
+        btnEliminarMascota = new javax.swing.JButton();
+        btnBuscarMascota = new javax.swing.JButton();
         btnNext2 = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
+        btnAgregarMascota = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMascotas = new javax.swing.JTable();
         lblImage = new javax.swing.JLabel();
         btnAgregarImagen = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -67,29 +67,29 @@ public class ViewMascotas extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
 
-        btnNext.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Eliminar");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarMascota.setBackground(new java.awt.Color(84, 56, 220));
+        btnEliminarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEliminarMascota.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarMascota.setText("Eliminar");
+        btnEliminarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
+                btnEliminarMascotaActionPerformed(evt);
             }
         });
-        add(btnNext);
-        btnNext.setBounds(560, 470, 170, 31);
+        add(btnEliminarMascota);
+        btnEliminarMascota.setBounds(560, 470, 170, 31);
 
-        btnNext3.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext3.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext3.setText("Buscar");
-        btnNext3.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarMascota.setBackground(new java.awt.Color(84, 56, 220));
+        btnBuscarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBuscarMascota.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarMascota.setText("Buscar");
+        btnBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext3ActionPerformed(evt);
+                btnBuscarMascotaActionPerformed(evt);
             }
         });
-        add(btnNext3);
-        btnNext3.setBounds(380, 470, 170, 31);
+        add(btnBuscarMascota);
+        btnBuscarMascota.setBounds(380, 470, 170, 31);
 
         btnNext2.setBackground(new java.awt.Color(84, 56, 220));
         btnNext2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -103,47 +103,47 @@ public class ViewMascotas extends javax.swing.JPanel {
         add(btnNext2);
         btnNext2.setBounds(200, 470, 170, 31);
 
-        btnNext1.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext1.setText("Agregar");
-        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarMascota.setBackground(new java.awt.Color(84, 56, 220));
+        btnAgregarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAgregarMascota.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarMascota.setText("Agregar");
+        btnAgregarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext1ActionPerformed(evt);
+                btnAgregarMascotaActionPerformed(evt);
             }
         });
-        add(btnNext1);
-        btnNext1.setBounds(20, 470, 170, 31);
+        add(btnAgregarMascota);
+        btnAgregarMascota.setBounds(20, 470, 170, 31);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMascotas.setAutoCreateRowSorter(true);
+        tblMascotas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblMascotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CÓDIGO", "NOMBRE", "RAZA", "ESTADO"
+                "NOMBRE", "RAZA", "ESTADO"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        jScrollPane1.setViewportView(jTable1);
+        tblMascotas.setGridColor(new java.awt.Color(255, 255, 255));
+        tblMascotas.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        jScrollPane1.setViewportView(tblMascotas);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(20, 240, 710, 210);
@@ -249,21 +249,21 @@ public class ViewMascotas extends javax.swing.JPanel {
         jDateChooser1.setBounds(207, 190, 150, 30);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnEliminarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNextActionPerformed
+    }//GEN-LAST:event_btnEliminarMascotaActionPerformed
 
-    private void btnNext3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext3ActionPerformed
+    private void btnBuscarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext3ActionPerformed
+    }//GEN-LAST:event_btnBuscarMascotaActionPerformed
 
     private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNext2ActionPerformed
 
-    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+    private void btnAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext1ActionPerformed
+    }//GEN-LAST:event_btnAgregarMascotaActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
@@ -301,10 +301,10 @@ public class ViewMascotas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarImagen;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnNext2;
-    private javax.swing.JButton btnNext3;
+    public javax.swing.JButton btnAgregarMascota;
+    public javax.swing.JButton btnBuscarMascota;
+    public javax.swing.JButton btnEliminarMascota;
+    public javax.swing.JButton btnNext2;
     private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
@@ -313,10 +313,10 @@ public class ViewMascotas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblImage;
+    public javax.swing.JTable tblMascotas;
     // End of variables declaration//GEN-END:variables
 }

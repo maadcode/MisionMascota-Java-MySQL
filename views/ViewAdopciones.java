@@ -19,12 +19,12 @@ public class ViewAdopciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnNext = new javax.swing.JButton();
-        btnNext3 = new javax.swing.JButton();
-        btnNext2 = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
+        btnEliminarAdopcion = new javax.swing.JButton();
+        btnBuscarAdopcion = new javax.swing.JButton();
+        btnEditarAdopcion = new javax.swing.JButton();
+        btnAgregarAdopcion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAdopciones = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -45,83 +45,83 @@ public class ViewAdopciones extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
 
-        btnNext.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Eliminar");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarAdopcion.setBackground(new java.awt.Color(84, 56, 220));
+        btnEliminarAdopcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEliminarAdopcion.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarAdopcion.setText("Eliminar");
+        btnEliminarAdopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
+                btnEliminarAdopcionActionPerformed(evt);
             }
         });
-        add(btnNext);
-        btnNext.setBounds(560, 470, 170, 31);
+        add(btnEliminarAdopcion);
+        btnEliminarAdopcion.setBounds(560, 470, 170, 31);
 
-        btnNext3.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext3.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext3.setText("Buscar");
-        btnNext3.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarAdopcion.setBackground(new java.awt.Color(84, 56, 220));
+        btnBuscarAdopcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBuscarAdopcion.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarAdopcion.setText("Buscar");
+        btnBuscarAdopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext3ActionPerformed(evt);
+                btnBuscarAdopcionActionPerformed(evt);
             }
         });
-        add(btnNext3);
-        btnNext3.setBounds(380, 470, 170, 31);
+        add(btnBuscarAdopcion);
+        btnBuscarAdopcion.setBounds(380, 470, 170, 31);
 
-        btnNext2.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext2.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext2.setText("Editar");
-        btnNext2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarAdopcion.setBackground(new java.awt.Color(84, 56, 220));
+        btnEditarAdopcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditarAdopcion.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarAdopcion.setText("Editar");
+        btnEditarAdopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext2ActionPerformed(evt);
+                btnEditarAdopcionActionPerformed(evt);
             }
         });
-        add(btnNext2);
-        btnNext2.setBounds(200, 470, 170, 31);
+        add(btnEditarAdopcion);
+        btnEditarAdopcion.setBounds(200, 470, 170, 31);
 
-        btnNext1.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext1.setText("Agregar");
-        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarAdopcion.setBackground(new java.awt.Color(84, 56, 220));
+        btnAgregarAdopcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAgregarAdopcion.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarAdopcion.setText("Agregar");
+        btnAgregarAdopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext1ActionPerformed(evt);
+                btnAgregarAdopcionActionPerformed(evt);
             }
         });
-        add(btnNext1);
-        btnNext1.setBounds(20, 470, 170, 31);
+        add(btnAgregarAdopcion);
+        btnAgregarAdopcion.setBounds(20, 470, 170, 31);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAdopciones.setAutoCreateRowSorter(true);
+        tblAdopciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblAdopciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CÓDIGO", "ADOPTANTE", "MASCOTA", "FECHA"
+                "ADOPTANTE", "MASCOTA", "FECHA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        jScrollPane1.setViewportView(jTable1);
+        tblAdopciones.setGridColor(new java.awt.Color(255, 255, 255));
+        tblAdopciones.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        jScrollPane1.setViewportView(tblAdopciones);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(20, 320, 710, 130);
@@ -160,17 +160,16 @@ public class ViewAdopciones extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNext4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnNext4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +185,7 @@ public class ViewAdopciones extends javax.swing.JPanel {
         );
 
         add(jPanel1);
-        jPanel1.setBounds(20, 10, 710, 120);
+        jPanel1.setBounds(0, 10, 750, 120);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -222,14 +221,16 @@ public class ViewAdopciones extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnNext5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +246,7 @@ public class ViewAdopciones extends javax.swing.JPanel {
         );
 
         add(jPanel2);
-        jPanel2.setBounds(20, 140, 710, 120);
+        jPanel2.setBounds(0, 140, 750, 120);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(84, 56, 220));
@@ -274,21 +275,21 @@ public class ViewAdopciones extends javax.swing.JPanel {
         jLabel10.setBounds(20, 280, 156, 20);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnEliminarAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAdopcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNextActionPerformed
+    }//GEN-LAST:event_btnEliminarAdopcionActionPerformed
 
-    private void btnNext3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext3ActionPerformed
+    private void btnBuscarAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAdopcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext3ActionPerformed
+    }//GEN-LAST:event_btnBuscarAdopcionActionPerformed
 
-    private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
+    private void btnEditarAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAdopcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext2ActionPerformed
+    }//GEN-LAST:event_btnEditarAdopcionActionPerformed
 
-    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+    private void btnAgregarAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAdopcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext1ActionPerformed
+    }//GEN-LAST:event_btnAgregarAdopcionActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -312,10 +313,10 @@ public class ViewAdopciones extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnNext2;
-    private javax.swing.JButton btnNext3;
+    public javax.swing.JButton btnAgregarAdopcion;
+    public javax.swing.JButton btnBuscarAdopcion;
+    public javax.swing.JButton btnEditarAdopcion;
+    public javax.swing.JButton btnEliminarAdopcion;
     private javax.swing.JButton btnNext4;
     private javax.swing.JButton btnNext5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -328,11 +329,11 @@ public class ViewAdopciones extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    public javax.swing.JTable tblAdopciones;
     // End of variables declaration//GEN-END:variables
 }

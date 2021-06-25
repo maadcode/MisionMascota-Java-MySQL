@@ -392,15 +392,6 @@ public class Menu extends javax.swing.JFrame {
         setColor(btnAdoptantes);
         resetColor(btnAdopciones);
         resetColor(btnCatalogo);
-        /*
-        ViewAdoptantes nuevoPanel = new ViewAdoptantes();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Adoptantes");
-        */
     }//GEN-LAST:event_btnAdoptantesMousePressed
 
     private void btnDashboardMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMousePressed
@@ -427,14 +418,6 @@ public class Menu extends javax.swing.JFrame {
         resetColor(btnAdoptantes);
         resetColor(btnAdopciones);
         resetColor(btnCatalogo);
-        
-        ViewMascotas nuevoPanel = new ViewMascotas();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Mascotas");
     }//GEN-LAST:event_btnMascotasMousePressed
 
     private void btnCatalogoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCatalogoMousePressed
@@ -461,14 +444,6 @@ public class Menu extends javax.swing.JFrame {
         resetColor(btnAdoptantes);
         setColor(btnAdopciones);
         resetColor(btnCatalogo);
-        
-        ViewAdopciones nuevoPanel = new ViewAdopciones();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Adopciones");
     }//GEN-LAST:event_btnAdopcionesMousePressed
 
     private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed

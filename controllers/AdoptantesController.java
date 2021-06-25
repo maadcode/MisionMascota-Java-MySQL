@@ -28,15 +28,15 @@ public class AdoptantesController implements ActionListener {
         this.menu.contentPanel.add(this.adoptanteView);
         this.menu.contentPanel.repaint();
         this.menu.lblTitle.setText("Adoptantes");
+        
         this.adoptanteView.btnBuscarAdoptante.addActionListener(this);
-        System.out.println("asd");
+        listarAdoptantes();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(adoptanteView.btnBuscarAdoptante)) {
-            listarAdoptantes();
-            System.out.println("hola");
+            
         }
     }
     

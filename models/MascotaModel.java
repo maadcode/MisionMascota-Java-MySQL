@@ -2,31 +2,23 @@
 package models;
 
 public class MascotaModel {
-    private String idMascota;
     private String nombre;
-    private String peso;
+    private float peso;
     private String raza;
     private String fechaNacimiento;
     private String fechaIngreso;
+    private int estadoMascota;
 
     public MascotaModel() {
     }
     
-    public MascotaModel(String idMascota, String nombre, String peso, String raza, String fechaNacimiento, String fechaIngreso) {
-        this.idMascota = idMascota;
+    public MascotaModel(String nombre, float peso, String raza, String fechaNacimiento, String fechaIngreso, int estadoMascota) {
         this.nombre = nombre;
         this.peso = peso;
         this.raza = raza;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaIngreso = fechaIngreso;
-    }
-
-    public String getIdMascota() {
-        return idMascota;
-    }
-
-    public void setIdMascota(String idMascota) {
-        this.idMascota = idMascota;
+        this.estadoMascota = estadoMascota;
     }
 
     public String getNombre() {
@@ -37,11 +29,11 @@ public class MascotaModel {
         this.nombre = nombre;
     }
 
-    public String getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(String peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
 
@@ -67,5 +59,13 @@ public class MascotaModel {
 
     public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
+    }
+    
+    public int getEstadoMascota() {
+        return estadoMascota;
+    }
+
+    public void setEstadoMascota(int estadoMascota) {
+        this.estadoMascota = estadoMascota;
     }
 } 

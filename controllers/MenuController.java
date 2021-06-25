@@ -1,12 +1,18 @@
 
 package controllers;
 
+import dao.AdopcionesDAO;
 import dao.AdoptanteDAO;
+import dao.MascotaDAO;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import models.AdopcionesModel;
 import models.AdoptanteModel;
+import models.MascotaModel;
 import views.Menu;
+import views.ViewAdopciones;
 import views.ViewAdoptantes;
+import views.ViewMascotas;
 
 public class MenuController implements MouseListener {
     private Menu view;
@@ -19,33 +25,34 @@ public class MenuController implements MouseListener {
         view.btnAdopciones.addMouseListener((MouseListener) this);
         view.btnCatalogo.addMouseListener((MouseListener) this);
         view.btnDashboard.addMouseListener((MouseListener) this);
+        view.btnMascotas.addMouseListener((MouseListener) this);
     }
     
     @Override
     public void mousePressed(MouseEvent e) {
         if(e.getSource().equals(this.view.btnAdoptantes)) {
-            System.out.println("clic");
-            /*
-            ViewAdoptantes nuevoPanel = new ViewAdoptantes();
-            nuevoPanel.setSize(750, 520);
-            this.view.contentPanel.removeAll();
-            this.view.contentPanel.add(nuevoPanel);
-            this.view.contentPanel.repaint();
-        
-            this.view.lblTitle.setText("Adoptantes");
-            */
             ViewAdoptantes adoptanteView = new ViewAdoptantes();
             AdoptanteModel adoptanteModel = new AdoptanteModel();
             AdoptanteDAO adoptanteDAO = new AdoptanteDAO(adoptanteModel);
             AdoptantesController adoptanteController = new AdoptantesController(adoptanteDAO, adoptanteView, this.view);
         }
         if(e.getSource().equals(this.view.btnAdopciones)) {
+            ViewAdopciones adopcionesView = new ViewAdopciones();
+            AdopcionesModel adopcionModel = new AdopcionesModel();
+            AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
+            AdopcionesController adopcionController = new AdopcionesController(adopcionDAO, adopcionesView, this.view);
         }
         if(e.getSource().equals(this.view.btnCatalogo)) {
+            
         }
         if(e.getSource().equals(this.view.btnDashboard)) {
+            
         }
         if(e.getSource().equals(this.view.btnMascotas)) {
+            ViewMascotas mascotaView = new ViewMascotas();
+            MascotaModel mascotaModel = new MascotaModel();
+            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            MascotasController mascotaController = new MascotasController(mascotaDAO, mascotaView, this.view);
         }
     }
     
