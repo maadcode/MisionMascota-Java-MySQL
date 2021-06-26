@@ -9,9 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.AdoptanteModel;
 import models.MascotaModel;
-import utils.BD;
+import services.BD;
 
 public class MascotaDAO implements ICRUD {
     
@@ -66,10 +65,10 @@ public class MascotaDAO implements ICRUD {
             MascotaModel mascota;
             
             while(rs.next()) {
-                mascota = new MascotaModel(rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"));
+                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         

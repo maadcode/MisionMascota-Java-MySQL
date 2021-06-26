@@ -2,6 +2,7 @@
 package interfaces;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public interface ICRUD {
     public void create();

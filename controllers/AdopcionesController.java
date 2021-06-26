@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import models.AdopcionesModel;
-import models.AdoptanteModel;
 import views.Menu;
 import views.ViewAdopciones;
 
@@ -31,12 +30,13 @@ public class AdopcionesController implements ActionListener {
         this.menu.lblTitle.setText("Adopciones");
         
         this.adopcionesView.btnBuscarAdopcion.addActionListener(this);
+        listarAdopciones();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(adopcionesView.btnBuscarAdopcion)) {
-            listarAdopciones();
+            
         }
     }
     

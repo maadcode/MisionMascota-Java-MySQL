@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.AdopcionesModel;
-import models.AdoptanteModel;
-import utils.BD;
+import services.BD;
 
 public class AdopcionesDAO implements ICRUD {
     
@@ -69,7 +68,7 @@ public class AdopcionesDAO implements ICRUD {
                 adopcion = new AdopcionesModel(rs.getInt("idAdoptante"), rs.getInt("idMascota"), rs.getString("fechaAdop"));
                 listaAdopciones.add(adopcion);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         

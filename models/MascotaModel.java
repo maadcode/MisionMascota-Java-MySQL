@@ -2,23 +2,35 @@
 package models;
 
 public class MascotaModel {
+    private int idMascota;
     private String nombre;
     private float peso;
     private String raza;
     private String fechaNacimiento;
     private String fechaIngreso;
     private int estadoMascota;
+    private String imageURL;
 
     public MascotaModel() {
     }
     
-    public MascotaModel(String nombre, float peso, String raza, String fechaNacimiento, String fechaIngreso, int estadoMascota) {
+    public MascotaModel(int idMascota, String nombre, float peso, String raza, String fechaNacimiento, String fechaIngreso, int estadoMascota, String imageURL) {
+        this.idMascota = idMascota;
         this.nombre = nombre;
         this.peso = peso;
         this.raza = raza;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaIngreso = fechaIngreso;
         this.estadoMascota = estadoMascota;
+        this.imageURL = imageURL;
+    }
+    
+    public int getIdMascota() {
+        return idMascota;
+    }
+
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
     }
 
     public String getNombre() {
@@ -67,5 +79,13 @@ public class MascotaModel {
 
     public void setEstadoMascota(int estadoMascota) {
         this.estadoMascota = estadoMascota;
+    }
+    
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 } 

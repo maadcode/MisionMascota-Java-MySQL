@@ -1,30 +1,40 @@
 
 package models;
 
-import dao.AdoptanteDAO;
-
 public class AdoptanteModel {
+    private int idAdoptante;
     private String nombre;
     private String apellido;
     private String DNI;
     private int edad;
     private String telefono;
     private String direccion;
+    private String correo;
     private String propietario;
     private String permiso;
 
     public AdoptanteModel() {
     }
 
-    public AdoptanteModel(String nombre, String apellido, String DNI, int edad, String telefono, String direccion, String propietario, String permiso) {
+    public AdoptanteModel(int idAdoptante, String nombre, String apellido, String DNI, int edad, String telefono, String direccion, String correo, String propietario, String permiso) {
+        this.idAdoptante = idAdoptante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.DNI = DNI;
         this.edad = edad;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.correo = correo;
         this.propietario = propietario;
         this.permiso = permiso;
+    }
+    
+    public int getIdAdoptante() {
+        return idAdoptante;
+    }
+
+    public void setIdAdoptante(int idAdoptante) {
+        this.idAdoptante = idAdoptante;
     }
 
     public String getNombre() {
@@ -75,6 +85,14 @@ public class AdoptanteModel {
         this.direccion = direccion;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
     public String getPropietario() {
         return propietario;
     }
