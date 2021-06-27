@@ -17,7 +17,7 @@ public class AdopcionesDAO implements ICRUD {
     private Connection dbConnection = null;
     private String sql = null;
     private Statement dbQ;
-    private AdopcionesModel adopcionModel;
+    public AdopcionesModel adopcionModel;
 
     public AdopcionesDAO() {
     }

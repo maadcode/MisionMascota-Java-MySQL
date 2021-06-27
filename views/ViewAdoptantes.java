@@ -24,7 +24,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         tblAdoptantes = new javax.swing.JTable();
         txtDireccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
+        txtCodigoAdoptante = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -106,15 +106,15 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         add(jLabel7);
         jLabel7.setBounds(20, 20, 120, 20);
 
-        txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCodigo.setPreferredSize(new java.awt.Dimension(220, 20));
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodigoAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtCodigoAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
+                txtCodigoAdoptanteActionPerformed(evt);
             }
         });
-        add(txtCodigo);
-        txtCodigo.setBounds(140, 20, 220, 20);
+        add(txtCodigoAdoptante);
+        txtCodigoAdoptante.setBounds(140, 20, 220, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(84, 56, 220));
@@ -301,9 +301,9 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtCodigoAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtCodigoAdoptanteActionPerformed
 
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
@@ -366,7 +366,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblAdoptantes;
     public javax.swing.JTextField txtApellidoAdoptante;
-    public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtCodigoAdoptante;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDNI;
     public javax.swing.JTextField txtDireccion;

@@ -47,22 +47,24 @@ public class ViewMascotas extends javax.swing.JPanel {
 
         btnEliminarMascota = new javax.swing.JButton();
         btnBuscarMascota = new javax.swing.JButton();
-        btnNext2 = new javax.swing.JButton();
+        btnEditarMascota = new javax.swing.JButton();
         btnAgregarMascota = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMascotas = new javax.swing.JTable();
         lblImage = new javax.swing.JLabel();
         btnAgregarImagen = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtCodigoMascota = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtRaza = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtPeso = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbxEstadoMascota = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtFechaNac = new com.toedter.calendar.JDateChooser();
+        txtNombreMascota = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -91,17 +93,17 @@ public class ViewMascotas extends javax.swing.JPanel {
         add(btnBuscarMascota);
         btnBuscarMascota.setBounds(380, 470, 170, 31);
 
-        btnNext2.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext2.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext2.setText("Editar");
-        btnNext2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarMascota.setBackground(new java.awt.Color(84, 56, 220));
+        btnEditarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditarMascota.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarMascota.setText("Editar");
+        btnEditarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext2ActionPerformed(evt);
+                btnEditarMascotaActionPerformed(evt);
             }
         });
-        add(btnNext2);
-        btnNext2.setBounds(200, 470, 170, 31);
+        add(btnEditarMascota);
+        btnEditarMascota.setBounds(200, 470, 170, 31);
 
         btnAgregarMascota.setBackground(new java.awt.Color(84, 56, 220));
         btnAgregarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -124,17 +126,17 @@ public class ViewMascotas extends javax.swing.JPanel {
         tblMascotas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblMascotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "NOMBRE", "RAZA", "ESTADO"
+                "CÓDIGO", "NOMBRE", "RAZA", "ESTADO"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -146,13 +148,13 @@ public class ViewMascotas extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblMascotas);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(20, 240, 710, 210);
+        jScrollPane1.setBounds(20, 270, 710, 180);
 
         lblImage.setBackground(new java.awt.Color(204, 204, 255));
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/no-image.png"))); // NOI18N
         lblImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204), 3));
         add(lblImage);
-        lblImage.setBounds(530, 10, 200, 170);
+        lblImage.setBounds(500, 10, 230, 200);
 
         btnAgregarImagen.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarImagen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -166,87 +168,104 @@ public class ViewMascotas extends javax.swing.JPanel {
             }
         });
         add(btnAgregarImagen);
-        btnAgregarImagen.setBounds(530, 190, 200, 30);
+        btnAgregarImagen.setBounds(500, 220, 230, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(84, 56, 220));
-        jLabel7.setText("Nombres");
+        jLabel7.setText("Código");
         jLabel7.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel7);
-        jLabel7.setBounds(20, 20, 120, 20);
+        jLabel7.setBounds(20, 10, 120, 20);
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoMascota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodigoMascota.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtCodigoMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtCodigoMascotaActionPerformed(evt);
             }
         });
-        add(jTextField2);
-        jTextField2.setBounds(140, 20, 220, 20);
+        add(txtCodigoMascota);
+        txtCodigoMascota.setBounds(140, 10, 220, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(84, 56, 220));
         jLabel9.setText("Raza");
         jLabel9.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel9);
-        jLabel9.setBounds(20, 60, 120, 20);
+        jLabel9.setBounds(20, 90, 120, 20);
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtRaza.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtRaza.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtRaza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtRazaActionPerformed(evt);
             }
         });
-        add(jTextField4);
-        jTextField4.setBounds(140, 60, 220, 20);
+        add(txtRaza);
+        txtRaza.setBounds(140, 90, 220, 20);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(84, 56, 220));
         jLabel10.setText("Peso");
         jLabel10.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel10);
-        jLabel10.setBounds(20, 100, 120, 20);
+        jLabel10.setBounds(20, 130, 120, 20);
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtPeso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPeso.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtPesoActionPerformed(evt);
             }
         });
-        add(jTextField5);
-        jTextField5.setBounds(140, 100, 220, 20);
+        add(txtPeso);
+        txtPeso.setBounds(140, 130, 220, 20);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(84, 56, 220));
         jLabel13.setText("Fecha de nacimiento");
         jLabel13.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel13);
-        jLabel13.setBounds(20, 190, 180, 20);
+        jLabel13.setBounds(20, 220, 180, 20);
 
-        jComboBox3.setBackground(new java.awt.Color(84, 56, 220));
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Disponible", "Adoptado" }));
-        jComboBox3.setPreferredSize(new java.awt.Dimension(120, 20));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        cbxEstadoMascota.setBackground(new java.awt.Color(84, 56, 220));
+        cbxEstadoMascota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxEstadoMascota.setForeground(new java.awt.Color(255, 255, 255));
+        cbxEstadoMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Disponible", "Adoptado" }));
+        cbxEstadoMascota.setPreferredSize(new java.awt.Dimension(120, 20));
+        cbxEstadoMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                cbxEstadoMascotaActionPerformed(evt);
             }
         });
-        add(jComboBox3);
-        jComboBox3.setBounds(210, 140, 150, 30);
+        add(cbxEstadoMascota);
+        cbxEstadoMascota.setBounds(210, 170, 150, 30);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(84, 56, 220));
         jLabel14.setText("Estado");
         jLabel14.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel14);
-        jLabel14.setBounds(20, 140, 180, 20);
-        add(jDateChooser1);
-        jDateChooser1.setBounds(207, 190, 150, 30);
+        jLabel14.setBounds(20, 170, 180, 20);
+        add(txtFechaNac);
+        txtFechaNac.setBounds(210, 220, 150, 30);
+
+        txtNombreMascota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNombreMascota.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtNombreMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreMascotaActionPerformed(evt);
+            }
+        });
+        add(txtNombreMascota);
+        txtNombreMascota.setBounds(140, 50, 220, 20);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(84, 56, 220));
+        jLabel8.setText("Nombres");
+        jLabel8.setPreferredSize(new java.awt.Dimension(120, 20));
+        add(jLabel8);
+        jLabel8.setBounds(20, 50, 120, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMascotaActionPerformed
@@ -257,9 +276,9 @@ public class ViewMascotas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarMascotaActionPerformed
 
-    private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
+    private void btnEditarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext2ActionPerformed
+    }//GEN-LAST:event_btnEditarMascotaActionPerformed
 
     private void btnAgregarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMascotaActionPerformed
         // TODO add your handling code here:
@@ -282,41 +301,47 @@ public class ViewMascotas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtCodigoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtCodigoMascotaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtRazaActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtPesoActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void cbxEstadoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEstadoMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_cbxEstadoMascotaActionPerformed
+
+    private void txtNombreMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMascotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreMascotaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarImagen;
+    public javax.swing.JButton btnAgregarImagen;
     public javax.swing.JButton btnAgregarMascota;
     public javax.swing.JButton btnBuscarMascota;
+    public javax.swing.JButton btnEditarMascota;
     public javax.swing.JButton btnEliminarMascota;
-    public javax.swing.JButton btnNext2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    public javax.swing.JComboBox<String> cbxEstadoMascota;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JLabel lblImage;
+    public javax.swing.JLabel lblImage;
     public javax.swing.JTable tblMascotas;
+    public javax.swing.JTextField txtCodigoMascota;
+    public com.toedter.calendar.JDateChooser txtFechaNac;
+    public javax.swing.JTextField txtNombreMascota;
+    public javax.swing.JTextField txtPeso;
+    public javax.swing.JTextField txtRaza;
     // End of variables declaration//GEN-END:variables
 }

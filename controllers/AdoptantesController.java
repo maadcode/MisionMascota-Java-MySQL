@@ -4,10 +4,7 @@ package controllers;
 import dao.AdoptanteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import models.AdoptanteModel;
 import views.Menu;
@@ -39,21 +36,21 @@ public class AdoptantesController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(adoptanteView.btnBuscarAdoptante)) {
-            if(this.adoptanteView.txtCodigo.getText() != null) {
-                buscarAdoptante(this.adoptanteView.txtCodigo.getText());
+            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
+                buscarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
             }
         }
         if(e.getSource().equals(adoptanteView.btnAgregarAdoptante)) {
             agregarAdoptante();
         }
         if(e.getSource().equals(adoptanteView.btnEditarAdoptante)) {
-            if(this.adoptanteView.txtCodigo.getText() != null) {
-                editarAdoptante(this.adoptanteView.txtCodigo.getText());
+            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
+                editarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
             }
         }
         if(e.getSource().equals(adoptanteView.btnEliminarAdoptante)) {
-            if(this.adoptanteView.txtCodigo.getText() != null) {
-                eliminarAdoptante(this.adoptanteView.txtCodigo.getText());
+            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
+                eliminarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
             }
         }
     }
@@ -107,12 +104,12 @@ public class AdoptantesController implements ActionListener {
         this.adoptanteView.txtCorreo.setText(adoptante.getCorreo());
         this.adoptanteView.txtDireccion.setText(adoptante.getDireccion());
         this.adoptanteView.txtTelefono.setText(adoptante.getTelefono());
-        if(adoptante.getPropietario() == "SI") {
+        if(adoptante.getPropietario().equals("SI")) {
             this.adoptanteView.cbxPropietario.setSelectedIndex(0);
         } else {
             this.adoptanteView.cbxPropietario.setSelectedIndex(1);
         }
-        if(adoptante.getPermiso()== "SI") {
+        if(adoptante.getPermiso().equals("SI")) {
             this.adoptanteView.cbxPermiso.setSelectedIndex(0);
         } else {
             this.adoptanteView.cbxPermiso.setSelectedIndex(1);
