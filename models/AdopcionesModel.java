@@ -3,6 +3,7 @@ package models;
 
 public class AdopcionesModel {
     
+    private int idAdopcion;
     private int idMascota;
     private int idAdoptante;
     private String fechaAdop;
@@ -10,10 +11,19 @@ public class AdopcionesModel {
     public AdopcionesModel() {
     }
 
-    public AdopcionesModel(int idMascota, int idAdoptante, String fechaAdop) {
+    public AdopcionesModel(int idAdopcion, int idMascota, int idAdoptante, String fechaAdop) {
+        this.idAdopcion = idAdopcion;
         this.idMascota = idMascota;
         this.idAdoptante = idAdoptante;
         this.fechaAdop = fechaAdop;
+    }
+    
+    public int getIdAdopcion() {
+        return idAdopcion;
+    }
+
+    public void setIdAdopcion(int idAdopcion) {
+        this.idAdopcion = idAdopcion;
     }
 
     public int getIdMascota() {

@@ -27,19 +27,19 @@ public class ViewAdopciones extends javax.swing.JPanel {
         tblAdopciones = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtAdoptanteResult = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        btnNext4 = new javax.swing.JButton();
+        txtCodigoAdoptante = new javax.swing.JTextField();
+        btnBuscarAdoptante = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtMascotaResult = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        btnNext5 = new javax.swing.JButton();
+        txtCodigoMascota = new javax.swing.JTextField();
+        btnBuscarMascota = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtCodigoAdopcion = new javax.swing.JTextField();
+        txtFechaAdopcion = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -128,30 +128,30 @@ public class ViewAdopciones extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        txtAdoptanteResult.setColumns(20);
+        txtAdoptanteResult.setRows(5);
+        jScrollPane3.setViewportView(txtAdoptanteResult);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(84, 56, 220));
-        jLabel7.setText("DNI de Adoptante");
+        jLabel7.setText("Código de Adoptante");
         jLabel7.setPreferredSize(new java.awt.Dimension(120, 20));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodigoAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtCodigoAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtCodigoAdoptanteActionPerformed(evt);
             }
         });
 
-        btnNext4.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext4.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext4.setText("Buscar");
-        btnNext4.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
+        btnBuscarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBuscarAdoptante.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarAdoptante.setText("Buscar");
+        btnBuscarAdoptante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext4ActionPerformed(evt);
+                btnBuscarAdoptanteActionPerformed(evt);
             }
         });
 
@@ -162,11 +162,11 @@ public class ViewAdopciones extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNext4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCodigoAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -177,10 +177,10 @@ public class ViewAdopciones extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnNext4)
+                .addComponent(btnBuscarAdoptante)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -189,30 +189,30 @@ public class ViewAdopciones extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtMascotaResult.setColumns(20);
+        txtMascotaResult.setRows(5);
+        jScrollPane2.setViewportView(txtMascotaResult);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(84, 56, 220));
         jLabel8.setText("Código de Mascota");
         jLabel8.setPreferredSize(new java.awt.Dimension(120, 20));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField3.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoMascota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodigoMascota.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtCodigoMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtCodigoMascotaActionPerformed(evt);
             }
         });
 
-        btnNext5.setBackground(new java.awt.Color(84, 56, 220));
-        btnNext5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNext5.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext5.setText("Buscar");
-        btnNext5.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarMascota.setBackground(new java.awt.Color(84, 56, 220));
+        btnBuscarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBuscarMascota.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarMascota.setText("Buscar");
+        btnBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext5ActionPerformed(evt);
+                btnBuscarMascotaActionPerformed(evt);
             }
         });
 
@@ -226,8 +226,8 @@ public class ViewAdopciones extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnNext5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscarMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -238,10 +238,10 @@ public class ViewAdopciones extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnNext5)
+                .addComponent(btnBuscarMascota)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -255,17 +255,17 @@ public class ViewAdopciones extends javax.swing.JPanel {
         add(jLabel9);
         jLabel9.setBounds(390, 280, 156, 20);
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setPreferredSize(new java.awt.Dimension(220, 20));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoAdopcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodigoAdopcion.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtCodigoAdopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtCodigoAdopcionActionPerformed(evt);
             }
         });
-        add(jTextField4);
-        jTextField4.setBounds(190, 280, 180, 20);
-        add(jDateChooser1);
-        jDateChooser1.setBounds(550, 280, 180, 20);
+        add(txtCodigoAdopcion);
+        txtCodigoAdopcion.setBounds(190, 280, 180, 20);
+        add(txtFechaAdopcion);
+        txtFechaAdopcion.setBounds(550, 280, 180, 20);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(84, 56, 220));
@@ -291,35 +291,34 @@ public class ViewAdopciones extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarAdopcionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtCodigoAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtCodigoAdoptanteActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtCodigoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtCodigoMascotaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtCodigoAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoAdopcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtCodigoAdopcionActionPerformed
 
-    private void btnNext4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext4ActionPerformed
+    private void btnBuscarAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAdoptanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext4ActionPerformed
+    }//GEN-LAST:event_btnBuscarAdoptanteActionPerformed
 
-    private void btnNext5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext5ActionPerformed
+    private void btnBuscarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNext5ActionPerformed
+    }//GEN-LAST:event_btnBuscarMascotaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarAdopcion;
     public javax.swing.JButton btnBuscarAdopcion;
+    public javax.swing.JButton btnBuscarAdoptante;
+    public javax.swing.JButton btnBuscarMascota;
     public javax.swing.JButton btnEditarAdopcion;
     public javax.swing.JButton btnEliminarAdopcion;
-    private javax.swing.JButton btnNext4;
-    private javax.swing.JButton btnNext5;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -329,11 +328,12 @@ public class ViewAdopciones extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     public javax.swing.JTable tblAdopciones;
+    public javax.swing.JTextArea txtAdoptanteResult;
+    public javax.swing.JTextField txtCodigoAdopcion;
+    public javax.swing.JTextField txtCodigoAdoptante;
+    public javax.swing.JTextField txtCodigoMascota;
+    public com.toedter.calendar.JDateChooser txtFechaAdopcion;
+    public javax.swing.JTextArea txtMascotaResult;
     // End of variables declaration//GEN-END:variables
 }

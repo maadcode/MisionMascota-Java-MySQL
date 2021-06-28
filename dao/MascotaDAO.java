@@ -125,5 +125,4 @@ public class MascotaDAO implements ICRUD {
         }
         return null;
     }
-    
 }

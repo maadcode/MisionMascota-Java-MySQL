@@ -123,7 +123,7 @@ public class MascotasController implements ActionListener {
         this.mascotaDAO.mascotaModel.setRaza(this.mascotaView.txtRaza.getText());
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        this.mascotaDAO.mascotaModel.setFechaNacimiento(dateFormat.format(mascotaView.txtFechaNac.getDate()));
+        this.mascotaDAO.mascotaModel.setFechaNacimiento(dateFormat.format(this.mascotaView.txtFechaNac.getDate()));
         
         this.mascotaDAO.mascotaModel.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex());
         
