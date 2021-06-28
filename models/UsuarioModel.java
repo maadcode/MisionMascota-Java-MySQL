@@ -10,29 +10,42 @@ import java.util.logging.Logger;
 import services.BD;
 
 public class UsuarioModel {
-    
-    private Connection dbConnection = null;
-    private String sql = null;
-    private Statement dbQ;
+    private int idUsuario;
+    private String username;
+    private String password;
 
     public UsuarioModel() {
-        this.dbConnection = new BD().getConnection();
-        try {
-            this.dbQ = this.dbConnection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    }
+
+    public UsuarioModel(int idUsuario, String username, String password) {
+        this.idUsuario = idUsuario;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
-    public ResultSet getUsuario(String usuario) {
-        try {
-            sql = "SELECT * FROM Usuarios WHERE usuario = BINARY \""+usuario+"\"";
-            ResultSet rs = this.dbQ.executeQuery(sql);
-            return rs;
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
     
 }

@@ -110,7 +110,7 @@ public class MascotasController implements ActionListener {
             Logger.getLogger(MascotasController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        this.mascotaView.cbxEstadoMascota.setSelectedIndex(mascota.getEstadoMascota());
+        this.mascotaView.cbxEstadoMascota.setSelectedIndex(mascota.getEstadoMascota()+1);
         
         if(mascota.getImageURL() != null) {
             this.mascotaView.lblImage.setIcon(resizeImage(mascota.getImageURL()));
@@ -125,7 +125,7 @@ public class MascotasController implements ActionListener {
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
         this.mascotaDAO.mascotaModel.setFechaNacimiento(dateFormat.format(this.mascotaView.txtFechaNac.getDate()));
         
-        this.mascotaDAO.mascotaModel.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex());
+        this.mascotaDAO.mascotaModel.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
         
         if(imagePath != null) {
             this.mascotaDAO.mascotaModel.setImageURL(imagePath);

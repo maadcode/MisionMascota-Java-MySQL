@@ -6,7 +6,6 @@ import dao.AdoptanteDAO;
 import dao.MascotaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -114,11 +113,12 @@ public class AdopcionesController implements ActionListener {
         DefaultTableModel table = (DefaultTableModel) adopcionesView.tblAdopciones.getModel();
         // Clean table
         table.setRowCount(0);
-        Object[] row = new Object[3];
+        Object[] row = new Object[4];
         for(int i = 0; i < list.size(); i++) {
-            row[0] = list.get(i).getIdAdoptante();
-            row[1] = list.get(i).getIdMascota();
-            row[2] = list.get(i).getFechaAdop();
+            row[0] = list.get(i).getIdAdopcion();
+            row[1] = list.get(i).getIdAdoptante();
+            row[2] = list.get(i).getIdMascota();
+            row[3] = list.get(i).getFechaAdop();
             
             table.addRow(row);
         }

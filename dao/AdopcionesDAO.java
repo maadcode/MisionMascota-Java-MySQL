@@ -100,7 +100,7 @@ public class AdopcionesDAO implements ICRUD {
             AdopcionesModel adopcion;
             
             while(rs.next()) {
-                adopcion = new AdopcionesModel(rs.getInt("idAdopcion"), rs.getInt("idAdoptante"), rs.getInt("idMascota"), rs.getString("fechaAdop"));
+                adopcion = new AdopcionesModel(rs.getInt("idAdopcion"), rs.getInt("idMascota"), rs.getInt("idAdoptante"), rs.getString("fechaAdop"));
                 listaAdopciones.add(adopcion);
             }
         } catch (SQLException e) {
@@ -117,6 +117,42 @@ public class AdopcionesDAO implements ICRUD {
             }
         }
         return null;
+    }
+    
+    public ArrayList<AdopcionesModel> getListaAdopcionesRecientes() {
+        ArrayList<AdopcionesModel> listaAdopciones = new ArrayList<>();
+        
+        try {
+            sql = "SELECT * FROM Adopciones WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
+            ResultSet rs = this.dbQ.executeQuery(sql);
+            AdopcionesModel adopcion;
+            
+            while(rs.next()) {
+                adopcion = new AdopcionesModel(rs.getInt("idAdopcion"), rs.getInt("idAdoptante"), rs.getInt("idMascota"), rs.getString("fechaAdop"));
+                listaAdopciones.add(adopcion);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return listaAdopciones;
+    }
+    
+    public int getAdopcionesMensual() {
+        int cantidad = 0;
+        
+        try {
+            sql = "SELECT COUNT(*) FROM Adopciones WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
+            ResultSet rs = this.dbQ.executeQuery(sql);
+            if(rs.next()) {
+                cantidad = rs.getInt(1);
+            }
+            return cantidad;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return cantidad;
     }
     
 }

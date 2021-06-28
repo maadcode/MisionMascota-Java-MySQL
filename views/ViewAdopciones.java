@@ -102,17 +102,17 @@ public class ViewAdopciones extends javax.swing.JPanel {
         tblAdopciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblAdopciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ADOPTANTE", "MASCOTA", "FECHA"
+                "CÓDIGO", "ADOPTANTE", "MASCOTA", "FECHA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

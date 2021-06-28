@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import models.AdopcionesModel;
 import models.AdoptanteModel;
 import models.MascotaModel;
+import views.Dashboard;
 import views.Menu;
 import views.ViewAdopciones;
 import views.ViewAdoptantes;
@@ -20,12 +21,20 @@ public class MenuController implements MouseListener {
     public MenuController() {
         this.view = new Menu();
         
-        this.view.setVisible(true);
         view.btnAdoptantes.addMouseListener((MouseListener) this);
         view.btnAdopciones.addMouseListener((MouseListener) this);
         view.btnCatalogo.addMouseListener((MouseListener) this);
         view.btnDashboard.addMouseListener((MouseListener) this);
         view.btnMascotas.addMouseListener((MouseListener) this);
+        
+        Dashboard dashboard = new Dashboard();
+        AdopcionesModel adopcionModel = new AdopcionesModel();
+        AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
+        MascotaModel mascotaModel = new MascotaModel();
+        MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+        DashboardController dashboardController = new DashboardController(adopcionDAO, mascotaDAO, dashboard, this.view);
+        
+        this.view.setVisible(true);
     }
     
     @Override
@@ -46,7 +55,12 @@ public class MenuController implements MouseListener {
             
         }
         if(e.getSource().equals(this.view.btnDashboard)) {
-            
+            Dashboard dashboard = new Dashboard();
+            AdopcionesModel adopcionModel = new AdopcionesModel();
+            AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
+            MascotaModel mascotaModel = new MascotaModel();
+            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            DashboardController dashboardController = new DashboardController(adopcionDAO, mascotaDAO, dashboard, this.view);
         }
         if(e.getSource().equals(this.view.btnMascotas)) {
             ViewMascotas mascotaView = new ViewMascotas();

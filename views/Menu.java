@@ -12,14 +12,6 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(this);
-        
-        Dashboard nuevoPanel = new Dashboard();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Dashboard");
     }
 
     /**
@@ -401,14 +393,6 @@ public class Menu extends javax.swing.JFrame {
         resetColor(btnAdoptantes);
         resetColor(btnAdopciones);
         resetColor(btnCatalogo);
-        
-        Dashboard nuevoPanel = new Dashboard();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Dashboard");
     }//GEN-LAST:event_btnDashboardMousePressed
 
     private void btnMascotasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMousePressed

@@ -1,41 +1,15 @@
 
 package views;
 
-import controllers.MenuController;
-import controllers.UsuariosController;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 public class Login extends javax.swing.JFrame {
-
-    private UsuariosController usuarioController;
     
     /**
      * Creates new form FrmLogin
      */
     public Login() {
         initComponents();
-        //this.setSize(900, 600);
-        this.setResizable(false);
-        this.setTitle("Sistema de adopción");
-        this.setLocationRelativeTo(null);
-        
-        ImageIcon wallpaper = new ImageIcon("src/assets/bg.png");
-        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_wallpaper.getWidth(), jLabel_wallpaper.getHeight(), Image.SCALE_DEFAULT));
-        jLabel_wallpaper.setIcon(icono);
-        this.repaint();
-        
-        this.usuarioController = new UsuariosController();
-        
-        iniLabels();
     }
     
-    public void iniLabels() {
-        this.lblErrorUsername.setText(null);
-        this.lblErrorPassword.setText(null);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,24 +156,6 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        iniLabels();
-        String user = this.txtUsuario.getText();
-        String password = this.txtPassword.getText();
-        if(user.equals("")) {
-            this.lblErrorUsername.setText("Este campo es requerido.");
-        }
-        if(password.equals("")) {
-            this.lblErrorPassword.setText("Este campo es requerido.");
-        }
-        if(!user.equals("") && !password.equals("")) {
-            if(usuarioController.checkLogin(user, password)) {
-                
-                this.dispose();
-                MenuController menuController = new MenuController();
-            } else {
-                this.lblErrorPassword.setText("Usuario o contraseña incorrecto.");
-            }
-        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -241,15 +197,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    public javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel_wallpaper;
+    public javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel lblErrorPassword;
-    private javax.swing.JLabel lblErrorUsername;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JLabel lblErrorPassword;
+    public javax.swing.JLabel lblErrorUsername;
+    public javax.swing.JPasswordField txtPassword;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

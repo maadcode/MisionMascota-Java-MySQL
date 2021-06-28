@@ -125,4 +125,40 @@ public class MascotaDAO implements ICRUD {
         }
         return null;
     }
+    
+    public ArrayList<MascotaModel> getListaMascotasRecientes() {
+        ArrayList<MascotaModel> listaMascotas = new ArrayList<>();
+        
+        try {
+            sql = "SELECT * FROM Mascotas WHERE MONTH(fechaIng) = MONTH(CURRENT_DATE())";
+            ResultSet rs = this.dbQ.executeQuery(sql);
+            MascotaModel mascota;
+            
+            while(rs.next()) {
+                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                listaMascotas.add(mascota);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return listaMascotas;
+    }
+    
+    public int getMascotasDisponibles() {
+        int cantidad = 0;
+        
+        try {
+            sql = "SELECT COUNT(*) FROM Mascotas WHERE idEstadoMascota = 2";
+            ResultSet rs = this.dbQ.executeQuery(sql);
+            if(rs.next()) {
+                cantidad = rs.getInt(1);
+            }
+            return cantidad;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return cantidad;
+    }
 }
