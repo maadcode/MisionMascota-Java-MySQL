@@ -118,12 +118,29 @@ public class MascotaDAO implements ICRUD {
     }
     
     public MascotaModel getMascota(String id) {
-        for(int i = 0; i <= getListaMascotas().size(); i++) {
-            if(getListaMascotas().get(i).getIdMascota()  == Integer.parseInt(id)) {
-                return getListaMascotas().get(i);
+        MascotaModel mascota = null;
+        PreparedStatement ps;
+        try {
+            sql = "SELECT * FROM Mascotas WHERE idMascota = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(id));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                mascota = new MascotaModel();
+                mascota.setIdMascota(rs.getInt("idMascota"));
+                mascota.setNombre(rs.getString("nombreMascota"));
+                mascota.setPeso(rs.getFloat("peso"));
+                mascota.setRaza(rs.getString("raza"));
+                mascota.setFechaNacimiento(rs.getString("fechaNac"));
+                mascota.setFechaIngreso(rs.getString("fechaIng"));
+                mascota.setEstadoMascota(rs.getInt("idEstadoMascota"));
+                mascota.setImageURL(rs.getString("imagenMascota"));
             }
+            return mascota;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return mascota;
     }
     
     public ArrayList<MascotaModel> getListaMascotasRecientes() {
@@ -160,5 +177,24 @@ public class MascotaDAO implements ICRUD {
         }
         
         return cantidad;
+    }
+    
+    public ArrayList<MascotaModel> getListaMascotasDisponibles() {
+        ArrayList<MascotaModel> listaMascotas = new ArrayList<>();
+        
+        try {
+            sql = "SELECT * FROM Mascotas WHERE idEstadoMascota = 2";
+            ResultSet rs = this.dbQ.executeQuery(sql);
+            MascotaModel mascota;
+            
+            while(rs.next()) {
+                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                listaMascotas.add(mascota);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return listaMascotas;
     }
 }

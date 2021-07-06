@@ -411,14 +411,6 @@ public class Menu extends javax.swing.JFrame {
         resetColor(btnAdoptantes);
         resetColor(btnAdopciones);
         setColor(btnCatalogo);
-        
-        Catalogo nuevoPanel = new Catalogo();
-        nuevoPanel.setSize(750, 520);
-        contentPanel.removeAll();
-        contentPanel.add(nuevoPanel);
-        contentPanel.repaint();
-        
-        this.lblTitle.setText("Catálogo de mascotas");
     }//GEN-LAST:event_btnCatalogoMousePressed
 
     private void btnAdopcionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdopcionesMousePressed

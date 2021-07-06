@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.AdopcionesModel;
 import models.AdoptanteModel;
@@ -77,17 +78,21 @@ public class AdopcionesController implements ActionListener {
     
     private void buscarAdopcion(String id) {
         AdopcionesModel adopcion = this.adopcionesDAO.getAdopcion(id);
-        this.adopcionesView.txtCodigoAdoptante.setText(adopcion.getIdAdoptante()+"");
-        mostrarAdoptante(adopcion.getIdAdoptante()+"");
-        this.adopcionesView.txtCodigoMascota.setText(adopcion.getIdMascota()+"");
-        mostrarMascota(adopcion.getIdMascota()+"");
-        
-        Date fecha;
-        try {
-            fecha = new SimpleDateFormat("yyyy-MM-dd").parse(adopcion.getFechaAdop());
-            this.adopcionesView.txtFechaAdopcion.setDate(fecha);        
-        } catch (ParseException ex) {
-            Logger.getLogger(MascotasController.class.getName()).log(Level.SEVERE, null, ex);
+        if(adopcion != null) {
+            this.adopcionesView.txtCodigoAdoptante.setText(adopcion.getIdAdoptante()+"");
+            mostrarAdoptante(adopcion.getIdAdoptante()+"");
+            this.adopcionesView.txtCodigoMascota.setText(adopcion.getIdMascota()+"");
+            mostrarMascota(adopcion.getIdMascota()+"");
+
+            Date fecha;
+            try {
+                fecha = new SimpleDateFormat("yyyy-MM-dd").parse(adopcion.getFechaAdop());
+                this.adopcionesView.txtFechaAdopcion.setDate(fecha);        
+            } catch (ParseException ex) {
+                Logger.getLogger(MascotasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe la adopción con el id ingresado");
         }
     }
     

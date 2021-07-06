@@ -49,6 +49,11 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setMargin(new java.awt.Insets(10, 10, 10, 10));
         txtUsuario.setName(""); // NOI18N
         txtUsuario.setOpaque(false);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+        });
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -70,6 +75,11 @@ public class Login extends javax.swing.JFrame {
         txtPassword.setBorder(null);
         txtPassword.setMargin(new java.awt.Insets(10, 10, 10, 10));
         txtPassword.setOpaque(false);
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusGained(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(56, 24, 47));
 
@@ -157,6 +167,16 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        // TODO add your handling code here:
+        this.txtUsuario.setText("");
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
+        // TODO add your handling code here:
+        this.txtPassword.setText("");
+    }//GEN-LAST:event_txtPasswordFocusGained
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import models.AdopcionesModel;
 import models.AdoptanteModel;
 import models.MascotaModel;
+import views.Catalogo;
 import views.Dashboard;
 import views.Menu;
 import views.ViewAdopciones;
@@ -52,7 +53,10 @@ public class MenuController implements MouseListener {
             AdopcionesController adopcionController = new AdopcionesController(adopcionDAO, adopcionesView, this.view);
         }
         if(e.getSource().equals(this.view.btnCatalogo)) {
-            
+            Catalogo catalogo = new Catalogo();
+            MascotaModel mascotaModel = new MascotaModel();
+            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            CatalogoController catalogoController = new CatalogoController(mascotaDAO, catalogo, this.view);
         }
         if(e.getSource().equals(this.view.btnDashboard)) {
             Dashboard dashboard = new Dashboard();

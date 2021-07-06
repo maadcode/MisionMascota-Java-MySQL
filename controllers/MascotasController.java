@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import models.MascotaModel;
@@ -98,22 +99,29 @@ public class MascotasController implements ActionListener {
 
     private void buscarMascota(String id) {
         MascotaModel mascota = this.mascotaDAO.getMascota(id);
-        this.mascotaView.txtNombreMascota.setText(mascota.getNombre());
-        this.mascotaView.txtPeso.setText(mascota.getPeso()+"");
-        this.mascotaView.txtRaza.setText(mascota.getRaza());
-        
-        Date fecha;
-        try {
-            fecha = new SimpleDateFormat("yyyy-MM-dd").parse(mascota.getFechaNacimiento());
-            this.mascotaView.txtFechaNac.setDate(fecha);        
-        } catch (ParseException ex) {
-            Logger.getLogger(MascotasController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        this.mascotaView.cbxEstadoMascota.setSelectedIndex(mascota.getEstadoMascota()+1);
-        
-        if(mascota.getImageURL() != null) {
-            this.mascotaView.lblImage.setIcon(resizeImage(mascota.getImageURL()));
+        if(mascota != null) {
+            this.mascotaView.txtNombreMascota.setText(mascota.getNombre());
+            this.mascotaView.txtPeso.setText(mascota.getPeso()+"");
+            this.mascotaView.txtRaza.setText(mascota.getRaza());
+
+            Date fecha;
+            try {
+                fecha = new SimpleDateFormat("yyyy-MM-dd").parse(mascota.getFechaNacimiento());
+                this.mascotaView.txtFechaNac.setDate(fecha);        
+            } catch (ParseException ex) {
+                Logger.getLogger(MascotasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            this.mascotaView.cbxEstadoMascota.setSelectedIndex(mascota.getEstadoMascota()-1);
+
+            if(mascota.getImageURL() != null) {
+                this.mascotaView.lblImage.setIcon(resizeImage(mascota.getImageURL()));
+                imagePath = mascota.getImageURL();
+            } else {
+                this.mascotaView.lblImage.setIcon(resizeImage("src/assets/no-image.png"));
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe la mascota con el id ingresado");
         }
     }
 

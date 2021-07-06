@@ -121,11 +121,30 @@ public class AdoptanteDAO implements ICRUD {
     }
     
     public AdoptanteModel getAdoptante(String id) {
-        for(int i = 0; i <= getListaAdoptantes().size(); i++) {
-            if(getListaAdoptantes().get(i).getIdAdoptante() == Integer.parseInt(id)) {
-                return getListaAdoptantes().get(i);
+        AdoptanteModel adoptante = null;
+        PreparedStatement ps;
+        try {
+            sql = "SELECT * FROM Adoptantes WHERE idAdoptante = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(id));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                adoptante = new AdoptanteModel();
+                adoptante.setIdAdoptante(rs.getInt("idAdoptante"));
+                adoptante.setNombre(rs.getString("nombreAdoptante"));
+                adoptante.setApellido(rs.getString("apellidoAdoptante"));
+                adoptante.setDNI(rs.getString("DNI"));
+                adoptante.setEdad(rs.getInt("edad"));
+                adoptante.setTelefono(rs.getString("telefono"));
+                adoptante.setDireccion(rs.getString("direccion"));
+                adoptante.setCorreo(rs.getString("correo"));
+                adoptante.setPropietario(rs.getString("propietarioCasa"));
+                adoptante.setPermiso(rs.getString("permisoDepa"));
             }
+            return adoptante;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return adoptante;
     }
 }

@@ -111,12 +111,25 @@ public class AdopcionesDAO implements ICRUD {
     }
     
     public AdopcionesModel getAdopcion(String id) {
-        for(int i = 0; i <= getListaAdopciones().size(); i++) {
-            if(getListaAdopciones().get(i).getIdAdopcion() == Integer.parseInt(id)) {
-                return getListaAdopciones().get(i);
+        AdopcionesModel adopcion = null;
+        PreparedStatement ps;
+        try {
+            sql = "SELECT * FROM Adopciones WHERE idAdopcion = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(id));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                adopcion = new AdopcionesModel();
+                adopcion.setIdAdopcion(rs.getInt("idAdoptante"));
+                adopcion.setIdMascota(rs.getInt("idMascota"));
+                adopcion.setIdAdoptante(rs.getInt("idAdoptante"));
+                adopcion.setFechaAdop(rs.getString("fechaAdop"));
             }
+            return adopcion;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return adopcion;
     }
     
     public ArrayList<AdopcionesModel> getListaAdopcionesRecientes() {

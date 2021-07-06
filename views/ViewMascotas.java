@@ -2,11 +2,8 @@
 package views;
 
 import java.awt.Image;
-import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ViewMascotas extends javax.swing.JPanel {
     public String imagePath = null;
@@ -20,20 +17,6 @@ public class ViewMascotas extends javax.swing.JPanel {
         ImageIcon wallpaper = new ImageIcon("src/assets/no-image.png");
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT));
         lblImage.setIcon(icono);
-    }
-    
-    public ImageIcon resizeImage(String imagePath, byte[] pic) {
-        ImageIcon myImage = null;
-        if(imagePath != null) {
-            myImage = new ImageIcon(imagePath);
-        } else {
-            myImage = new ImageIcon(pic);
-        }
-        
-        Image img = myImage.getImage();
-        Image img2 = img.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(img2);
-        return image;
     }
 
     /**
@@ -286,19 +269,6 @@ public class ViewMascotas extends javax.swing.JPanel {
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.image", "jpg", "png");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        if(result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = file.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            lblImage.setIcon(resizeImage(path, null));
-            imagePath = path;
-        } else {
-            System.out.println("Archivo no seleccionado");
-        }
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     private void txtCodigoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoMascotaActionPerformed

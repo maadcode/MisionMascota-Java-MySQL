@@ -5,6 +5,7 @@ import dao.AdoptanteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.AdoptanteModel;
 import views.Menu;
@@ -97,22 +98,26 @@ public class AdoptantesController implements ActionListener {
 
     private void buscarAdoptante(String id) {
         AdoptanteModel adoptante = this.adoptanteDAO.getAdoptante(id);
-        this.adoptanteView.txtNombreAdoptante.setText(adoptante.getNombre());
-        this.adoptanteView.txtApellidoAdoptante.setText(adoptante.getApellido());
-        this.adoptanteView.txtDNI.setText(adoptante.getDNI());
-        this.adoptanteView.txtEdadAdoptante.setText(adoptante.getEdad()+"");
-        this.adoptanteView.txtCorreo.setText(adoptante.getCorreo());
-        this.adoptanteView.txtDireccion.setText(adoptante.getDireccion());
-        this.adoptanteView.txtTelefono.setText(adoptante.getTelefono());
-        if(adoptante.getPropietario().equals("SI")) {
-            this.adoptanteView.cbxPropietario.setSelectedIndex(0);
+        if(adoptante != null) {
+            this.adoptanteView.txtNombreAdoptante.setText(adoptante.getNombre());
+            this.adoptanteView.txtApellidoAdoptante.setText(adoptante.getApellido());
+            this.adoptanteView.txtDNI.setText(adoptante.getDNI());
+            this.adoptanteView.txtEdadAdoptante.setText(adoptante.getEdad()+"");
+            this.adoptanteView.txtCorreo.setText(adoptante.getCorreo());
+            this.adoptanteView.txtDireccion.setText(adoptante.getDireccion());
+            this.adoptanteView.txtTelefono.setText(adoptante.getTelefono());
+            if(adoptante.getPropietario().equals("SI")) {
+                this.adoptanteView.cbxPropietario.setSelectedIndex(0);
+            } else {
+                this.adoptanteView.cbxPropietario.setSelectedIndex(1);
+            }
+            if(adoptante.getPermiso().equals("SI")) {
+                this.adoptanteView.cbxPermiso.setSelectedIndex(0);
+            } else {
+                this.adoptanteView.cbxPermiso.setSelectedIndex(1);
+            }
         } else {
-            this.adoptanteView.cbxPropietario.setSelectedIndex(1);
-        }
-        if(adoptante.getPermiso().equals("SI")) {
-            this.adoptanteView.cbxPermiso.setSelectedIndex(0);
-        } else {
-            this.adoptanteView.cbxPermiso.setSelectedIndex(1);
+            JOptionPane.showMessageDialog(null, "No existe el adoptante con el id ingresado");
         }
     }
 
