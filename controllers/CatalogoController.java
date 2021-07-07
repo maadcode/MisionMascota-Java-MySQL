@@ -3,6 +3,7 @@ package controllers;
 
 import dao.AdopcionesDAO;
 import dao.MascotaDAO;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -86,6 +87,9 @@ public class CatalogoController implements ActionListener {
         AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
         AdopcionesController adopcionController = new AdopcionesController(adopcionDAO, adopcionesView, this.menu);
         adopcionesView.txtCodigoMascota.setText(this.mascotaDAO.getListaMascotasDisponibles().get(pos).getIdMascota()+"");
+        
+        this.menu.btnCatalogo.setBackground(new Color(84,56,220));
+        this.menu.btnAdopciones.setBackground(new Color(255,86,201));
     }
     
     public ImageIcon resizeImage(String imagePath) {

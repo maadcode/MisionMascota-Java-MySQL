@@ -12,6 +12,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setTitle("Sistema de adopción");
     }
 
     /**

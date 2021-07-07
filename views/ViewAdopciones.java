@@ -25,13 +25,11 @@ public class ViewAdopciones extends javax.swing.JPanel {
         btnAgregarAdopcion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAdopciones = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAdoptanteResult = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         txtCodigoAdoptante = new javax.swing.JTextField();
         btnBuscarAdoptante = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMascotaResult = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
@@ -126,16 +124,19 @@ public class ViewAdopciones extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(20, 320, 710, 130);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         txtAdoptanteResult.setColumns(20);
         txtAdoptanteResult.setRows(5);
         jScrollPane3.setViewportView(txtAdoptanteResult);
+
+        add(jScrollPane3);
+        jScrollPane3.setBounds(380, 20, 350, 96);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(84, 56, 220));
         jLabel7.setText("Código de Adoptante");
         jLabel7.setPreferredSize(new java.awt.Dimension(120, 20));
+        add(jLabel7);
+        jLabel7.setBounds(20, 30, 150, 20);
 
         txtCodigoAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodigoAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
@@ -144,6 +145,8 @@ public class ViewAdopciones extends javax.swing.JPanel {
                 txtCodigoAdoptanteActionPerformed(evt);
             }
         });
+        add(txtCodigoAdoptante);
+        txtCodigoAdoptante.setBounds(180, 30, 180, 20);
 
         btnBuscarAdoptante.setBackground(new java.awt.Color(84, 56, 220));
         btnBuscarAdoptante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -154,49 +157,22 @@ public class ViewAdopciones extends javax.swing.JPanel {
                 btnBuscarAdoptanteActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCodigoAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigoAdoptante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscarAdoptante)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel1);
-        jPanel1.setBounds(0, 10, 750, 120);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        add(btnBuscarAdoptante);
+        btnBuscarAdoptante.setBounds(20, 60, 170, 31);
 
         txtMascotaResult.setColumns(20);
         txtMascotaResult.setRows(5);
         jScrollPane2.setViewportView(txtMascotaResult);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(380, 150, 350, 96);
+
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(84, 56, 220));
         jLabel8.setText("Código de Mascota");
         jLabel8.setPreferredSize(new java.awt.Dimension(120, 20));
+        add(jLabel8);
+        jLabel8.setBounds(20, 160, 140, 20);
 
         txtCodigoMascota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodigoMascota.setPreferredSize(new java.awt.Dimension(220, 20));
@@ -205,6 +181,8 @@ public class ViewAdopciones extends javax.swing.JPanel {
                 txtCodigoMascotaActionPerformed(evt);
             }
         });
+        add(txtCodigoMascota);
+        txtCodigoMascota.setBounds(170, 160, 180, 20);
 
         btnBuscarMascota.setBackground(new java.awt.Color(84, 56, 220));
         btnBuscarMascota.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -215,38 +193,8 @@ public class ViewAdopciones extends javax.swing.JPanel {
                 btnBuscarMascotaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscarMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigoMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscarMascota)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel2);
-        jPanel2.setBounds(0, 140, 750, 120);
+        add(btnBuscarMascota);
+        btnBuscarMascota.setBounds(20, 190, 170, 31);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(84, 56, 220));
@@ -323,8 +271,6 @@ public class ViewAdopciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
