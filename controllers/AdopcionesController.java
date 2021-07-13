@@ -6,6 +6,8 @@ import dao.AdoptanteDAO;
 import dao.MascotaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import models.MascotaModel;
 import views.Menu;
 import views.ViewAdopciones;
 
-public class AdopcionesController implements ActionListener {
+public class AdopcionesController implements ActionListener, KeyListener {
     private AdopcionesDAO adopcionesDAO;
     private ViewAdopciones adopcionesView;
     private Menu menu;
@@ -43,6 +45,7 @@ public class AdopcionesController implements ActionListener {
         this.adopcionesView.btnAgregarAdopcion.addActionListener(this);
         this.adopcionesView.btnEditarAdopcion.addActionListener(this);
         this.adopcionesView.btnEliminarAdopcion.addActionListener(this);
+        this.adopcionesView.tblAdopciones.addKeyListener(this);
         listarAdopciones();
     }
 
@@ -153,5 +156,24 @@ public class AdopcionesController implements ActionListener {
                  "\nRaza : " + mascotaModel.getRaza() +
                  "\nFecha de Ingreso : " + mascotaModel.getFechaIngreso();
         this.adopcionesView.txtMascotaResult.setText(result);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getSource().equals(this.adopcionesView.tblAdopciones)) {
+            final int codigo = 0;
+            int idx = this.adopcionesView.tblAdopciones.getSelectedRow();
+            if(idx >= 0) {
+                buscarAdopcion(this.adopcionesView.tblAdopciones.getValueAt(idx, codigo).toString());
+            }
+        }
     }
 }

@@ -5,6 +5,8 @@ import dao.MascotaDAO;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +23,7 @@ import models.MascotaModel;
 import views.Menu;
 import views.ViewMascotas;
 
-public class MascotasController implements ActionListener {
+public class MascotasController implements ActionListener, KeyListener {
     private MascotaDAO mascotaDAO;
     private ViewMascotas mascotaView;
     private Menu menu;
@@ -43,6 +45,7 @@ public class MascotasController implements ActionListener {
         this.mascotaView.btnEditarMascota.addActionListener(this);
         this.mascotaView.btnEliminarMascota.addActionListener(this);
         this.mascotaView.btnAgregarImagen.addActionListener(this);
+        this.mascotaView.tblMascotas.addKeyListener(this);
         listarMascotas();
     }
 
@@ -173,6 +176,25 @@ public class MascotasController implements ActionListener {
             imagePath = path;
         } else {
             System.out.println("Archivo no seleccionado");
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getSource().equals(this.mascotaView.tblMascotas)) {
+            final int codigo = 0;
+            int idx = this.mascotaView.tblMascotas.getSelectedRow();
+            if(idx >= 0) {
+                buscarMascota(this.mascotaView.tblMascotas.getValueAt(idx, codigo).toString());
+            }
         }
     }
 }

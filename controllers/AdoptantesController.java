@@ -4,6 +4,8 @@ package controllers;
 import dao.AdoptanteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,7 +13,7 @@ import models.AdoptanteModel;
 import views.Menu;
 import views.ViewAdoptantes;
 
-public class AdoptantesController implements ActionListener {
+public class AdoptantesController implements ActionListener, KeyListener {
     private AdoptanteDAO adoptanteDAO;
     private ViewAdoptantes adoptanteView;
     private Menu menu;
@@ -31,6 +33,7 @@ public class AdoptantesController implements ActionListener {
         this.adoptanteView.btnAgregarAdoptante.addActionListener(this);
         this.adoptanteView.btnEditarAdoptante.addActionListener(this);
         this.adoptanteView.btnEliminarAdoptante.addActionListener(this);
+        this.adoptanteView.tblAdoptantes.addKeyListener(this);
         listarAdoptantes();
     }
 
@@ -147,5 +150,24 @@ public class AdoptantesController implements ActionListener {
     private void eliminarAdoptante(String id) {
         this.adoptanteDAO.delete(id);
         listarAdoptantes();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getSource().equals(this.adoptanteView.tblAdoptantes)) {
+            final int codigo = 0;
+            int idx = this.adoptanteView.tblAdoptantes.getSelectedRow();
+            if(idx >= 0) {
+                buscarAdoptante(this.adoptanteView.tblAdoptantes.getValueAt(idx, codigo).toString());
+            }
+        }
     }
 }

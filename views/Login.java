@@ -1,6 +1,8 @@
 
 package views;
 
+import java.awt.Toolkit;
+
 public class Login extends javax.swing.JFrame {
     
     /**
@@ -177,7 +179,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.txtPassword.setText("");
     }//GEN-LAST:event_txtPasswordFocusGained
-
+    
     /**
      * @param args the command line arguments
      */
