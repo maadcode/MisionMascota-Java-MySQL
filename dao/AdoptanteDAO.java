@@ -1,7 +1,6 @@
 
 package dao;
 
-import interfaces.ICRUD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,137 +9,114 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.AdoptanteModel;
+import dto.AdoptanteDTO;
 import services.BD;
 
-public class AdoptanteDAO implements ICRUD {
+public class AdoptanteDAO {
     
     private Connection dbConnection = null;
-    private String sql = null;
-    public AdoptanteModel adoptanteModel;
-
-    public AdoptanteDAO() {
-    }
     
-    public AdoptanteDAO(AdoptanteModel adoptanteModel) {
-        this.adoptanteModel = adoptanteModel;
+    public AdoptanteDAO() {
         this.dbConnection = new BD().getConnection();
     }
 
-    @Override
-    public void create() {
+    public void create(AdoptanteDTO adoptante) {
         PreparedStatement ps;
         try {
-            sql = "INSERT INTO Adoptantes(nombreAdoptante, apellidoAdoptante, DNI, edad, telefono, direccion, correo, propietarioCasa, permisoDepa)"+
+            String sql = "INSERT INTO Adoptantes(nombreAdoptante, apellidoAdoptante, DNI, edad, telefono, direccion, correo, propietarioCasa, permisoDepa)"+
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             ps = this.dbConnection.prepareStatement(sql);
             
-            ps.setString(1, this.adoptanteModel.getNombre());
-            ps.setString(2, this.adoptanteModel.getApellido());
-            ps.setString(3, this.adoptanteModel.getDNI());
-            ps.setInt(4, this.adoptanteModel.getEdad());
-            ps.setString(5, this.adoptanteModel.getTelefono());
-            ps.setString(6, this.adoptanteModel.getDireccion());
-            ps.setString(7, this.adoptanteModel.getCorreo());
-            ps.setString(8, this.adoptanteModel.getPropietario());
-            ps.setString(9, this.adoptanteModel.getPermiso());
+            ps.setString(1, adoptante.getNombre());
+            ps.setString(2, adoptante.getApellido());
+            ps.setString(3, adoptante.getDNI());
+            ps.setInt(4, adoptante.getEdad());
+            ps.setString(5, adoptante.getTelefono());
+            ps.setString(6, adoptante.getDireccion());
+            ps.setString(7, adoptante.getCorreo());
+            ps.setString(8, adoptante.getPropietario());
+            ps.setString(9, adoptante.getPermiso());
             
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    }
-
-    @Override
-    public ResultSet read() {
-        ResultSet rs = null;
-        Statement dbQ;
-        try {
-            dbQ = this.dbConnection.createStatement();
-            sql = "SELECT * FROM Adoptantes";
-            rs = dbQ.executeQuery(sql);
-            return rs;
-        } catch (SQLException ex) {
-            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return rs;
-    }
-    
-    @Override
-    public void update(String id) {
-        PreparedStatement ps;
-        try {
-            sql = "UPDATE Adoptantes SET nombreAdoptante = ?, apellidoAdoptante = ?, DNI = ?, edad = ?, telefono = ?, direccion = ?, correo = ?, propietarioCasa = ?, permisoDepa = ? WHERE idAdoptante = "+id;
-            ps = this.dbConnection.prepareStatement(sql);
-            
-            ps.setString(1, this.adoptanteModel.getNombre());
-            ps.setString(2, this.adoptanteModel.getApellido());
-            ps.setString(3, this.adoptanteModel.getDNI());
-            ps.setInt(4, this.adoptanteModel.getEdad());
-            ps.setString(5, this.adoptanteModel.getTelefono());
-            ps.setString(6, this.adoptanteModel.getDireccion());
-            ps.setString(7, this.adoptanteModel.getCorreo());
-            ps.setString(8, this.adoptanteModel.getPropietario());
-            ps.setString(9, this.adoptanteModel.getPermiso());
-            
-            ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
-    public void delete(String id) {
-        PreparedStatement ps;
+    public ArrayList<AdoptanteDTO> read() {
+        ArrayList<AdoptanteDTO> listaAdoptantes = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
         try {
-            sql = "DELETE FROM Adoptantes WHERE idAdoptante = "+id;
-            ps = this.dbConnection.prepareStatement(sql);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public ArrayList<AdoptanteModel> getListaAdoptantes() {
-        ArrayList<AdoptanteModel> listaAdoptantes = new ArrayList<>();
-        
-        try {
-            ResultSet rs = read();
-            AdoptanteModel adoptante;
+            String sql = "SELECT * FROM Adoptantes";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
             
             while(rs.next()) {
-                adoptante = new AdoptanteModel(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getInt("edad"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
+                AdoptanteDTO adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getInt("edad"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
                 listaAdoptantes.add(adoptante);
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            rs.close();
+            st.close();
+            return listaAdoptantes;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return listaAdoptantes;
     }
     
-    public AdoptanteModel getAdoptante(String id) {
-        AdoptanteModel adoptante = null;
+    public void update(AdoptanteDTO adoptante) {
         PreparedStatement ps;
         try {
-            sql = "SELECT * FROM Adoptantes WHERE idAdoptante = ?";
+            String sql = "UPDATE Adoptantes SET nombreAdoptante = ?, apellidoAdoptante = ?, DNI = ?, edad = ?, telefono = ?, direccion = ?, correo = ?, propietarioCasa = ?, permisoDepa = ? WHERE idAdoptante = ?";
             ps = this.dbConnection.prepareStatement(sql);
-            ps.setInt(1, Integer.parseInt(id));
-            ResultSet rs = ps.executeQuery();
+            
+            ps.setString(1, adoptante.getNombre());
+            ps.setString(2, adoptante.getApellido());
+            ps.setString(3, adoptante.getDNI());
+            ps.setInt(4, adoptante.getEdad());
+            ps.setString(5, adoptante.getTelefono());
+            ps.setString(6, adoptante.getDireccion());
+            ps.setString(7, adoptante.getCorreo());
+            ps.setString(8, adoptante.getPropietario());
+            ps.setString(9, adoptante.getPermiso());
+            ps.setInt(10, adoptante.getIdAdoptante());
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete(int id) {
+        PreparedStatement ps;
+        try {
+            String sql = "DELETE FROM Adoptantes WHERE idAdoptante = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public AdoptanteDTO getAdoptante(int id) {
+        AdoptanteDTO adoptante = null;
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String sql = "SELECT * FROM Adoptantes WHERE idAdoptante = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
             if(rs.next()) {
-                adoptante = new AdoptanteModel();
-                adoptante.setIdAdoptante(rs.getInt("idAdoptante"));
-                adoptante.setNombre(rs.getString("nombreAdoptante"));
-                adoptante.setApellido(rs.getString("apellidoAdoptante"));
-                adoptante.setDNI(rs.getString("DNI"));
-                adoptante.setEdad(rs.getInt("edad"));
-                adoptante.setTelefono(rs.getString("telefono"));
-                adoptante.setDireccion(rs.getString("direccion"));
-                adoptante.setCorreo(rs.getString("correo"));
-                adoptante.setPropietario(rs.getString("propietarioCasa"));
-                adoptante.setPermiso(rs.getString("permisoDepa"));
+                adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getInt("edad"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
             }
+            rs.close();
+            ps.close();
             return adoptante;
         } catch (SQLException ex) {
             Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);

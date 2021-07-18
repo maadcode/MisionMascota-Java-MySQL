@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import models.AdoptanteModel;
+import dto.AdoptanteDTO;
 import views.Menu;
 import views.ViewAdoptantes;
 
@@ -60,8 +60,7 @@ public class AdoptantesController implements ActionListener, KeyListener {
     }
     
     public void listarAdoptantes() {
-        ArrayList<AdoptanteModel> list;
-        list = this.adoptanteDAO.getListaAdoptantes();
+        ArrayList<AdoptanteDTO> list = this.adoptanteDAO.read();
         DefaultTableModel table = (DefaultTableModel) adoptanteView.tblAdoptantes.getModel();
         // Clean table
         table.setRowCount(0);
@@ -77,30 +76,31 @@ public class AdoptantesController implements ActionListener, KeyListener {
     }
 
     private void agregarAdoptante() {
-        this.adoptanteDAO.adoptanteModel.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
-        this.adoptanteDAO.adoptanteModel.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
-        this.adoptanteDAO.adoptanteModel.setDNI(this.adoptanteView.txtDNI.getText());
-        this.adoptanteDAO.adoptanteModel.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
-        this.adoptanteDAO.adoptanteModel.setTelefono(this.adoptanteView.txtTelefono.getText());
-        this.adoptanteDAO.adoptanteModel.setDireccion(this.adoptanteView.txtDireccion.getText());
-        this.adoptanteDAO.adoptanteModel.setCorreo(this.adoptanteView.txtCorreo.getText());
+        AdoptanteDTO adoptante = new AdoptanteDTO();
+        adoptante.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
+        adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
+        adoptante.setDNI(this.adoptanteView.txtDNI.getText());
+        adoptante.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
+        adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
+        adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
+        adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());
         if(this.adoptanteView.cbxPropietario.getSelectedIndex() == 0) {
-            this.adoptanteDAO.adoptanteModel.setPropietario("SI");
+            adoptante.setPropietario("SI");
         } else {
-            this.adoptanteDAO.adoptanteModel.setPropietario("NO");
+            adoptante.setPropietario("NO");
         }
         if(this.adoptanteView.cbxPermiso.getSelectedIndex() == 0) {
-            this.adoptanteDAO.adoptanteModel.setPermiso("SI");
+            adoptante.setPermiso("SI");
         } else {
-            this.adoptanteDAO.adoptanteModel.setPermiso("NO");
+            adoptante.setPermiso("NO");
         }
 
-        this.adoptanteDAO.create();
+        this.adoptanteDAO.create(adoptante);
         listarAdoptantes();
     }
 
     private void buscarAdoptante(String id) {
-        AdoptanteModel adoptante = this.adoptanteDAO.getAdoptante(id);
+        AdoptanteDTO adoptante = this.adoptanteDAO.getAdoptante(Integer.parseInt(id));
         if(adoptante != null) {
             this.adoptanteView.txtNombreAdoptante.setText(adoptante.getNombre());
             this.adoptanteView.txtApellidoAdoptante.setText(adoptante.getApellido());
@@ -125,30 +125,32 @@ public class AdoptantesController implements ActionListener, KeyListener {
     }
 
     private void editarAdoptante(String id) {
-        this.adoptanteDAO.adoptanteModel.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
-        this.adoptanteDAO.adoptanteModel.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
-        this.adoptanteDAO.adoptanteModel.setDNI(this.adoptanteView.txtDNI.getText());
-        this.adoptanteDAO.adoptanteModel.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
-        this.adoptanteDAO.adoptanteModel.setTelefono(this.adoptanteView.txtTelefono.getText());
-        this.adoptanteDAO.adoptanteModel.setDireccion(this.adoptanteView.txtDireccion.getText());
-        this.adoptanteDAO.adoptanteModel.setCorreo(this.adoptanteView.txtCorreo.getText());
+        AdoptanteDTO adoptante = new AdoptanteDTO();
+        adoptante.setIdAdoptante(Integer.parseInt(id));
+        adoptante.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
+        adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
+        adoptante.setDNI(this.adoptanteView.txtDNI.getText());
+        adoptante.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
+        adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
+        adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
+        adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());
         if(this.adoptanteView.cbxPropietario.getSelectedIndex() == 0) {
-            this.adoptanteDAO.adoptanteModel.setPropietario("SI");
+            adoptante.setPropietario("SI");
         } else {
-            this.adoptanteDAO.adoptanteModel.setPropietario("NO");
+            adoptante.setPropietario("NO");
         }
         if(this.adoptanteView.cbxPermiso.getSelectedIndex() == 0) {
-            this.adoptanteDAO.adoptanteModel.setPermiso("SI");
+            adoptante.setPermiso("SI");
         } else {
-            this.adoptanteDAO.adoptanteModel.setPermiso("NO");
+            adoptante.setPermiso("NO");
         }
 
-        this.adoptanteDAO.update(id);
+        this.adoptanteDAO.update(adoptante);
         listarAdoptantes();
     }
 
     private void eliminarAdoptante(String id) {
-        this.adoptanteDAO.delete(id);
+        this.adoptanteDAO.delete(Integer.parseInt(id));
         listarAdoptantes();
     }
 

@@ -1,7 +1,7 @@
 
-package models;
+package dto;
 
-public class AdoptanteModel {
+public class AdoptanteDTO {
     private int idAdoptante;
     private String nombre;
     private String apellido;
@@ -13,10 +13,10 @@ public class AdoptanteModel {
     private String propietario;
     private String permiso;
 
-    public AdoptanteModel() {
+    public AdoptanteDTO() {
     }
 
-    public AdoptanteModel(int idAdoptante, String nombre, String apellido, String DNI, int edad, String telefono, String direccion, String correo, String propietario, String permiso) {
+    public AdoptanteDTO(int idAdoptante, String nombre, String apellido, String DNI, int edad, String telefono, String direccion, String correo, String propietario, String permiso) {
         this.idAdoptante = idAdoptante;
         this.nombre = nombre;
         this.apellido = apellido;

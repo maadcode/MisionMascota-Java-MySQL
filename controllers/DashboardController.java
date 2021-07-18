@@ -1,23 +1,23 @@
 
 package controllers;
 
-import dao.AdopcionesDAO;
+import dao.AdopcionDAO;
 import dao.MascotaDAO;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import models.AdopcionesModel;
-import models.MascotaModel;
+import dto.AdopcionDTO;
+import dto.MascotaDTO;
 import views.Dashboard;
 import views.Menu;
 
 public class DashboardController {
-    private AdopcionesDAO adopcionesDAO;
+    private AdopcionDAO adopcionDAO;
     private MascotaDAO mascotasDAO;
     private Dashboard dashboard;
     private Menu menu;
 
-    public DashboardController(AdopcionesDAO adopcionesDAO, MascotaDAO mascotasDAO, Dashboard dashboard, Menu menu) {
-        this.adopcionesDAO = adopcionesDAO;
+    public DashboardController(AdopcionDAO adopcionDAO, MascotaDAO mascotasDAO, Dashboard dashboard, Menu menu) {
+        this.adopcionDAO = adopcionDAO;
         this.mascotasDAO = mascotasDAO;
         this.dashboard = dashboard;
         this.menu = menu;
@@ -35,7 +35,7 @@ public class DashboardController {
     }
 
     private void getAdopcionesMensual() {
-        int adopcionesMensual = this.adopcionesDAO.getAdopcionesMensual();
+        int adopcionesMensual = this.adopcionDAO.getAdopcionesMensual();
         this.dashboard.lblAdopciones.setText(adopcionesMensual+"");
     }
 
@@ -45,9 +45,8 @@ public class DashboardController {
     }
     
     private void listarAdopcionesRecientes() {
-        ArrayList<AdopcionesModel> list;
-        list = this.adopcionesDAO.getListaAdopcionesRecientes();
-        DefaultTableModel table = (DefaultTableModel) dashboard.tblAdopciones.getModel();
+        ArrayList<AdopcionDTO> list = this.adopcionDAO.getListaAdopcionesRecientes();
+        DefaultTableModel table = (DefaultTableModel) this.dashboard.tblAdopciones.getModel();
         // Clean table
         table.setRowCount(0);
         Object[] row = new Object[4];
@@ -62,8 +61,7 @@ public class DashboardController {
     }
 
     private void listarMascotasRecientes() {
-        ArrayList<MascotaModel> list;
-        list = this.mascotasDAO.getListaMascotasRecientes();
+        ArrayList<MascotaDTO> list = this.mascotasDAO.getListaMascotasRecientes();
         DefaultTableModel table = (DefaultTableModel) dashboard.tblMascotas.getModel();
         // Clean table
         table.setRowCount(0);

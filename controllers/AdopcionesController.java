@@ -1,13 +1,22 @@
 
 package controllers;
 
-import dao.AdopcionesDAO;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
+import dao.AdopcionDAO;
 import dao.AdoptanteDAO;
 import dao.MascotaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,18 +25,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import models.AdopcionesModel;
-import models.AdoptanteModel;
-import models.MascotaModel;
+import dto.AdopcionDTO;
+import dto.AdoptanteDTO;
+import dto.MascotaDTO;
 import views.Menu;
 import views.ViewAdopciones;
 
 public class AdopcionesController implements ActionListener, KeyListener {
-    private AdopcionesDAO adopcionesDAO;
+    private AdopcionDAO adopcionesDAO;
     private ViewAdopciones adopcionesView;
     private Menu menu;
 
-    public AdopcionesController(AdopcionesDAO adopcionesDAO, ViewAdopciones adopcionesView, Menu menu) {
+    public AdopcionesController(AdopcionDAO adopcionesDAO, ViewAdopciones adopcionesView, Menu menu) {
         this.adopcionesDAO = adopcionesDAO;
         this.adopcionesView = adopcionesView;
         this.menu = menu;
@@ -45,6 +54,7 @@ public class AdopcionesController implements ActionListener, KeyListener {
         this.adopcionesView.btnAgregarAdopcion.addActionListener(this);
         this.adopcionesView.btnEditarAdopcion.addActionListener(this);
         this.adopcionesView.btnEliminarAdopcion.addActionListener(this);
+        this.adopcionesView.btnImprimirAdopcion.addActionListener(this);
         this.adopcionesView.tblAdopciones.addKeyListener(this);
         listarAdopciones();
     }
@@ -69,18 +79,24 @@ public class AdopcionesController implements ActionListener, KeyListener {
         if(e.getSource().equals(adopcionesView.btnEliminarAdopcion)) {
             eliminarMascota(adopcionesView.txtCodigoAdopcion.getText());
         }
+        if(e.getSource().equals(adopcionesView.btnImprimirAdopcion)) {
+            imprimirAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+        }
     }
     
     private void agregarAdopcion() {
-        this.adopcionesDAO.adopcionModel.setIdAdoptante(Integer.parseInt(this.adopcionesView.txtCodigoAdoptante.getText()));
-        this.adopcionesDAO.adopcionModel.setIdMascota(Integer.parseInt(this.adopcionesView.txtCodigoMascota.getText()));
+        AdopcionDTO adopcion = new AdopcionDTO();
+        adopcion.setIdAdoptante(Integer.parseInt(this.adopcionesView.txtCodigoAdoptante.getText()));
+        adopcion.setIdMascota(Integer.parseInt(this.adopcionesView.txtCodigoMascota.getText()));
         
-        this.adopcionesDAO.create();
+        this.adopcionesDAO.create(adopcion);
+        MascotaDAO mascotaDAO = new MascotaDAO();
+        mascotaDAO.cambiarEstado(Integer.parseInt(this.adopcionesView.txtCodigoMascota.getText()), 3);
         listarAdopciones();
     }
     
     private void buscarAdopcion(String id) {
-        AdopcionesModel adopcion = this.adopcionesDAO.getAdopcion(id);
+        AdopcionDTO adopcion = this.adopcionesDAO.getAdopcion(Integer.parseInt(id));
         if(adopcion != null) {
             this.adopcionesView.txtCodigoAdoptante.setText(adopcion.getIdAdoptante()+"");
             mostrarAdoptante(adopcion.getIdAdoptante()+"");
@@ -100,24 +116,25 @@ public class AdopcionesController implements ActionListener, KeyListener {
     }
     
     private void editarAdopcion(String id) {
-        this.adopcionesDAO.adopcionModel.setIdAdoptante(Integer.parseInt(this.adopcionesView.txtCodigoAdoptante.getText()));
-        this.adopcionesDAO.adopcionModel.setIdMascota(Integer.parseInt(this.adopcionesView.txtCodigoMascota.getText()));
+        AdopcionDTO adopcion = new AdopcionDTO();
+        adopcion.setIdAdopcion(Integer.parseInt(id));
+        adopcion.setIdAdoptante(Integer.parseInt(this.adopcionesView.txtCodigoAdoptante.getText()));
+        adopcion.setIdMascota(Integer.parseInt(this.adopcionesView.txtCodigoMascota.getText()));
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        this.adopcionesDAO.adopcionModel.setFechaAdop(dateFormat.format(this.adopcionesView.txtFechaAdopcion.getDate()));        
+        adopcion.setFechaAdop(dateFormat.format(this.adopcionesView.txtFechaAdopcion.getDate()));        
         
-        this.adopcionesDAO.update(id);
+        this.adopcionesDAO.update(adopcion);
         listarAdopciones();
     }
     
     private void eliminarMascota(String id) {
-        this.adopcionesDAO.delete(id);
+        this.adopcionesDAO.delete(Integer.parseInt(id));
         listarAdopciones();
     }
     
     public void listarAdopciones() {
-        ArrayList<AdopcionesModel> list;
-        list = this.adopcionesDAO.getListaAdopciones();
+        ArrayList<AdopcionDTO> list = this.adopcionesDAO.read(); 
         DefaultTableModel table = (DefaultTableModel) adopcionesView.tblAdopciones.getModel();
         // Clean table
         table.setRowCount(0);
@@ -132,29 +149,27 @@ public class AdopcionesController implements ActionListener, KeyListener {
         }
     }
 
-    private void mostrarAdoptante(String id) {
+    public void mostrarAdoptante(String id) {
         String result;
-        AdoptanteModel adoptanteModel = new AdoptanteModel();
-        AdoptanteDAO adoptanteDAO = new AdoptanteDAO(adoptanteModel);
-        adoptanteModel = adoptanteDAO.getAdoptante(id);
+        AdoptanteDAO adoptanteDAO = new AdoptanteDAO();
+        AdoptanteDTO adoptante = adoptanteDAO.getAdoptante(Integer.parseInt(id));
         
-        result = "Nombre : " + adoptanteModel.getNombre() +
-                 "\nApellido : " + adoptanteModel.getApellido()+
-                 "\nDNI : " + adoptanteModel.getDNI()+
-                 "\nEdad : " + adoptanteModel.getEdad()+
-                 "\nDirección : " + adoptanteModel.getDireccion();
+        result = "Nombre : " + adoptante.getNombre() +
+                 "\nApellido : " + adoptante.getApellido()+
+                 "\nDNI : " + adoptante.getDNI()+
+                 "\nEdad : " + adoptante.getEdad()+
+                 "\nDirección : " + adoptante.getDireccion();
         this.adopcionesView.txtAdoptanteResult.setText(result);
     }
 
-    private void mostrarMascota(String id) {
+    public void mostrarMascota(String id) {
         String result;
-        MascotaModel mascotaModel = new MascotaModel();
-        MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
-        mascotaModel = mascotaDAO.getMascota(id);
+        MascotaDAO mascotaDAO = new MascotaDAO();
+        MascotaDTO mascota = mascotaDAO.getMascota(Integer.parseInt(id));
         
-        result = "Nombre : " + mascotaModel.getNombre() +
-                 "\nRaza : " + mascotaModel.getRaza() +
-                 "\nFecha de Ingreso : " + mascotaModel.getFechaIngreso();
+        result = "Nombre : " + mascota.getNombre() +
+                 "\nRaza : " + mascota.getRaza() +
+                 "\nFecha de Ingreso : " + mascota.getFechaIngreso();
         this.adopcionesView.txtMascotaResult.setText(result);
     }
 
@@ -174,6 +189,69 @@ public class AdopcionesController implements ActionListener, KeyListener {
             if(idx >= 0) {
                 buscarAdopcion(this.adopcionesView.tblAdopciones.getValueAt(idx, codigo).toString());
             }
+        }
+    }
+
+    private void imprimirAdopcion(String id) {
+        AdopcionDTO adopcion = this.adopcionesDAO.getAdopcion(Integer.parseInt(id));
+        
+        AdoptanteDAO adoptanteDAO = new AdoptanteDAO();
+        AdoptanteDTO adoptante = adoptanteDAO.getAdoptante(adopcion.getIdAdoptante());
+        
+        MascotaDAO mascotaDAO = new MascotaDAO();
+        MascotaDTO mascota = mascotaDAO.getMascota(adopcion.getIdMascota());
+        
+        String dataAdopcion = "\nCódigo de adopción : " + adopcion.getIdAdopcion()+
+                                "\nFecha de adopción : " + adopcion.getFechaAdop();
+        
+        String dataAdoptante = "\nNombre completo : " + adoptante.getNombre() + " " + adoptante.getApellido() +
+                                "\nDNI : " + adoptante.getDNI() +
+                                "\nDirección : " + adoptante.getDireccion()+
+                                "\nTelefono : " + adoptante.getTelefono()+
+                                "\nCorreo : " + adoptante.getCorreo();
+        
+        String dataMascota = "\nNombre : " + mascota.getNombre() +
+                                "\nRaza : " + mascota.getRaza()+
+                                "\nFecha de nacimiento : " + mascota.getFechaNacimiento();
+        
+        Document documento = new Document();
+        String ruta = System.getProperty("user.home");
+        try {
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\Desktop\\Adopcion"+adopcion.getIdAdopcion()+".pdf"));
+            Image header = Image.getInstance("src/assets/certificado/header.png");
+            header.scaleToFit(650, 1000);
+            header.setAlignment(Chunk.ALIGN_CENTER);
+            
+            Image title = Image.getInstance("src/assets/certificado/titulo.png");
+            title.scaleToFit(650, 1000);
+            title.setAlignment(Chunk.ALIGN_CENTER);
+            
+            Image footer = Image.getInstance("src/assets/certificado/firmas.png");
+            footer.scaleToFit(650, 1000);
+            footer.setAlignment(Chunk.ALIGN_CENTER);
+            
+            documento.open();
+            documento.add(title);
+            documento.add(header);
+            documento.add(new Paragraph("\nDatos de adopción*******************************"));
+            documento.add(new Paragraph(dataAdopcion));
+            documento.add(new Paragraph("\nDatos del adoptante*******************************"));
+            documento.add(new Paragraph(dataAdoptante));
+            documento.add(new Paragraph("\nDatos de la mascota*******************************"));
+            documento.add(new Paragraph(dataMascota));
+            documento.add(new Paragraph("\n"));
+            documento.add(footer);
+            documento.close();
+            JOptionPane.showMessageDialog(null, "Certificado generado correctamente");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "catch1");
+        } catch (DocumentException ex) {
+            Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "catch2");
+        } catch (IOException ex) {
+            Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "catch3");
         }
     }
 }

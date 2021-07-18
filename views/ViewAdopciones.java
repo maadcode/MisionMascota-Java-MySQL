@@ -39,6 +39,7 @@ public class ViewAdopciones extends javax.swing.JPanel {
         txtCodigoAdopcion = new javax.swing.JTextField();
         txtFechaAdopcion = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
+        btnImprimirAdopcion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -201,7 +202,7 @@ public class ViewAdopciones extends javax.swing.JPanel {
         jLabel9.setText("Fecha de Adopción");
         jLabel9.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel9);
-        jLabel9.setBounds(390, 280, 156, 20);
+        jLabel9.setBounds(290, 270, 140, 20);
 
         txtCodigoAdopcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodigoAdopcion.setPreferredSize(new java.awt.Dimension(220, 20));
@@ -211,16 +212,28 @@ public class ViewAdopciones extends javax.swing.JPanel {
             }
         });
         add(txtCodigoAdopcion);
-        txtCodigoAdopcion.setBounds(190, 280, 180, 20);
+        txtCodigoAdopcion.setBounds(170, 270, 110, 20);
         add(txtFechaAdopcion);
-        txtFechaAdopcion.setBounds(550, 280, 180, 20);
+        txtFechaAdopcion.setBounds(430, 270, 130, 20);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(84, 56, 220));
         jLabel10.setText("Código de Adopción");
         jLabel10.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel10);
-        jLabel10.setBounds(20, 280, 156, 20);
+        jLabel10.setBounds(20, 270, 150, 20);
+
+        btnImprimirAdopcion.setBackground(new java.awt.Color(84, 56, 220));
+        btnImprimirAdopcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnImprimirAdopcion.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimirAdopcion.setText("Imprimir");
+        btnImprimirAdopcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirAdopcionActionPerformed(evt);
+            }
+        });
+        add(btnImprimirAdopcion);
+        btnImprimirAdopcion.setBounds(580, 270, 150, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAdopcionActionPerformed
@@ -259,6 +272,10 @@ public class ViewAdopciones extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarMascotaActionPerformed
 
+    private void btnImprimirAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirAdopcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImprimirAdopcionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarAdopcion;
@@ -267,6 +284,7 @@ public class ViewAdopciones extends javax.swing.JPanel {
     public javax.swing.JButton btnBuscarMascota;
     public javax.swing.JButton btnEditarAdopcion;
     public javax.swing.JButton btnEliminarAdopcion;
+    public javax.swing.JButton btnImprimirAdopcion;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

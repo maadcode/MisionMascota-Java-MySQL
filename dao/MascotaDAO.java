@@ -1,7 +1,6 @@
 
 package dao;
 
-import interfaces.ICRUD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,191 +9,192 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.MascotaModel;
+import dto.MascotaDTO;
 import services.BD;
 
-public class MascotaDAO implements ICRUD {
+public class MascotaDAO {
     
     private Connection dbConnection = null;
-    private String sql = null;
-    private Statement dbQ;
-    public MascotaModel mascotaModel;
 
     public MascotaDAO() {
-    }
-
-    public MascotaDAO(MascotaModel mascotaModel) {
-        this.mascotaModel = mascotaModel;
         this.dbConnection = new BD().getConnection();
-        try {
-            this.dbQ = this.dbConnection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
-    @Override
-    public void create() {
+    public void create(MascotaDTO mascota) {
         PreparedStatement ps;
         try {
-            sql = "INSERT INTO Mascotas(nombreMascota, raza, fechaNac, peso, idEstadoMascota, fechaIng, imagenMascota)"+
+            String sql = "INSERT INTO Mascotas(nombreMascota, raza, fechaNac, peso, idEstadoMascota, fechaIng, imagenMascota)"+
                 "VALUES(?, ?, ?, ?, ?, CURDATE(), ?)";
             ps = this.dbConnection.prepareStatement(sql);
             
-            ps.setString(1, this.mascotaModel.getNombre());
-            ps.setString(2, this.mascotaModel.getRaza());
-            ps.setString(3, this.mascotaModel.getFechaNacimiento());
-            ps.setFloat(4, this.mascotaModel.getPeso());
-            ps.setInt(5, this.mascotaModel.getEstadoMascota());
-            ps.setString(6, this.mascotaModel.getImageURL());
+            ps.setString(1, mascota.getNombre());
+            ps.setString(2, mascota.getRaza());
+            ps.setString(3, mascota.getFechaNacimiento());
+            ps.setFloat(4, mascota.getPeso());
+            ps.setInt(5, mascota.getEstadoMascota());
+            ps.setString(6, mascota.getImageURL());
             
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public ResultSet read() {
-        ResultSet rs = null;
-        try {
-            sql = "SELECT * FROM Mascotas";
-            rs = this.dbQ.executeQuery(sql);
-            return rs;
-        } catch (SQLException ex) {
-            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return rs;
-    }
-
-    @Override
-    public void update(String id) {
-        PreparedStatement ps;
-        try {
-            sql = "UPDATE Mascotas SET nombreMascota = ?, raza = ?, fechaNac = ?, peso = ?, idEstadoMascota = ?, imagenMascota = ? WHERE idMascota = "+id;
-            ps = this.dbConnection.prepareStatement(sql);
-            
-            ps.setString(1, this.mascotaModel.getNombre());
-            ps.setString(2, this.mascotaModel.getRaza());
-            ps.setString(3, this.mascotaModel.getFechaNacimiento());
-            ps.setFloat(4, this.mascotaModel.getPeso());
-            ps.setInt(5, this.mascotaModel.getEstadoMascota());
-            ps.setString(6, this.mascotaModel.getImageURL());
-            
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void delete(String id) {
-        PreparedStatement ps;
-        try {
-            sql = "DELETE FROM Mascotas WHERE idMascota = "+id;
-            ps = this.dbConnection.prepareStatement(sql);
-            ps.executeUpdate();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public ArrayList<MascotaModel> getListaMascotas() {
-        ArrayList<MascotaModel> listaMascotas = new ArrayList<>();
-        
+    public ArrayList<MascotaDTO> read() {
+        ArrayList<MascotaDTO> listaMascotas = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
         try {
-            ResultSet rs = read();
-            MascotaModel mascota;
+            /*
+                SELECT Mascotas.idMascota, Mascotas.nombreMascota, Mascotas.raza, EstadosMascota.estado FROM Mascotas
+                INNER JOIN EstadosMascota ON Mascotas.idEstadoMascota = EstadosMascota.idEstadoMascota;
+            */
+            String sql = "SELECT * FROM Mascotas";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
             
             while(rs.next()) {
-                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            rs.close();
+            st.close();
+            return listaMascotas;
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return listaMascotas;
     }
-    
-    public MascotaModel getMascota(String id) {
-        MascotaModel mascota = null;
+
+    public void update(MascotaDTO mascota) {
         PreparedStatement ps;
         try {
-            sql = "SELECT * FROM Mascotas WHERE idMascota = ?";
+            String sql = "UPDATE Mascotas SET nombreMascota = ?, raza = ?, fechaNac = ?, peso = ?, idEstadoMascota = ?, imagenMascota = ? WHERE idMascota = ?";
             ps = this.dbConnection.prepareStatement(sql);
-            ps.setInt(1, Integer.parseInt(id));
-            ResultSet rs = ps.executeQuery();
+            
+            ps.setString(1, mascota.getNombre());
+            ps.setString(2, mascota.getRaza());
+            ps.setString(3, mascota.getFechaNacimiento());
+            ps.setFloat(4, mascota.getPeso());
+            ps.setInt(5, mascota.getEstadoMascota());
+            ps.setString(6, mascota.getImageURL());
+            ps.setInt(7, mascota.getIdMascota());
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete(int id) {
+        PreparedStatement ps;
+        try {
+            String sql = "DELETE FROM Mascotas WHERE idMascota = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public MascotaDTO getMascota(int id) {
+        MascotaDTO mascota = null;
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String sql = "SELECT * FROM Mascotas WHERE idMascota = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
             if(rs.next()) {
-                mascota = new MascotaModel();
-                mascota.setIdMascota(rs.getInt("idMascota"));
-                mascota.setNombre(rs.getString("nombreMascota"));
-                mascota.setPeso(rs.getFloat("peso"));
-                mascota.setRaza(rs.getString("raza"));
-                mascota.setFechaNacimiento(rs.getString("fechaNac"));
-                mascota.setFechaIngreso(rs.getString("fechaIng"));
-                mascota.setEstadoMascota(rs.getInt("idEstadoMascota"));
-                mascota.setImageURL(rs.getString("imagenMascota"));
+                mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
             }
+            rs.close();
+            ps.close();
             return mascota;
         } catch (SQLException ex) {
-            Logger.getLogger(AdoptanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mascota;
     }
     
-    public ArrayList<MascotaModel> getListaMascotasRecientes() {
-        ArrayList<MascotaModel> listaMascotas = new ArrayList<>();
-        
+    public ArrayList<MascotaDTO> getListaMascotasRecientes() {
+        ArrayList<MascotaDTO> listaMascotas = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
         try {
-            sql = "SELECT * FROM Mascotas WHERE MONTH(fechaIng) = MONTH(CURRENT_DATE())";
-            ResultSet rs = this.dbQ.executeQuery(sql);
-            MascotaModel mascota;
-            
+            String sql = "SELECT * FROM Mascotas WHERE MONTH(fechaIng) = MONTH(CURRENT_DATE())";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
             while(rs.next()) {
-                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
+            rs.close();
+            st.close();
+            return listaMascotas;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         return listaMascotas;
     }
     
     public int getMascotasDisponibles() {
         int cantidad = 0;
-        
+        Statement st;
+        ResultSet rs;
         try {
-            sql = "SELECT COUNT(*) FROM Mascotas WHERE idEstadoMascota = 2";
-            ResultSet rs = this.dbQ.executeQuery(sql);
+            String sql = "SELECT COUNT(*) FROM Mascotas WHERE idEstadoMascota = 2";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
             if(rs.next()) {
                 cantidad = rs.getInt(1);
             }
+            rs.close();
+            st.close();
             return cantidad;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         return cantidad;
     }
     
-    public ArrayList<MascotaModel> getListaMascotasDisponibles() {
-        ArrayList<MascotaModel> listaMascotas = new ArrayList<>();
-        
+    public ArrayList<MascotaDTO> getListaMascotasDisponibles() {
+        ArrayList<MascotaDTO> listaMascotas = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
         try {
-            sql = "SELECT * FROM Mascotas WHERE idEstadoMascota = 2";
-            ResultSet rs = this.dbQ.executeQuery(sql);
-            MascotaModel mascota;
-            
+            String sql = "SELECT * FROM Mascotas WHERE idEstadoMascota = 2";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
             while(rs.next()) {
-                mascota = new MascotaModel(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         return listaMascotas;
+    }
+    
+    public void cambiarEstado(int idMascota, int idEstado) {
+        PreparedStatement ps;
+        try {
+            String sql = "UPDATE Mascotas SET idEstadoMascota = ? WHERE idMascota = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            
+            ps.setInt(1, idEstado);
+            ps.setInt(2, idMascota);
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

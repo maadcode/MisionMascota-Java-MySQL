@@ -1,7 +1,7 @@
 
 package controllers;
 
-import dao.AdopcionesDAO;
+import dao.AdopcionDAO;
 import dao.MascotaDAO;
 import java.awt.Color;
 import java.awt.Image;
@@ -9,9 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import models.AdopcionesModel;
-import models.MascotaModel;
+import dto.MascotaDTO;
 import views.Catalogo;
 import views.Menu;
 import views.ViewAdopciones;
@@ -55,7 +53,7 @@ public class CatalogoController implements ActionListener {
     }
 
     private void mostrarMascotaDisponible(int pos) {
-        ArrayList<MascotaModel> mascotasDisponibles = this.mascotaDAO.getListaMascotasDisponibles();
+        ArrayList<MascotaDTO> mascotasDisponibles = this.mascotaDAO.getListaMascotasDisponibles();
         this.catalogo.nombre.setText(mascotasDisponibles.get(pos).getNombre());
         if(mascotasDisponibles.get(pos).getImageURL() != null) {
             this.catalogo.lblImage.setIcon(resizeImage(mascotasDisponibles.get(pos).getImageURL()));
@@ -83,10 +81,10 @@ public class CatalogoController implements ActionListener {
 
     private void seleccionarMascota() {
         ViewAdopciones adopcionesView = new ViewAdopciones();
-        AdopcionesModel adopcionModel = new AdopcionesModel();
-        AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
+        AdopcionDAO adopcionDAO = new AdopcionDAO();
         AdopcionesController adopcionController = new AdopcionesController(adopcionDAO, adopcionesView, this.menu);
         adopcionesView.txtCodigoMascota.setText(this.mascotaDAO.getListaMascotasDisponibles().get(pos).getIdMascota()+"");
+        adopcionController.mostrarMascota(adopcionesView.txtCodigoMascota.getText());
         
         this.menu.btnCatalogo.setBackground(new Color(84,56,220));
         this.menu.btnAdopciones.setBackground(new Color(255,86,201));

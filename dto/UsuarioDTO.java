@@ -1,5 +1,5 @@
 
-package models;
+package dto;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.BD;
 
-public class UsuarioModel {
+public class UsuarioDTO {
     private int idUsuario;
     private String username;
     private String password;
 
-    public UsuarioModel() {
+    public UsuarioDTO() {
     }
 
-    public UsuarioModel(int idUsuario, String username, String password) {
+    public UsuarioDTO(int idUsuario, String username, String password) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.password = password;

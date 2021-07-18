@@ -1,17 +1,17 @@
 
-package models;
+package dto;
 
-public class AdopcionesModel {
+public class AdopcionDTO {
     
     private int idAdopcion;
     private int idMascota;
     private int idAdoptante;
     private String fechaAdop;
 
-    public AdopcionesModel() {
+    public AdopcionDTO() {
     }
 
-    public AdopcionesModel(int idAdopcion, int idMascota, int idAdoptante, String fechaAdop) {
+    public AdopcionDTO(int idAdopcion, int idMascota, int idAdoptante, String fechaAdop) {
         this.idAdopcion = idAdopcion;
         this.idMascota = idMascota;
         this.idAdoptante = idAdoptante;

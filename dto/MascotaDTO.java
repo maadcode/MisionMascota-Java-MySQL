@@ -1,7 +1,7 @@
 
-package models;
+package dto;
 
-public class MascotaModel {
+public class MascotaDTO {
     private int idMascota;
     private String nombre;
     private float peso;
@@ -11,10 +11,10 @@ public class MascotaModel {
     private int estadoMascota;
     private String imageURL;
 
-    public MascotaModel() {
+    public MascotaDTO() {
     }
     
-    public MascotaModel(int idMascota, String nombre, float peso, String raza, String fechaNacimiento, String fechaIngreso, int estadoMascota, String imageURL) {
+    public MascotaDTO(int idMascota, String nombre, float peso, String raza, String fechaNacimiento, String fechaIngreso, int estadoMascota, String imageURL) {
         this.idMascota = idMascota;
         this.nombre = nombre;
         this.peso = peso;

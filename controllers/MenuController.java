@@ -1,14 +1,11 @@
 
 package controllers;
 
-import dao.AdopcionesDAO;
+import dao.AdopcionDAO;
 import dao.AdoptanteDAO;
 import dao.MascotaDAO;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import models.AdopcionesModel;
-import models.AdoptanteModel;
-import models.MascotaModel;
 import views.Catalogo;
 import views.Dashboard;
 import views.Menu;
@@ -29,10 +26,8 @@ public class MenuController implements MouseListener {
         view.btnMascotas.addMouseListener((MouseListener) this);
         
         Dashboard dashboard = new Dashboard();
-        AdopcionesModel adopcionModel = new AdopcionesModel();
-        AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
-        MascotaModel mascotaModel = new MascotaModel();
-        MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+        AdopcionDAO adopcionDAO = new AdopcionDAO();
+        MascotaDAO mascotaDAO = new MascotaDAO();
         DashboardController dashboardController = new DashboardController(adopcionDAO, mascotaDAO, dashboard, this.view);
         
         this.view.setVisible(true);
@@ -42,34 +37,28 @@ public class MenuController implements MouseListener {
     public void mousePressed(MouseEvent e) {
         if(e.getSource().equals(this.view.btnAdoptantes)) {
             ViewAdoptantes adoptanteView = new ViewAdoptantes();
-            AdoptanteModel adoptanteModel = new AdoptanteModel();
-            AdoptanteDAO adoptanteDAO = new AdoptanteDAO(adoptanteModel);
+            AdoptanteDAO adoptanteDAO = new AdoptanteDAO();
             AdoptantesController adoptanteController = new AdoptantesController(adoptanteDAO, adoptanteView, this.view);
         }
         if(e.getSource().equals(this.view.btnAdopciones)) {
             ViewAdopciones adopcionesView = new ViewAdopciones();
-            AdopcionesModel adopcionModel = new AdopcionesModel();
-            AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
+            AdopcionDAO adopcionDAO = new AdopcionDAO();
             AdopcionesController adopcionController = new AdopcionesController(adopcionDAO, adopcionesView, this.view);
         }
         if(e.getSource().equals(this.view.btnCatalogo)) {
             Catalogo catalogo = new Catalogo();
-            MascotaModel mascotaModel = new MascotaModel();
-            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            MascotaDAO mascotaDAO = new MascotaDAO();
             CatalogoController catalogoController = new CatalogoController(mascotaDAO, catalogo, this.view);
         }
         if(e.getSource().equals(this.view.btnDashboard)) {
             Dashboard dashboard = new Dashboard();
-            AdopcionesModel adopcionModel = new AdopcionesModel();
-            AdopcionesDAO adopcionDAO = new AdopcionesDAO(adopcionModel);
-            MascotaModel mascotaModel = new MascotaModel();
-            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            AdopcionDAO adopcionDAO = new AdopcionDAO();
+            MascotaDAO mascotaDAO = new MascotaDAO();
             DashboardController dashboardController = new DashboardController(adopcionDAO, mascotaDAO, dashboard, this.view);
         }
         if(e.getSource().equals(this.view.btnMascotas)) {
             ViewMascotas mascotaView = new ViewMascotas();
-            MascotaModel mascotaModel = new MascotaModel();
-            MascotaDAO mascotaDAO = new MascotaDAO(mascotaModel);
+            MascotaDAO mascotaDAO = new MascotaDAO();
             MascotasController mascotaController = new MascotasController(mascotaDAO, mascotaView, this.view);
         }
     }

@@ -19,7 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import models.MascotaModel;
+import dto.MascotaDTO;
 import views.Menu;
 import views.ViewMascotas;
 
@@ -69,8 +69,7 @@ public class MascotasController implements ActionListener, KeyListener {
     }
     
     public void listarMascotas() {
-        ArrayList<MascotaModel> list;
-        list = this.mascotaDAO.getListaMascotas();
+        ArrayList<MascotaDTO> list = this.mascotaDAO.read();
         DefaultTableModel table = (DefaultTableModel) mascotaView.tblMascotas.getModel();
         // Clean table
         table.setRowCount(0);
@@ -86,22 +85,23 @@ public class MascotasController implements ActionListener, KeyListener {
     }
     
     private void agregarMascota() {
-        this.mascotaDAO.mascotaModel.setNombre(this.mascotaView.txtNombreMascota.getText());
-        this.mascotaDAO.mascotaModel.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
-        this.mascotaDAO.mascotaModel.setRaza(this.mascotaView.txtRaza.getText());
+        MascotaDTO mascota = new MascotaDTO();
+        mascota.setNombre(this.mascotaView.txtNombreMascota.getText());
+        mascota.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
+        mascota.setRaza(this.mascotaView.txtRaza.getText());
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        this.mascotaDAO.mascotaModel.setFechaNacimiento(dateFormat.format(mascotaView.txtFechaNac.getDate()));
+        mascota.setFechaNacimiento(dateFormat.format(mascotaView.txtFechaNac.getDate()));
         
-        this.mascotaDAO.mascotaModel.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
-        this.mascotaDAO.mascotaModel.setImageURL(imagePath);
+        mascota.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
+        mascota.setImageURL(imagePath);
         
-        this.mascotaDAO.create();
+        this.mascotaDAO.create(mascota);
         listarMascotas();
     }
 
     private void buscarMascota(String id) {
-        MascotaModel mascota = this.mascotaDAO.getMascota(id);
+        MascotaDTO mascota = this.mascotaDAO.getMascota(Integer.parseInt(id));
         if(mascota != null) {
             this.mascotaView.txtNombreMascota.setText(mascota.getNombre());
             this.mascotaView.txtPeso.setText(mascota.getPeso()+"");
@@ -129,25 +129,27 @@ public class MascotasController implements ActionListener, KeyListener {
     }
 
     private void editarMascota(String id) {
-        this.mascotaDAO.mascotaModel.setNombre(this.mascotaView.txtNombreMascota.getText());
-        this.mascotaDAO.mascotaModel.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
-        this.mascotaDAO.mascotaModel.setRaza(this.mascotaView.txtRaza.getText());
+        MascotaDTO mascota = new MascotaDTO();
+        mascota.setIdMascota(Integer.parseInt(id));
+        mascota.setNombre(this.mascotaView.txtNombreMascota.getText());
+        mascota.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
+        mascota.setRaza(this.mascotaView.txtRaza.getText());
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        this.mascotaDAO.mascotaModel.setFechaNacimiento(dateFormat.format(this.mascotaView.txtFechaNac.getDate()));
+        mascota.setFechaNacimiento(dateFormat.format(this.mascotaView.txtFechaNac.getDate()));
         
-        this.mascotaDAO.mascotaModel.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
+        mascota.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
         
         if(imagePath != null) {
-            this.mascotaDAO.mascotaModel.setImageURL(imagePath);
+            mascota.setImageURL(imagePath);
         }
         
-        this.mascotaDAO.update(id);
+        this.mascotaDAO.update(mascota);
         listarMascotas();
     }
 
     private void eliminarMascota(String id) {
-        this.mascotaDAO.delete(id);
+        this.mascotaDAO.delete(Integer.parseInt(id));
         listarMascotas();
     }
     
