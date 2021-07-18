@@ -9,7 +9,7 @@ public class BD {
     public Connection getConnection() {
         String URL = "jdbc:mysql://localhost:3306/Veterinaria";
         String USER = "root";
-        String PASSWORD = "Mysql2021$";
+        String PASSWORD = "";
         
         try {
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
