@@ -46,10 +46,6 @@ public class MascotaDAO {
         Statement st;
         ResultSet rs;
         try {
-            /*
-                SELECT Mascotas.idMascota, Mascotas.nombreMascota, Mascotas.raza, EstadosMascota.estado FROM Mascotas
-                INNER JOIN EstadosMascota ON Mascotas.idEstadoMascota = EstadosMascota.idEstadoMascota;
-            */
             String sql = "SELECT * FROM Mascotas";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);

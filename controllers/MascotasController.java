@@ -78,7 +78,13 @@ public class MascotasController implements ActionListener, KeyListener {
             row[0] = list.get(i).getIdMascota();
             row[1] = list.get(i).getNombre();
             row[2] = list.get(i).getRaza();
-            row[3] = list.get(i).getEstadoMascota();
+            if(list.get(i).getEstadoMascota() == 1) {
+                row[3] = "Nuevo";
+            } else if(list.get(i).getEstadoMascota() == 2) {
+                row[3] = "Disponible";
+            } else if(list.get(i).getEstadoMascota() == 3) {
+                row[3] = "Adoptado";
+            }
             
             table.addRow(row);
         }

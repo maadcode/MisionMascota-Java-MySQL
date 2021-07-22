@@ -31,7 +31,6 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         txtDNI = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtEdadAdoptante = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         cbxPermiso = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -45,6 +44,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txtNombreAdoptante = new javax.swing.JTextField();
         txtApellidoAdoptante = new javax.swing.JTextField();
+        txtEdadAdoptante = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -163,16 +163,6 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         jLabel11.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel11);
         jLabel11.setBounds(390, 180, 200, 20);
-
-        txtEdadAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEdadAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
-        txtEdadAdoptante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdadAdoptanteActionPerformed(evt);
-            }
-        });
-        add(txtEdadAdoptante);
-        txtEdadAdoptante.setBounds(510, 100, 220, 20);
 
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTelefono.setPreferredSize(new java.awt.Dimension(220, 20));
@@ -295,6 +285,16 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         });
         add(txtApellidoAdoptante);
         txtApellidoAdoptante.setBounds(510, 60, 220, 20);
+
+        txtEdadAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEdadAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
+        txtEdadAdoptante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadAdoptanteActionPerformed(evt);
+            }
+        });
+        add(txtEdadAdoptante);
+        txtEdadAdoptante.setBounds(510, 100, 220, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
@@ -312,10 +312,6 @@ public class ViewAdoptantes extends javax.swing.JPanel {
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDNIActionPerformed
-
-    private void txtEdadAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadAdoptanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadAdoptanteActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
@@ -344,6 +340,10 @@ public class ViewAdoptantes extends javax.swing.JPanel {
     private void txtApellidoAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoAdoptanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoAdoptanteActionPerformed
+
+    private void txtEdadAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadAdoptanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadAdoptanteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

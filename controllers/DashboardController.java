@@ -52,8 +52,8 @@ public class DashboardController {
         Object[] row = new Object[4];
         for(int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getIdAdopcion();
-            row[1] = list.get(i).getIdAdoptante();
-            row[2] = list.get(i).getIdMascota();
+            row[1] = list.get(i).getNombreAdoptante();
+            row[2] = list.get(i).getNombreMascota();
             row[3] = list.get(i).getFechaAdop();
             
             table.addRow(row);
@@ -70,7 +70,13 @@ public class DashboardController {
             row[0] = list.get(i).getIdMascota();
             row[1] = list.get(i).getNombre();
             row[2] = list.get(i).getFechaIngreso();
-            row[3] = list.get(i).getEstadoMascota();
+            if(list.get(i).getEstadoMascota() == 1) {
+                row[3] = "Nuevo";
+            } else if(list.get(i).getEstadoMascota() == 2) {
+                row[3] = "Disponible";
+            } else if(list.get(i).getEstadoMascota() == 3) {
+                row[3] = "Adoptado";
+            }
             
             table.addRow(row);
         }

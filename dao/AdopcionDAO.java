@@ -23,11 +23,6 @@ public class AdopcionDAO {
     public void create(AdopcionDTO adopcion) {
         PreparedStatement ps;
         try {
-            /*
-                SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fechaAdop FROM Adopciones
-                INNER JOIN Adoptantes ON Adopciones.idAdoptante = Adoptantes.idAdoptante
-                INNER JOIN Mascotas ON Adopciones.idMascota = Mascotas.idMascota
-            */
             String sql = "INSERT INTO Adopciones(idAdoptante, idMascota, fechaAdop)"+
                 "VALUES(?, ?, CURDATE())";
             ps = this.dbConnection.prepareStatement(sql);
@@ -47,11 +42,13 @@ public class AdopcionDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM Adopciones";
+            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fechaAdop FROM Adopciones " +
+                        "INNER JOIN Adoptantes ON Adopciones.idAdoptante = Adoptantes.idAdoptante " +
+                        "INNER JOIN Mascotas ON Adopciones.idMascota = Mascotas.idMascota";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getInt("idMascota"), rs.getInt("idAdoptante"), rs.getString("fechaAdop"));
+                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fechaAdop"));
                 listaAdopciones.add(adopcion);
             }
             rs.close();
@@ -121,11 +118,14 @@ public class AdopcionDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM Adopciones WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
+            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fechaAdop FROM Adopciones " +
+                        "INNER JOIN Adoptantes ON Adopciones.idAdoptante = Adoptantes.idAdoptante " +
+                        "INNER JOIN Mascotas ON Adopciones.idMascota = Mascotas.idMascota " +
+                        "WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getInt("idAdoptante"), rs.getInt("idMascota"), rs.getString("fechaAdop"));
+                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fechaAdop"));
                 listaAdopciones.add(adopcion);
             }
             rs.close();

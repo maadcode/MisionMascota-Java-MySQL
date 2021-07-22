@@ -141,8 +141,8 @@ public class AdopcionesController implements ActionListener, KeyListener {
         Object[] row = new Object[4];
         for(int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getIdAdopcion();
-            row[1] = list.get(i).getIdAdoptante();
-            row[2] = list.get(i).getIdMascota();
+            row[1] = list.get(i).getNombreAdoptante();
+            row[2] = list.get(i).getNombreMascota();
             row[3] = list.get(i).getFechaAdop();
             
             table.addRow(row);

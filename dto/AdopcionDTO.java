@@ -5,10 +5,19 @@ public class AdopcionDTO {
     
     private int idAdopcion;
     private int idMascota;
+    private String nombreMascota;
     private int idAdoptante;
+    private String nombreAdoptante;
     private String fechaAdop;
 
     public AdopcionDTO() {
+    }
+
+    public AdopcionDTO(int idAdopcion, String nombreMascota, String nombreAdoptante, String fechaAdop) {
+        this.idAdopcion = idAdopcion;
+        this.nombreMascota = nombreMascota;
+        this.nombreAdoptante = nombreAdoptante;
+        this.fechaAdop = fechaAdop;
     }
 
     public AdopcionDTO(int idAdopcion, int idMascota, int idAdoptante, String fechaAdop) {
@@ -49,5 +58,20 @@ public class AdopcionDTO {
     public void setFechaAdop(String fechaAdop) {
         this.fechaAdop = fechaAdop;
     }
-    
+
+    public String getNombreMascota() {
+        return nombreMascota;
+    }
+
+    public void setNombreMascota(String nombreMascota) {
+        this.nombreMascota = nombreMascota;
+    }
+
+    public String getNombreAdoptante() {
+        return nombreAdoptante;
+    }
+
+    public void setNombreAdoptante(String nombreAdoptante) {
+        this.nombreAdoptante = nombreAdoptante;
+    }
 }
