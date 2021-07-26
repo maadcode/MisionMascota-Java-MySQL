@@ -1,6 +1,6 @@
 # Mision Mascota Software
 
-Mision Mascota es una aplicación de escritorio para la gestión de adopciones de mascotas. Este proyecto fue creado como proyecto del curso de Programación Orientado a Objetos de mi Universidad con el fin de ayudar a los albergues de perros.
+Mision Mascota es una aplicación de escritorio para la gestión de adopciones de mascotas. Este sistema fue creado como proyecto del curso de Programación Orientado a Objetos de mi Universidad con el fin de ayudar a los albergues de perros.
 
 Este es proyecto es **Open Source** por lo que puedes modificar y adaptar según lo necesites. Así mismo, si crees que se pueda mejorar algo, puedes enviar un pull request con los nuevos cambios de tu idea.
 
