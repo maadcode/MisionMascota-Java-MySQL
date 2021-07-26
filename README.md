@@ -12,9 +12,9 @@ Este es proyecto es **Open Source** por lo que puedes modificar y adaptar según
 
 ## Características
 
-* Patron MVC
-* Patron DAO
-* Patron DTO
+* Uso de patrón MVC
+* Uso de patrón DAO
+* Uso de DTO
 * Conexión a base de datos
 * Lectura y escritura de ficheros
 
