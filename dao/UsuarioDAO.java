@@ -1,10 +1,13 @@
 
 package dao;
 
+import dto.UsuarioDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.BD;
@@ -15,6 +18,103 @@ public class UsuarioDAO {
 
     public UsuarioDAO() {
         this.dbConnection = new BD().getConnection();
+    }
+    
+    public void create(UsuarioDTO usuario) {
+        PreparedStatement ps;
+        try {
+            String sql = "INSERT INTO Usuarios(usuario, clave, rol, nombres, apellidos, DNI)"+
+                "VALUES(?, ?, ?, ?, ?, ?)";
+            ps = this.dbConnection.prepareStatement(sql);
+            
+            ps.setString(1, usuario.getUsername());
+            ps.setString(2, usuario.getPassword());
+            ps.setString(3, usuario.getRol());
+            ps.setString(4, usuario.getNombres());
+            ps.setString(5, usuario.getApellidos());
+            ps.setString(6, usuario.getDNI());
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ArrayList<UsuarioDTO> read() {
+        ArrayList<UsuarioDTO> listaUsuarios = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
+        try {
+            String sql = "SELECT * FROM Usuarios";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()) {
+                UsuarioDTO usuario = new UsuarioDTO(rs.getString("usuario"), rs.getString("clave"), rs.getString("rol"), rs.getString("nombres"), rs.getString("apellidos"), rs.getString("DNI"));
+                listaUsuarios.add(usuario);
+            }
+            rs.close();
+            st.close();
+            return listaUsuarios;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaUsuarios;
+    }
+    
+    public void update(UsuarioDTO adoptante) {
+        PreparedStatement ps;
+        try {
+            String sql = "UPDATE Usuarios SET clave = ?, rol = ?, nombres = ?, apellidos = ?, DNI = ? WHERE usuario = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            
+            ps.setString(1, adoptante.getPassword());
+            ps.setString(2, adoptante.getRol());
+            ps.setString(3, adoptante.getNombres());
+            ps.setString(4, adoptante.getApellidos());
+            ps.setString(5, adoptante.getDNI());
+            ps.setString(6, adoptante.getUsername());
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete(String username) {
+        PreparedStatement ps;
+        try {
+            String sql = "DELETE FROM Usuarios WHERE usuario = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public UsuarioDTO getUsuario(String username) {
+        UsuarioDTO usuario = null;
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String sql = "SELECT * FROM Usuarios WHERE usuario = ?";
+            ps = this.dbConnection.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                usuario = new UsuarioDTO(rs.getString("usuario"), rs.getString("clave"), rs.getString("rol"), rs.getString("nombres"), rs.getString("apellidos"), rs.getString("DNI"));
+            }
+            rs.close();
+            ps.close();
+            return usuario;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
     }
     
     public boolean checkLogin(String user, String password) {

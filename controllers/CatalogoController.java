@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import dto.MascotaDTO;
 import views.Catalogo;
-import views.Menu;
+import views.MenuAsistente;
 import views.ViewAdopciones;
 
 public class CatalogoController implements ActionListener {
     private MascotaDAO mascotaDAO;
     private Catalogo catalogo;
-    private Menu menu;
+    private MenuAsistente menu;
     String imagePath = null;
     int pos = 0;
 
-    public CatalogoController(MascotaDAO mascotaDAO, Catalogo catalogo, Menu menu) {
+    public CatalogoController(MascotaDAO mascotaDAO, Catalogo catalogo, MenuAsistente menu) {
         this.mascotaDAO = mascotaDAO;
         this.catalogo = catalogo;
         this.menu = menu;

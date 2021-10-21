@@ -1,7 +1,7 @@
 
 package main;
 
-import controllers.UsuariosController;
+import controllers.LoginController;
 import dao.UsuarioDAO;
 import views.Login;
 
@@ -10,6 +10,6 @@ public class App {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Login login = new Login();
         
-        UsuariosController usuarioController = new UsuariosController(usuarioDAO, login);
+        LoginController usuarioController = new LoginController(usuarioDAO, login);
     }
 }

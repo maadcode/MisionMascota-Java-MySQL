@@ -44,7 +44,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txtNombreAdoptante = new javax.swing.JTextField();
         txtApellidoAdoptante = new javax.swing.JTextField();
-        txtEdadAdoptante = new javax.swing.JTextField();
+        txtFechaNac = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -152,10 +152,10 @@ public class ViewAdoptantes extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(84, 56, 220));
-        jLabel10.setText("Edad");
+        jLabel10.setText("Fecha de nacimiento");
         jLabel10.setPreferredSize(new java.awt.Dimension(120, 20));
         add(jLabel10);
-        jLabel10.setBounds(390, 100, 120, 20);
+        jLabel10.setBounds(390, 100, 140, 20);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(84, 56, 220));
@@ -285,16 +285,8 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         });
         add(txtApellidoAdoptante);
         txtApellidoAdoptante.setBounds(510, 60, 220, 20);
-
-        txtEdadAdoptante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEdadAdoptante.setPreferredSize(new java.awt.Dimension(220, 20));
-        txtEdadAdoptante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdadAdoptanteActionPerformed(evt);
-            }
-        });
-        add(txtEdadAdoptante);
-        txtEdadAdoptante.setBounds(510, 100, 220, 20);
+        add(txtFechaNac);
+        txtFechaNac.setBounds(540, 100, 190, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
@@ -341,10 +333,6 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoAdoptanteActionPerformed
 
-    private void txtEdadAdoptanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadAdoptanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadAdoptanteActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarAdoptante;
@@ -370,7 +358,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDNI;
     public javax.swing.JTextField txtDireccion;
-    public javax.swing.JTextField txtEdadAdoptante;
+    public com.toedter.calendar.JDateChooser txtFechaNac;
     public javax.swing.JTextField txtNombreAdoptante;
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

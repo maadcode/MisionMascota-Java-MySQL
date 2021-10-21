@@ -28,15 +28,15 @@ import javax.swing.table.DefaultTableModel;
 import dto.AdopcionDTO;
 import dto.AdoptanteDTO;
 import dto.MascotaDTO;
-import views.Menu;
+import views.MenuAsistente;
 import views.ViewAdopciones;
 
 public class AdopcionesController implements ActionListener, KeyListener {
     private AdopcionDAO adopcionesDAO;
     private ViewAdopciones adopcionesView;
-    private Menu menu;
+    private MenuAsistente menu;
 
-    public AdopcionesController(AdopcionDAO adopcionesDAO, ViewAdopciones adopcionesView, Menu menu) {
+    public AdopcionesController(AdopcionDAO adopcionesDAO, ViewAdopciones adopcionesView, MenuAsistente menu) {
         this.adopcionesDAO = adopcionesDAO;
         this.adopcionesView = adopcionesView;
         this.menu = menu;
@@ -157,7 +157,7 @@ public class AdopcionesController implements ActionListener, KeyListener {
         result = "Nombre : " + adoptante.getNombre() +
                  "\nApellido : " + adoptante.getApellido()+
                  "\nDNI : " + adoptante.getDNI()+
-                 "\nEdad : " + adoptante.getEdad()+
+                 "\nFecha Nac. : " + adoptante.getFechaNacimiento()+
                  "\nDirección : " + adoptante.getDireccion();
         this.adopcionesView.txtAdoptanteResult.setText(result);
     }

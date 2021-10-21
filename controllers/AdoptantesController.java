@@ -10,15 +10,20 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import dto.AdoptanteDTO;
-import views.Menu;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import views.MenuAsistente;
 import views.ViewAdoptantes;
 
 public class AdoptantesController implements ActionListener, KeyListener {
     private AdoptanteDAO adoptanteDAO;
     private ViewAdoptantes adoptanteView;
-    private Menu menu;
+    private MenuAsistente menu;
 
-    public AdoptantesController(AdoptanteDAO adoptanteDAO, ViewAdoptantes adoptanteView, Menu menu) {
+    public AdoptantesController(AdoptanteDAO adoptanteDAO, ViewAdoptantes adoptanteView, MenuAsistente menu) {
         this.adoptanteDAO = adoptanteDAO;
         this.adoptanteView = adoptanteView;
         this.menu = menu;
@@ -80,7 +85,10 @@ public class AdoptantesController implements ActionListener, KeyListener {
         adoptante.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
         adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
         adoptante.setDNI(this.adoptanteView.txtDNI.getText());
-        adoptante.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        adoptante.setFechaNacimiento(dateFormat.format(this.adoptanteView.txtFechaNac.getDate()));
+        
         adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
         adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
         adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());
@@ -105,7 +113,15 @@ public class AdoptantesController implements ActionListener, KeyListener {
             this.adoptanteView.txtNombreAdoptante.setText(adoptante.getNombre());
             this.adoptanteView.txtApellidoAdoptante.setText(adoptante.getApellido());
             this.adoptanteView.txtDNI.setText(adoptante.getDNI());
-            this.adoptanteView.txtEdadAdoptante.setText(adoptante.getEdad()+"");
+            
+            Date fecha;
+            try {
+                fecha = new SimpleDateFormat("yyyy-MM-dd").parse(adoptante.getFechaNacimiento());
+                this.adoptanteView.txtFechaNac.setDate(fecha);        
+            } catch (ParseException ex) {
+                Logger.getLogger(AdoptantesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             this.adoptanteView.txtCorreo.setText(adoptante.getCorreo());
             this.adoptanteView.txtDireccion.setText(adoptante.getDireccion());
             this.adoptanteView.txtTelefono.setText(adoptante.getTelefono());
@@ -130,7 +146,10 @@ public class AdoptantesController implements ActionListener, KeyListener {
         adoptante.setNombre(this.adoptanteView.txtNombreAdoptante.getText());
         adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
         adoptante.setDNI(this.adoptanteView.txtDNI.getText());
-        adoptante.setEdad(Integer.parseInt(this.adoptanteView.txtEdadAdoptante.getText()));
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        adoptante.setFechaNacimiento(dateFormat.format(this.adoptanteView.txtFechaNac.getDate()));
+        
         adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
         adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
         adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());

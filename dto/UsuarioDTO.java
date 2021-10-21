@@ -1,36 +1,54 @@
 
 package dto;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import services.BD;
-
 public class UsuarioDTO {
-    private int idUsuario;
     private String username;
     private String password;
+    private String rol;
+    private String nombres;
+    private String apellidos;
+    private String DNI;
 
-    public UsuarioDTO() {
-    }
-
-    public UsuarioDTO(int idUsuario, String username, String password) {
-        this.idUsuario = idUsuario;
+    public UsuarioDTO(String username, String password, String rol, String nombres, String apellidos, String DNI) {
         this.username = username;
         this.password = password;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public UsuarioDTO() {
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public String getRol() {
+        return rol;
     }
 
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+    
     public String getUsername() {
         return username;
     }

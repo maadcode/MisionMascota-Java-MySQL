@@ -8,15 +8,15 @@ import javax.swing.table.DefaultTableModel;
 import dto.AdopcionDTO;
 import dto.MascotaDTO;
 import views.Dashboard;
-import views.Menu;
+import views.MenuAsistente;
 
 public class DashboardController {
     private AdopcionDAO adopcionDAO;
     private MascotaDAO mascotasDAO;
     private Dashboard dashboard;
-    private Menu menu;
+    private MenuAsistente menu;
 
-    public DashboardController(AdopcionDAO adopcionDAO, MascotaDAO mascotasDAO, Dashboard dashboard, Menu menu) {
+    public DashboardController(AdopcionDAO adopcionDAO, MascotaDAO mascotasDAO, Dashboard dashboard, MenuAsistente menu) {
         this.adopcionDAO = adopcionDAO;
         this.mascotasDAO = mascotasDAO;
         this.dashboard = dashboard;

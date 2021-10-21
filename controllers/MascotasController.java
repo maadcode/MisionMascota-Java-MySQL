@@ -20,16 +20,16 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import dto.MascotaDTO;
-import views.Menu;
+import views.MenuAsistente;
 import views.ViewMascotas;
 
 public class MascotasController implements ActionListener, KeyListener {
     private MascotaDAO mascotaDAO;
     private ViewMascotas mascotaView;
-    private Menu menu;
+    private MenuAsistente menu;
     String imagePath = null;
 
-    public MascotasController(MascotaDAO mascotaDAO, ViewMascotas mascotaView, Menu menu) {
+    public MascotasController(MascotaDAO mascotaDAO, ViewMascotas mascotaView, MenuAsistente menu) {
         this.mascotaDAO = mascotaDAO;
         this.mascotaView = mascotaView;
         this.menu = menu;

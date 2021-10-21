@@ -8,22 +8,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import views.Catalogo;
 import views.Dashboard;
-import views.Menu;
+import views.MenuAsistente;
 import views.ViewAdopciones;
 import views.ViewAdoptantes;
 import views.ViewMascotas;
 
-public class MenuController implements MouseListener {
-    private Menu view;
+public class MenuAsistenteController implements MouseListener {
+    private MenuAsistente view;
 
-    public MenuController() {
-        this.view = new Menu();
+    public MenuAsistenteController() {
+        this.view = new MenuAsistente();
         
-        view.btnAdoptantes.addMouseListener((MouseListener) this);
-        view.btnAdopciones.addMouseListener((MouseListener) this);
-        view.btnCatalogo.addMouseListener((MouseListener) this);
-        view.btnDashboard.addMouseListener((MouseListener) this);
-        view.btnMascotas.addMouseListener((MouseListener) this);
+        this.view.btnAdoptantes.addMouseListener(this);
+        this.view.btnAdopciones.addMouseListener(this);
+        this.view.btnCatalogo.addMouseListener(this);
+        this.view.btnDashboard.addMouseListener(this);
+        this.view.btnMascotas.addMouseListener(this);
         
         Dashboard dashboard = new Dashboard();
         AdopcionDAO adopcionDAO = new AdopcionDAO();

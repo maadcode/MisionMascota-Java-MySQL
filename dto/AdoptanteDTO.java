@@ -6,7 +6,7 @@ public class AdoptanteDTO {
     private String nombre;
     private String apellido;
     private String DNI;
-    private int edad;
+    private String fechaNacimiento;
     private String telefono;
     private String direccion;
     private String correo;
@@ -16,12 +16,12 @@ public class AdoptanteDTO {
     public AdoptanteDTO() {
     }
 
-    public AdoptanteDTO(int idAdoptante, String nombre, String apellido, String DNI, int edad, String telefono, String direccion, String correo, String propietario, String permiso) {
+    public AdoptanteDTO(int idAdoptante, String nombre, String apellido, String DNI, String fechaNacimiento, String telefono, String direccion, String correo, String propietario, String permiso) {
         this.idAdoptante = idAdoptante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.DNI = DNI;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
@@ -61,12 +61,12 @@ public class AdoptanteDTO {
         this.DNI = DNI;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getTelefono() {

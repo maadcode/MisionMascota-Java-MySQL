@@ -3,18 +3,17 @@ package controllers;
 
 import dao.UsuarioDAO;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import views.Login;
 
-public class UsuariosController implements ActionListener {
+public class LoginController implements ActionListener {
     private UsuarioDAO usuarioDAO;
     private Login login;
 
-    public UsuariosController(UsuarioDAO usuarioDAO, Login login) {
+    public LoginController(UsuarioDAO usuarioDAO, Login login) {
         this.usuarioDAO = usuarioDAO;
         this.login = login;
         this.login.setResizable(false);
@@ -44,7 +43,7 @@ public class UsuariosController implements ActionListener {
             if(!user.equals("") && !password.equals("")) {
                 if(this.usuarioDAO.checkLogin(user, password)) {
                     this.login.dispose();
-                    MenuController menuController = new MenuController();
+                    MenuAsistenteController menuController = new MenuAsistenteController();
                 } else {
                     this.login.lblErrorPassword.setText("Usuario o contraseña incorrecto.");
                 }

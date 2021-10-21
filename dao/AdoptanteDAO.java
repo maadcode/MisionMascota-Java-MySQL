@@ -30,7 +30,7 @@ public class AdoptanteDAO {
             ps.setString(1, adoptante.getNombre());
             ps.setString(2, adoptante.getApellido());
             ps.setString(3, adoptante.getDNI());
-            ps.setInt(4, adoptante.getEdad());
+            ps.setString(4, adoptante.getFechaNacimiento());
             ps.setString(5, adoptante.getTelefono());
             ps.setString(6, adoptante.getDireccion());
             ps.setString(7, adoptante.getCorreo());
@@ -54,7 +54,7 @@ public class AdoptanteDAO {
             rs = st.executeQuery(sql);
             
             while(rs.next()) {
-                AdoptanteDTO adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getInt("edad"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
+                AdoptanteDTO adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getString("fechaNac"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
                 listaAdoptantes.add(adoptante);
             }
             rs.close();
@@ -75,7 +75,7 @@ public class AdoptanteDAO {
             ps.setString(1, adoptante.getNombre());
             ps.setString(2, adoptante.getApellido());
             ps.setString(3, adoptante.getDNI());
-            ps.setInt(4, adoptante.getEdad());
+            ps.setString(4, adoptante.getFechaNacimiento());
             ps.setString(5, adoptante.getTelefono());
             ps.setString(6, adoptante.getDireccion());
             ps.setString(7, adoptante.getCorreo());
@@ -113,7 +113,7 @@ public class AdoptanteDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next()) {
-                adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getInt("edad"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
+                adoptante = new AdoptanteDTO(rs.getInt("idAdoptante"), rs.getString("nombreAdoptante"), rs.getString("apellidoAdoptante"), rs.getString("DNI"), rs.getString("fechaNac"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("correo"), rs.getString("propietarioCasa"), rs.getString("permisoDepa"));
             }
             rs.close();
             ps.close();
