@@ -2,14 +2,13 @@
 package controllers;
 
 import dao.AdopcionDAO;
-import dao.AdoptanteDAO;
 import dao.MascotaDAO;
+import dao.UsuarioDAO;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import views.Dashboard;
 import views.MenuAdministrador;
-import views.ViewAdoptantes;
 import views.ViewReportes;
+import views.ViewUsuarios;
 
 public class MenuAdministradorController implements MouseListener {
     private MenuAdministrador view;
@@ -17,29 +16,29 @@ public class MenuAdministradorController implements MouseListener {
     public MenuAdministradorController() {
         this.view = new MenuAdministrador();
         
-        this.view.btnAsistentes.addMouseListener(this);
+        this.view.btnUsuarios.addMouseListener(this);
         this.view.btnReportes.addMouseListener(this);
         
-        Dashboard dashboard = new Dashboard();
+        ViewReportes reportesView = new ViewReportes();
         AdopcionDAO adopcionDAO = new AdopcionDAO();
         MascotaDAO mascotaDAO = new MascotaDAO();
-        ReportesController reportesController = new ReportesController(adopcionDAO, mascotaDAO, dashboard, this.view);
+        ReportesController reportesController = new ReportesController(adopcionDAO, mascotaDAO, reportesView, this.view);
         
         this.view.setVisible(true);
     }
     
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getSource().equals(this.view.btnAsistentes)) {
-            ViewAdoptantes adoptanteView = new ViewAdoptantes();
-            AdoptanteDAO adoptanteDAO = new AdoptanteDAO();
-            AdoptantesController adoptanteController = new AdoptantesController(adoptanteDAO, adoptanteView, this.view);
+        if(e.getSource().equals(this.view.btnUsuarios)) {
+            ViewUsuarios usuariosView = new ViewUsuarios();
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            UsuariosController usuarioController = new UsuariosController(usuarioDAO, usuariosView, this.view);
         }
         if(e.getSource().equals(this.view.btnReportes)) {
             ViewReportes viewReportes = new ViewReportes();
-            AdopcionDAO reportesDAO = new AdopcionDAO();
+            AdopcionDAO adopcionDAO = new AdopcionDAO();
             MascotaDAO mascotaDAO = new MascotaDAO();
-            DashboardController dashboardController = new DashboardController(adopcionDAO, mascotaDAO, dashboard, this.view);
+            ReportesController reportesController = new ReportesController(adopcionDAO, mascotaDAO, viewReportes, this.view);
         }
     }
     

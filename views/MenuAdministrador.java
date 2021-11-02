@@ -33,7 +33,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         btnReportes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnAsistentes = new javax.swing.JPanel();
+        btnUsuarios = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
@@ -107,13 +107,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         sidePanel.add(btnReportes);
         btnReportes.setBounds(0, 130, 320, 50);
 
-        btnAsistentes.setBackground(new java.awt.Color(84, 56, 220));
-        btnAsistentes.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnUsuarios.setBackground(new java.awt.Color(84, 56, 220));
+        btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAsistentesMouseClicked(evt);
+                btnUsuariosMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAsistentesMousePressed(evt);
+                btnUsuariosMousePressed(evt);
             }
         });
 
@@ -122,30 +122,30 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Asistentes");
+        jLabel4.setText("Usuarios");
 
-        javax.swing.GroupLayout btnAsistentesLayout = new javax.swing.GroupLayout(btnAsistentes);
-        btnAsistentes.setLayout(btnAsistentesLayout);
-        btnAsistentesLayout.setHorizontalGroup(
-            btnAsistentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAsistentesLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnUsuariosLayout = new javax.swing.GroupLayout(btnUsuarios);
+        btnUsuarios.setLayout(btnUsuariosLayout);
+        btnUsuariosLayout.setHorizontalGroup(
+            btnUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        btnAsistentesLayout.setVerticalGroup(
-            btnAsistentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnUsuariosLayout.setVerticalGroup(
+            btnUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAsistentesLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        sidePanel.add(btnAsistentes);
-        btnAsistentes.setBounds(0, 180, 320, 50);
+        sidePanel.add(btnUsuarios);
+        btnUsuarios.setBounds(0, 180, 320, 50);
 
         btnSalir.setBackground(new java.awt.Color(84, 56, 220));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,20 +257,20 @@ public class MenuAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAsistentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsistentesMouseClicked
+    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAsistentesMouseClicked
+    }//GEN-LAST:event_btnUsuariosMouseClicked
 
-    private void btnAsistentesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsistentesMousePressed
+    private void btnUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMousePressed
         // TODO add your handling code here:
         resetColor(btnReportes);
-        setColor(btnAsistentes);
-    }//GEN-LAST:event_btnAsistentesMousePressed
+        setColor(btnUsuarios);
+    }//GEN-LAST:event_btnUsuariosMousePressed
 
     private void btnReportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMousePressed
         // TODO add your handling code here:
         setColor(btnReportes);
-        resetColor(btnAsistentes);
+        resetColor(btnUsuarios);
     }//GEN-LAST:event_btnReportesMousePressed
 
     private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
@@ -292,9 +292,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgPanel;
-    public javax.swing.JPanel btnAsistentes;
     public javax.swing.JPanel btnReportes;
     public javax.swing.JPanel btnSalir;
+    public javax.swing.JPanel btnUsuarios;
     public javax.swing.JPanel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;

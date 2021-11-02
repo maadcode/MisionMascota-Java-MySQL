@@ -1,12 +1,9 @@
 
 package controllers;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.lowagie.text.BadElementException;
 import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfWriter;
 import dao.AdopcionDAO;
 import dao.AdoptanteDAO;
 import dao.MascotaDAO;
@@ -14,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import dto.AdopcionDTO;
 import dto.AdoptanteDTO;
 import dto.MascotaDTO;
+import services.PDFFile;
 import views.MenuAsistente;
 import views.ViewAdopciones;
 
@@ -98,6 +94,7 @@ public class AdopcionesController implements ActionListener, KeyListener {
     private void buscarAdopcion(String id) {
         AdopcionDTO adopcion = this.adopcionesDAO.getAdopcion(Integer.parseInt(id));
         if(adopcion != null) {
+            this.adopcionesView.txtCodigoAdopcion.setText(adopcion.getIdAdopcion()+"");
             this.adopcionesView.txtCodigoAdoptante.setText(adopcion.getIdAdoptante()+"");
             mostrarAdoptante(adopcion.getIdAdoptante()+"");
             this.adopcionesView.txtCodigoMascota.setText(adopcion.getIdMascota()+"");
@@ -201,57 +198,40 @@ public class AdopcionesController implements ActionListener, KeyListener {
         MascotaDAO mascotaDAO = new MascotaDAO();
         MascotaDTO mascota = mascotaDAO.getMascota(adopcion.getIdMascota());
         
-        String dataAdopcion = "\nCódigo de adopción : " + adopcion.getIdAdopcion()+
+        String dataAdopcion = "\nDatos de adopción*******************************" +
+                                "\nCódigo de adopción : " + adopcion.getIdAdopcion()+
                                 "\nFecha de adopción : " + adopcion.getFechaAdop();
         
-        String dataAdoptante = "\nNombre completo : " + adoptante.getNombre() + " " + adoptante.getApellido() +
+        String dataAdoptante = "\nDatos del adoptante*******************************" +
+                                "\nNombre completo : " + adoptante.getNombre() + " " + adoptante.getApellido() +
                                 "\nDNI : " + adoptante.getDNI() +
                                 "\nDirección : " + adoptante.getDireccion()+
                                 "\nTelefono : " + adoptante.getTelefono()+
                                 "\nCorreo : " + adoptante.getCorreo();
         
-        String dataMascota = "\nNombre : " + mascota.getNombre() +
+        String dataMascota = "\nDatos de la mascota*******************************" +
+                                "\nNombre : " + mascota.getNombre() +
                                 "\nRaza : " + mascota.getRaza()+
-                                "\nFecha de nacimiento : " + mascota.getFechaNacimiento();
+                                "\nFecha de nacimiento : " + mascota.getFechaNacimiento() + "\n";
         
-        Document documento = new Document();
-        String ruta = System.getProperty("user.home");
+        PDFFile pdf = new PDFFile();
+        Image header;
+        Image title;
+        Image footer;
         try {
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "\\Desktop\\Adopcion"+adopcion.getIdAdopcion()+".pdf"));
-            Image header = Image.getInstance("src/assets/certificado/header.png");
-            header.scaleToFit(650, 1000);
-            header.setAlignment(Chunk.ALIGN_CENTER);
-            
-            Image title = Image.getInstance("src/assets/certificado/titulo.png");
-            title.scaleToFit(650, 1000);
-            title.setAlignment(Chunk.ALIGN_CENTER);
-            
-            Image footer = Image.getInstance("src/assets/certificado/firmas.png");
-            footer.scaleToFit(650, 1000);
-            footer.setAlignment(Chunk.ALIGN_CENTER);
-            
-            documento.open();
-            documento.add(title);
-            documento.add(header);
-            documento.add(new Paragraph("\nDatos de adopción*******************************"));
-            documento.add(new Paragraph(dataAdopcion));
-            documento.add(new Paragraph("\nDatos del adoptante*******************************"));
-            documento.add(new Paragraph(dataAdoptante));
-            documento.add(new Paragraph("\nDatos de la mascota*******************************"));
-            documento.add(new Paragraph(dataMascota));
-            documento.add(new Paragraph("\n"));
-            documento.add(footer);
-            documento.close();
-            JOptionPane.showMessageDialog(null, "Certificado generado correctamente");
-        } catch (FileNotFoundException ex) {
+            header = Image.getInstance("src/assets/certificado/header.png");
+            title = Image.getInstance("src/assets/certificado/titulo.png");
+            footer = Image.getInstance("src/assets/certificado/firmas.png");
+            pdf.setHeader(header);
+            pdf.setTitle(title);
+            pdf.setContent(new Paragraph(dataAdopcion + dataAdoptante + dataMascota));
+            pdf.setFooter(footer);
+            pdf.generate("Adopcion"+adopcion.getIdAdopcion());
+        } catch (BadElementException ex) {
             Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "catch1");
-        } catch (DocumentException ex) {
-            Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "catch2");
         } catch (IOException ex) {
             Logger.getLogger(AdopcionesController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "catch3");
         }
+        
     }
 }

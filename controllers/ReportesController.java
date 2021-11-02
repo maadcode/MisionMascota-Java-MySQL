@@ -1,6 +1,9 @@
 
 package controllers;
 
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Image;
+import com.lowagie.text.Paragraph;
 import dao.AdopcionDAO;
 import dao.MascotaDAO;
 import java.util.ArrayList;
@@ -9,7 +12,12 @@ import dto.AdopcionDTO;
 import dto.MascotaDTO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import services.PDFFile;
 import views.MenuAdministrador;
 import views.ViewReportes;
 
@@ -40,11 +48,9 @@ public class ReportesController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(reportesView.btnBuscarAdopciones)) {
-            
-            SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String fechaInicio = dateFormat.format(reportesView.txtFechaInicio.getDate());
             String fechaFin = dateFormat.format(reportesView.txtFechaFin.getDate());
-            
             if(fechaInicio != null && fechaFin != null) {
                 listarAdopciones(fechaInicio, fechaFin);
             }
@@ -53,12 +59,12 @@ public class ReportesController implements ActionListener {
             listarMascotas(this.reportesView.cbxEstadoMascota.getSelectedItem().toString());
         }
         if(e.getSource().equals(reportesView.btnReporteAdopciones)) {
-            
-            SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-            String fechaInicio = dateFormat.format(reportesView.txtFechaInicio.getDate());
-            String fechaFin = dateFormat.format(reportesView.txtFechaFin.getDate());
-            
-            if(fechaInicio != null && fechaFin != null) {
+            if(reportesView.txtFechaInicio.getDate() == null || reportesView.txtFechaFin.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Selecciona una fecha de inicio y fin");
+            } else {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String fechaInicio = dateFormat.format(reportesView.txtFechaInicio.getDate());
+                String fechaFin = dateFormat.format(reportesView.txtFechaFin.getDate());
                 imprimirAdopciones(fechaInicio, fechaFin);
             }
         }
@@ -68,8 +74,8 @@ public class ReportesController implements ActionListener {
     }
     
     private void listarAdopciones(String fechaInicio, String fechaFin) {
-        ArrayList<AdopcionDTO> list = this.adopcionDAO.getListaAdopcionesRecientes();
-        DefaultTableModel table = (DefaultTableModel) this.dashboard.tblAdopciones.getModel();
+        ArrayList<AdopcionDTO> list = this.adopcionDAO.getAdopcionesFechas(fechaInicio, fechaFin);
+        DefaultTableModel table = (DefaultTableModel) this.reportesView.tblAdopciones.getModel();
         // Clean table
         table.setRowCount(0);
         Object[] row = new Object[4];
@@ -84,8 +90,8 @@ public class ReportesController implements ActionListener {
     }
 
     private void listarMascotas(String estado) {
-        ArrayList<MascotaDTO> list = this.mascotasDAO.getListaMascotasRecientes();
-        DefaultTableModel table = (DefaultTableModel) dashboard.tblMascotas.getModel();
+        ArrayList<MascotaDTO> list = this.mascotasDAO.getMascotasEstado(estado);
+        DefaultTableModel table = (DefaultTableModel) reportesView.tblMascotas.getModel();
         // Clean table
         table.setRowCount(0);
         Object[] row = new Object[4];
@@ -106,10 +112,54 @@ public class ReportesController implements ActionListener {
     }
 
     private void imprimirAdopciones(String fechaInicio, String fechaFin) {
+        ArrayList<AdopcionDTO> listaAdopciones = new AdopcionDAO().getAdopcionesFechas(fechaInicio, fechaFin);
+        String contenido = "\nDesde " + fechaInicio + " hasta " + fechaFin +
+                                "\nCódigo    -    Mascota    -    Adoptante    -    Fecha";
         
+        for (AdopcionDTO adopcion : listaAdopciones) {
+            contenido = contenido + "\n" + adopcion.getIdAdopcion() + "    -    " + adopcion.getNombreMascota() + "    -    " + adopcion.getNombreAdoptante() + "    -    " + adopcion.getFechaAdop();
+        }
+        
+        PDFFile pdf = new PDFFile();
+        Image header;
+        Image title;
+        try {
+            header = Image.getInstance("src/assets/certificado/header.png");
+            title = Image.getInstance("src/assets/certificado/tituloAdopciones.png");
+            pdf.setHeader(header);
+            pdf.setTitle(title);
+            pdf.setContent(new Paragraph(contenido));
+            pdf.generate("ReporteAdopciones");
+        } catch (BadElementException ex) {
+            Logger.getLogger(ReportesController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ReportesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void imprimirMascotas(String estado) {
+        ArrayList<MascotaDTO> listaMascotas = new MascotaDAO().getMascotasEstado(estado);
+        String contenido = "\nEstado: " + estado +
+                                "\nCódigo    -    Nombre    -    Fecha de Ingreso    -    Estado";
         
+        for (MascotaDTO mascota : listaMascotas) {
+            contenido = contenido + "\n" + mascota.getIdMascota() + "    -    " + mascota.getNombre() + "    -    " + mascota.getFechaIngreso() + "    -    " + estado;
+        }
+        
+        PDFFile pdf = new PDFFile();
+        Image header;
+        Image title;
+        try {
+            header = Image.getInstance("src/assets/certificado/header.png");
+            title = Image.getInstance("src/assets/certificado/tituloMascotas.png");
+            pdf.setHeader(header);
+            pdf.setTitle(title);
+            pdf.setContent(new Paragraph(contenido));
+            pdf.generate("ReporteMascotas");
+        } catch (BadElementException ex) {
+            Logger.getLogger(ReportesController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ReportesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

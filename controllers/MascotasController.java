@@ -96,7 +96,7 @@ public class MascotasController implements ActionListener, KeyListener {
         mascota.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
         mascota.setRaza(this.mascotaView.txtRaza.getText());
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         mascota.setFechaNacimiento(dateFormat.format(mascotaView.txtFechaNac.getDate()));
         
         mascota.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);
@@ -109,6 +109,7 @@ public class MascotasController implements ActionListener, KeyListener {
     private void buscarMascota(String id) {
         MascotaDTO mascota = this.mascotaDAO.getMascota(Integer.parseInt(id));
         if(mascota != null) {
+            this.mascotaView.txtCodigoMascota.setText(mascota.getIdMascota()+"");
             this.mascotaView.txtNombreMascota.setText(mascota.getNombre());
             this.mascotaView.txtPeso.setText(mascota.getPeso()+"");
             this.mascotaView.txtRaza.setText(mascota.getRaza());
@@ -141,7 +142,7 @@ public class MascotasController implements ActionListener, KeyListener {
         mascota.setPeso(Float.parseFloat(this.mascotaView.txtPeso.getText()));
         mascota.setRaza(this.mascotaView.txtRaza.getText());
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         mascota.setFechaNacimiento(dateFormat.format(this.mascotaView.txtFechaNac.getDate()));
         
         mascota.setEstadoMascota(this.mascotaView.cbxEstadoMascota.getSelectedIndex()+1);

@@ -10,13 +10,13 @@ public class AdoptanteDTO {
     private String telefono;
     private String direccion;
     private String correo;
-    private String propietario;
-    private String permiso;
+    private int propietario;
+    private int permiso;
 
     public AdoptanteDTO() {
     }
 
-    public AdoptanteDTO(int idAdoptante, String nombre, String apellido, String DNI, String fechaNacimiento, String telefono, String direccion, String correo, String propietario, String permiso) {
+    public AdoptanteDTO(int idAdoptante, String nombre, String apellido, String DNI, String fechaNacimiento, String telefono, String direccion, String correo, int propietario, int permiso) {
         this.idAdoptante = idAdoptante;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -93,19 +93,19 @@ public class AdoptanteDTO {
         this.correo = correo;
     }
     
-    public String getPropietario() {
+    public int getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(String propietario) {
+    public void setPropietario(int propietario) {
         this.propietario = propietario;
     }
 
-    public String getPermiso() {
+    public int getPermiso() {
         return permiso;
     }
 
-    public void setPermiso(String permiso) {
+    public void setPermiso(int permiso) {
         this.permiso = permiso;
     }
     

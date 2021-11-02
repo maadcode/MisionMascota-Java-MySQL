@@ -23,8 +23,8 @@ public class AdopcionDAO {
     public void create(AdopcionDTO adopcion) {
         PreparedStatement ps;
         try {
-            String sql = "INSERT INTO Adopciones(idAdoptante, idMascota, fechaAdop)"+
-                "VALUES(?, ?, CURDATE())";
+            String sql = "INSERT INTO Adopciones(idAdoptante, idMascota, fecha)"+
+                "VALUES(?, ?, convert(date, GETDATE()))";
             ps = this.dbConnection.prepareStatement(sql);
             
             ps.setInt(1, adopcion.getIdAdoptante());
@@ -42,13 +42,13 @@ public class AdopcionDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fechaAdop FROM Adopciones " +
+            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fecha FROM Adopciones " +
                         "INNER JOIN Adoptantes ON Adopciones.idAdoptante = Adoptantes.idAdoptante " +
                         "INNER JOIN Mascotas ON Adopciones.idMascota = Mascotas.idMascota";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fechaAdop"));
+                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fecha"));
                 listaAdopciones.add(adopcion);
             }
             rs.close();
@@ -63,7 +63,7 @@ public class AdopcionDAO {
     public void update(AdopcionDTO adopcion) {
         PreparedStatement ps;
         try {
-            String sql = "UPDATE Adopciones SET idAdoptante = ?, idMascota = ?, fechaAdop = ? WHERE idAdopcion = ?";
+            String sql = "UPDATE Adopciones SET idAdoptante = ?, idMascota = ?, fecha = ? WHERE idAdopcion = ?";
             ps = this.dbConnection.prepareStatement(sql);
             
             ps.setInt(1, adopcion.getIdAdoptante());
@@ -102,7 +102,7 @@ public class AdopcionDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next()) {
-                adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getInt("idMascota"), rs.getInt("idAdoptante"), rs.getString("fechaAdop"));
+                adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getInt("idMascota"), rs.getInt("idAdoptante"), rs.getString("fecha"));
             }
             rs.close();
             ps.close();
@@ -118,14 +118,35 @@ public class AdopcionDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fechaAdop FROM Adopciones " +
+            String sql = "SELECT Adopciones.idAdopcion, Adoptantes.nombreAdoptante, Mascotas.nombreMascota, Adopciones.fecha FROM Adopciones " +
                         "INNER JOIN Adoptantes ON Adopciones.idAdoptante = Adoptantes.idAdoptante " +
                         "INNER JOIN Mascotas ON Adopciones.idMascota = Mascotas.idMascota " +
-                        "WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
+                        "WHERE MONTH(fecha) = MONTH(convert(date, GETDATE()))";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fechaAdop"));
+                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fecha"));
+                listaAdopciones.add(adopcion);
+            }
+            rs.close();
+            st.close();
+            return listaAdopciones;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaAdopciones;
+    }
+    
+    public ArrayList<AdopcionDTO> getAdopcionesFechas(String fechaInicio, String fechaFin) {
+        ArrayList<AdopcionDTO> listaAdopciones = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
+        try {
+            String sql = "exec sp_adopciones_fechas '"+fechaInicio+"','"+fechaFin+"'";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()) {
+                AdopcionDTO adopcion = new AdopcionDTO(rs.getInt("idAdopcion"), rs.getString("nombreMascota"), rs.getString("nombreAdoptante"), rs.getString("fecha"));
                 listaAdopciones.add(adopcion);
             }
             rs.close();
@@ -142,7 +163,7 @@ public class AdopcionDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT COUNT(*) FROM Adopciones WHERE MONTH(fechaAdop) = MONTH(CURRENT_DATE())";
+            String sql = "SELECT COUNT(*) FROM Adopciones WHERE MONTH(fecha) = MONTH(convert(date, GETDATE()))";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             if(rs.next()) {

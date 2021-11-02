@@ -1,12 +1,12 @@
 
 package views;
 
-public class ViewAsistentes extends javax.swing.JPanel {
+public class ViewUsuarios extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewAdoptantes
      */
-    public ViewAsistentes() {
+    public ViewUsuarios() {
         initComponents();
     }
 
@@ -145,7 +145,7 @@ public class ViewAsistentes extends javax.swing.JPanel {
         cbxRol.setBackground(new java.awt.Color(84, 56, 220));
         cbxRol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbxRol.setForeground(new java.awt.Color(255, 255, 255));
-        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Administrador" }));
+        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Asistente" }));
         cbxRol.setPreferredSize(new java.awt.Dimension(120, 20));
         add(cbxRol);
         cbxRol.setBounds(510, 50, 220, 30);

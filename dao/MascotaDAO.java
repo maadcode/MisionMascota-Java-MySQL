@@ -23,8 +23,8 @@ public class MascotaDAO {
     public void create(MascotaDTO mascota) {
         PreparedStatement ps;
         try {
-            String sql = "INSERT INTO Mascotas(nombreMascota, raza, fechaNac, peso, idEstadoMascota, fechaIng, imagenMascota)"+
-                "VALUES(?, ?, ?, ?, ?, CURDATE(), ?)";
+            String sql = "INSERT INTO Mascotas(nombreMascota, raza, fechaNac, peso, idEstado, fechaIng, imagenMascota)"+
+                "VALUES(?, ?, ?, ?, ?, convert(date, GETDATE()), ?)";
             ps = this.dbConnection.prepareStatement(sql);
             
             ps.setString(1, mascota.getNombre());
@@ -51,7 +51,7 @@ public class MascotaDAO {
             rs = st.executeQuery(sql);
             
             while(rs.next()) {
-                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstado"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
             rs.close();
@@ -66,7 +66,7 @@ public class MascotaDAO {
     public void update(MascotaDTO mascota) {
         PreparedStatement ps;
         try {
-            String sql = "UPDATE Mascotas SET nombreMascota = ?, raza = ?, fechaNac = ?, peso = ?, idEstadoMascota = ?, imagenMascota = ? WHERE idMascota = ?";
+            String sql = "UPDATE Mascotas SET nombreMascota = ?, raza = ?, fechaNac = ?, peso = ?, idEstado = ?, imagenMascota = ? WHERE idMascota = ?";
             ps = this.dbConnection.prepareStatement(sql);
             
             ps.setString(1, mascota.getNombre());
@@ -108,7 +108,7 @@ public class MascotaDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next()) {
-                mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstado"), rs.getString("imagenMascota"));
             }
             rs.close();
             ps.close();
@@ -124,11 +124,11 @@ public class MascotaDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM Mascotas WHERE MONTH(fechaIng) = MONTH(CURRENT_DATE())";
+            String sql = "SELECT * FROM Mascotas WHERE MONTH(fechaIng) = MONTH(convert(date, GETDATE()))";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstado"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
             rs.close();
@@ -145,7 +145,7 @@ public class MascotaDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT COUNT(*) FROM Mascotas WHERE idEstadoMascota = 2";
+            String sql = "SELECT COUNT(*) FROM Mascotas WHERE idEstado = 2";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             if(rs.next()) {
@@ -165,11 +165,31 @@ public class MascotaDAO {
         Statement st;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM Mascotas WHERE idEstadoMascota = 2";
+            String sql = "SELECT * FROM Mascotas WHERE idEstado = 2";
             st = this.dbConnection.createStatement();
             rs = st.executeQuery(sql);
             while(rs.next()) {
-                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstadoMascota"), rs.getString("imagenMascota"));
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstado"), rs.getString("imagenMascota"));
+                listaMascotas.add(mascota);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaMascotas;
+    }
+    
+    public ArrayList<MascotaDTO> getMascotasEstado(String estado) {
+        ArrayList<MascotaDTO> listaMascotas = new ArrayList<>();
+        Statement st;
+        ResultSet rs;
+        
+        
+        try {
+            String sql = "exec sp_mascotas_estado '"+estado+"'";
+            st = this.dbConnection.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()) {
+                MascotaDTO mascota = new MascotaDTO(rs.getInt("idMascota"), rs.getString("nombreMascota"), rs.getFloat("peso"), rs.getString("raza"), rs.getString("fechaNac"), rs.getString("fechaIng"), rs.getInt("idEstado"), rs.getString("imagenMascota"));
                 listaMascotas.add(mascota);
             }
         } catch (SQLException e) {
@@ -181,7 +201,7 @@ public class MascotaDAO {
     public void cambiarEstado(int idMascota, int idEstado) {
         PreparedStatement ps;
         try {
-            String sql = "UPDATE Mascotas SET idEstadoMascota = ? WHERE idMascota = ?";
+            String sql = "UPDATE Mascotas SET idEstado = ? WHERE idMascota = ?";
             ps = this.dbConnection.prepareStatement(sql);
             
             ps.setInt(1, idEstado);

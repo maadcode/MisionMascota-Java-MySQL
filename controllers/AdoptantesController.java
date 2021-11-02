@@ -86,23 +86,14 @@ public class AdoptantesController implements ActionListener, KeyListener {
         adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
         adoptante.setDNI(this.adoptanteView.txtDNI.getText());
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         adoptante.setFechaNacimiento(dateFormat.format(this.adoptanteView.txtFechaNac.getDate()));
         
         adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
         adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
         adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());
-        if(this.adoptanteView.cbxPropietario.getSelectedIndex() == 0) {
-            adoptante.setPropietario("SI");
-        } else {
-            adoptante.setPropietario("NO");
-        }
-        if(this.adoptanteView.cbxPermiso.getSelectedIndex() == 0) {
-            adoptante.setPermiso("SI");
-        } else {
-            adoptante.setPermiso("NO");
-        }
-
+        adoptante.setPropietario(this.adoptanteView.cbxPropietario.getSelectedIndex());
+        adoptante.setPermiso(this.adoptanteView.cbxPermiso.getSelectedIndex());
         this.adoptanteDAO.create(adoptante);
         listarAdoptantes();
     }
@@ -110,6 +101,7 @@ public class AdoptantesController implements ActionListener, KeyListener {
     private void buscarAdoptante(String id) {
         AdoptanteDTO adoptante = this.adoptanteDAO.getAdoptante(Integer.parseInt(id));
         if(adoptante != null) {
+            this.adoptanteView.txtCodigoAdoptante.setText(adoptante.getIdAdoptante()+"");
             this.adoptanteView.txtNombreAdoptante.setText(adoptante.getNombre());
             this.adoptanteView.txtApellidoAdoptante.setText(adoptante.getApellido());
             this.adoptanteView.txtDNI.setText(adoptante.getDNI());
@@ -125,16 +117,8 @@ public class AdoptantesController implements ActionListener, KeyListener {
             this.adoptanteView.txtCorreo.setText(adoptante.getCorreo());
             this.adoptanteView.txtDireccion.setText(adoptante.getDireccion());
             this.adoptanteView.txtTelefono.setText(adoptante.getTelefono());
-            if(adoptante.getPropietario().equals("SI")) {
-                this.adoptanteView.cbxPropietario.setSelectedIndex(0);
-            } else {
-                this.adoptanteView.cbxPropietario.setSelectedIndex(1);
-            }
-            if(adoptante.getPermiso().equals("SI")) {
-                this.adoptanteView.cbxPermiso.setSelectedIndex(0);
-            } else {
-                this.adoptanteView.cbxPermiso.setSelectedIndex(1);
-            }
+            this.adoptanteView.cbxPropietario.setSelectedIndex(adoptante.getPropietario());
+            this.adoptanteView.cbxPermiso.setSelectedIndex(adoptante.getPermiso());
         } else {
             JOptionPane.showMessageDialog(null, "No existe el adoptante con el id ingresado");
         }
@@ -147,23 +131,15 @@ public class AdoptantesController implements ActionListener, KeyListener {
         adoptante.setApellido(this.adoptanteView.txtApellidoAdoptante.getText());
         adoptante.setDNI(this.adoptanteView.txtDNI.getText());
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         adoptante.setFechaNacimiento(dateFormat.format(this.adoptanteView.txtFechaNac.getDate()));
         
         adoptante.setTelefono(this.adoptanteView.txtTelefono.getText());
         adoptante.setDireccion(this.adoptanteView.txtDireccion.getText());
         adoptante.setCorreo(this.adoptanteView.txtCorreo.getText());
-        if(this.adoptanteView.cbxPropietario.getSelectedIndex() == 0) {
-            adoptante.setPropietario("SI");
-        } else {
-            adoptante.setPropietario("NO");
-        }
-        if(this.adoptanteView.cbxPermiso.getSelectedIndex() == 0) {
-            adoptante.setPermiso("SI");
-        } else {
-            adoptante.setPermiso("NO");
-        }
-
+        adoptante.setPropietario(this.adoptanteView.cbxPropietario.getSelectedIndex());
+        adoptante.setPermiso(this.adoptanteView.cbxPermiso.getSelectedIndex());
+        
         this.adoptanteDAO.update(adoptante);
         listarAdoptantes();
     }

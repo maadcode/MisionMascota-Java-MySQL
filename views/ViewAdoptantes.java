@@ -177,7 +177,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         cbxPermiso.setBackground(new java.awt.Color(84, 56, 220));
         cbxPermiso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbxPermiso.setForeground(new java.awt.Color(255, 255, 255));
-        cbxPermiso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        cbxPermiso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "SI" }));
         cbxPermiso.setPreferredSize(new java.awt.Dimension(120, 20));
         add(cbxPermiso);
         cbxPermiso.setBounds(610, 180, 120, 30);
@@ -199,7 +199,7 @@ public class ViewAdoptantes extends javax.swing.JPanel {
         cbxPropietario.setBackground(new java.awt.Color(84, 56, 220));
         cbxPropietario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbxPropietario.setForeground(new java.awt.Color(255, 255, 255));
-        cbxPropietario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        cbxPropietario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "SI" }));
         cbxPropietario.setPreferredSize(new java.awt.Dimension(120, 20));
         add(cbxPropietario);
         cbxPropietario.setBounds(240, 180, 120, 30);

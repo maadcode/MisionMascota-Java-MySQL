@@ -114,7 +114,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnDashboard);
-        btnDashboard.setBounds(0, 130, 0, 0);
+        btnDashboard.setBounds(0, 130, 320, 50);
 
         btnAdoptantes.setBackground(new java.awt.Color(84, 56, 220));
         btnAdoptantes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,7 +154,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnAdoptantes);
-        btnAdoptantes.setBounds(0, 180, 0, 0);
+        btnAdoptantes.setBounds(0, 180, 320, 50);
 
         btnMascotas.setBackground(new java.awt.Color(84, 56, 220));
         btnMascotas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,7 +191,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnMascotas);
-        btnMascotas.setBounds(0, 230, 0, 0);
+        btnMascotas.setBounds(0, 230, 320, 50);
 
         btnAdopciones.setBackground(new java.awt.Color(84, 56, 220));
         btnAdopciones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +228,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnAdopciones);
-        btnAdopciones.setBounds(0, 280, 0, 0);
+        btnAdopciones.setBounds(0, 280, 320, 50);
 
         btnCatalogo.setBackground(new java.awt.Color(84, 56, 220));
         btnCatalogo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -265,7 +265,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnCatalogo);
-        btnCatalogo.setBounds(0, 330, 0, 0);
+        btnCatalogo.setBounds(0, 330, 320, 50);
 
         btnSalir.setBackground(new java.awt.Color(84, 56, 220));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +302,7 @@ public class MenuAsistente extends javax.swing.JFrame {
         );
 
         sidePanel.add(btnSalir);
-        btnSalir.setBounds(0, 380, 0, 0);
+        btnSalir.setBounds(0, 380, 320, 50);
 
         topPanel.setBackground(new java.awt.Color(255, 255, 255));
 

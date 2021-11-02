@@ -4,24 +4,28 @@ package dto;
 public class UsuarioDTO {
     private String username;
     private String password;
-    private String rol;
+    private int rol;
     private String nombres;
     private String apellidos;
     private String DNI;
 
-    public UsuarioDTO(String username, String password, String rol, String nombres, String apellidos, String DNI) {
-        this.username = username;
-        this.password = password;
-    }
-
     public UsuarioDTO() {
     }
 
-    public String getRol() {
+    public UsuarioDTO(String username, String password, int rol, String nombres, String apellidos, String DNI) {
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.DNI = DNI;
+    }
+
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 

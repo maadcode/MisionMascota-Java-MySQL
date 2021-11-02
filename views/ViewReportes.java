@@ -11,8 +11,6 @@ public class ViewReportes extends javax.swing.JPanel {
      */
     public ViewReportes() {
         initComponents();
-        
-        resetColor(item1);
     }
 
     /**
@@ -229,7 +227,6 @@ public class ViewReportes extends javax.swing.JPanel {
 
     private void item1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_item1MouseClicked
         // TODO add your handling code here:
-        setColor(item1);
     }//GEN-LAST:event_item1MouseClicked
 
     private void item2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_item2MouseClicked
@@ -251,14 +248,6 @@ public class ViewReportes extends javax.swing.JPanel {
     private void btnBuscarAdopcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAdopcionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarAdopcionesActionPerformed
-
-    void setColor(JPanel panel) {
-        panel.setBackground(new Color(255,86,201));
-    }
-    
-    void resetColor(JPanel panel) {
-        panel.setBackground(new Color(84,56,220));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscarAdopciones;
