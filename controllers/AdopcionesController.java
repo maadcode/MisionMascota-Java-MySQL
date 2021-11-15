@@ -58,25 +58,49 @@ public class AdopcionesController implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(adopcionesView.btnBuscarAdoptante)) {
-            mostrarAdoptante(adopcionesView.txtCodigoAdoptante.getText());
+            if(this.adopcionesView.txtCodigoAdoptante.getText().length() > 0) {
+                mostrarAdoptante(adopcionesView.txtCodigoAdoptante.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código del adoptante a buscar");
+            }
         }
         if(e.getSource().equals(adopcionesView.btnBuscarMascota)) {
-            mostrarMascota(adopcionesView.txtCodigoMascota.getText());
+            if(this.adopcionesView.txtCodigoMascota.getText().length() > 0) {
+                mostrarMascota(adopcionesView.txtCodigoMascota.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la mascota a buscar");
+            }
         }
         if(e.getSource().equals(adopcionesView.btnBuscarAdopcion)) {
-            buscarAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            if(this.adopcionesView.txtCodigoAdopcion.getText().length() > 0) {
+                buscarAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la adopción a buscar");
+            }
         }
         if(e.getSource().equals(adopcionesView.btnAgregarAdopcion)) {
             agregarAdopcion();
         }
         if(e.getSource().equals(adopcionesView.btnEditarAdopcion)) {
-            editarAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            if(this.adopcionesView.txtCodigoAdopcion.getText().length() > 0) {
+                editarAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la adopción a editar");
+            }
         }
         if(e.getSource().equals(adopcionesView.btnEliminarAdopcion)) {
-            eliminarMascota(adopcionesView.txtCodigoAdopcion.getText());
+            if(this.adopcionesView.txtCodigoAdopcion.getText().length() > 0) {
+                eliminarMascota(adopcionesView.txtCodigoAdopcion.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la adopción a eliminar");
+            }
         }
         if(e.getSource().equals(adopcionesView.btnImprimirAdopcion)) {
-            imprimirAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            if(this.adopcionesView.txtCodigoAdopcion.getText().length() > 0) {
+                imprimirAdopcion(adopcionesView.txtCodigoAdopcion.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la adopción a imprimir");
+            }
         }
     }
     

@@ -45,21 +45,27 @@ public class AdoptantesController implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(adoptanteView.btnBuscarAdoptante)) {
-            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
-                buscarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
+            if(this.adoptanteView.txtCodigoAdoptante.getText().length() > 0) {
+               buscarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código del adoptante a buscar");
             }
         }
         if(e.getSource().equals(adoptanteView.btnAgregarAdoptante)) {
             agregarAdoptante();
         }
         if(e.getSource().equals(adoptanteView.btnEditarAdoptante)) {
-            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
+            if(this.adoptanteView.txtCodigoAdoptante.getText().length() > 0) {
                 editarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código del adoptante a editar");
             }
         }
         if(e.getSource().equals(adoptanteView.btnEliminarAdoptante)) {
-            if(this.adoptanteView.txtCodigoAdoptante.getText() != null) {
+            if(this.adoptanteView.txtCodigoAdoptante.getText().length() > 0) {
                 eliminarAdoptante(this.adoptanteView.txtCodigoAdoptante.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código del adoptante a eliminar");
             }
         }
     }

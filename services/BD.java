@@ -12,7 +12,7 @@ public class BD {
         String connectionURL = "jdbc:sqlserver://localhost:1433;"
                 + "databaseName=MisionMascota;"
                 + "user=sa;"
-                + "password=;";
+                + "password=123;";
         
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();

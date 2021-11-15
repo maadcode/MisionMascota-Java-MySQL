@@ -52,16 +52,28 @@ public class MascotasController implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(mascotaView.btnBuscarMascota)) {
-            buscarMascota(mascotaView.txtCodigoMascota.getText());
+            if(this.mascotaView.txtCodigoMascota.getText().length() > 0) {
+                buscarMascota(mascotaView.txtCodigoMascota.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la mascota a buscar");
+            }
         }
         if(e.getSource().equals(mascotaView.btnAgregarMascota)) {
             agregarMascota();
         }
         if(e.getSource().equals(mascotaView.btnEditarMascota)) {
-            editarMascota(mascotaView.txtCodigoMascota.getText());
+            if(this.mascotaView.txtCodigoMascota.getText().length() > 0) {
+                editarMascota(mascotaView.txtCodigoMascota.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la mascota a editar");
+            }
         }
         if(e.getSource().equals(mascotaView.btnEliminarMascota)) {
-            eliminarMascota(mascotaView.txtCodigoMascota.getText());
+            if(this.mascotaView.txtCodigoMascota.getText().length() > 0) {
+               eliminarMascota(mascotaView.txtCodigoMascota.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Coloca el código de la mascota a eliminar");
+            }
         }
         if(e.getSource().equals(mascotaView.btnAgregarImagen)) {
             agregarImagen();
