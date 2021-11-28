@@ -17,7 +17,7 @@ public class UsuarioDAO {
     private Connection dbConnection = null;
 
     public UsuarioDAO() {
-        this.dbConnection = new BD().getConnection();
+        this.dbConnection = BD.getConnection();
     }
     
     public void create(UsuarioDTO usuario) {

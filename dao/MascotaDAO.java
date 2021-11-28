@@ -17,7 +17,7 @@ public class MascotaDAO {
     private Connection dbConnection = null;
 
     public MascotaDAO() {
-        this.dbConnection = new BD().getConnection();
+        this.dbConnection = BD.getConnection();
     }
 
     public void create(MascotaDTO mascota) {

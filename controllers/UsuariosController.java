@@ -97,7 +97,7 @@ public class UsuariosController implements ActionListener, KeyListener {
             this.usuariosView.txtDNI.setText(usuario.getDNI());
             this.usuariosView.cbxRol.setSelectedIndex(usuario.getRol() - 1);
         } else {
-            JOptionPane.showMessageDialog(null, "No existe el adoptante con el id ingresado");
+            JOptionPane.showMessageDialog(null, "No existe el usuario con el id ingresado");
         }
     }
 

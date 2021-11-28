@@ -17,7 +17,7 @@ public class AdoptanteDAO {
     private Connection dbConnection = null;
     
     public AdoptanteDAO() {
-        this.dbConnection = new BD().getConnection();
+        this.dbConnection = BD.getConnection();
     }
 
     public void create(AdoptanteDTO adoptante) {
