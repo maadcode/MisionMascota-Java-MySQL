@@ -21,7 +21,7 @@ Este es proyecto es **Open Source** por lo que puedes modificar y adaptar según
 ## Herramientas
 
 * Figma : [Ver prototipo](https://www.figma.com/proto/R1qZGJ6wdA6YHFE1SVRB4m/Sistema-de-Albergue?page-id=0%3A1&node-id=262%3A223&viewport=-90%2C556%2C0.3416539430618286&scaling=scale-down&starting-point-node-id=56%3A2)
-* SQL Server : [Ver repositorio](https://github.com/maadcode/MisionMascota-SQLServer)
+* SQL Server
 * Java SE
 * Librerías Java :
     * Swing
